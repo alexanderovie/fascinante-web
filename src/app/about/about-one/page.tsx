@@ -1,5 +1,5 @@
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuOne from "@/components/Header/Menu/MenuTwo"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import AboutTwo from "@/components/Section/About/AboutTwo"
 import CounterTwo from "@/components/Section/Counter/CounterTwo"

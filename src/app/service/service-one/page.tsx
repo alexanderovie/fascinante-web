@@ -1,5 +1,5 @@
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuOne from "@/components/Header/Menu/MenuTwo"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import ServiceFive from "@/components/Section/Service/ServiceFive"
 import serviceData from '@/data/service.json'

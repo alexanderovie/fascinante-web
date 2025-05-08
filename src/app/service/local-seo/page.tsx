@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from 'next/link'
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuOne from "@/components/Header/Menu/MenuTwo"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import ServiceFilter from "@/components/Section/Service/ServiceFilter"
 import serviceData from '@/data/service.json'
@@ -13,11 +13,7 @@ import * as Icon from "@phosphor-icons/react/dist/ssr";
 import faqData from '@/data/faqs.json'
 import Image from "next/image"
 
-export default function ServiceStyleOne({ params: { slug } }: { params: { slug: string } }) {
-    const foundPost = serviceData.find(item => {
-        return item.title.toLowerCase().replace(/ /g, '-') === slug
-    })
-
+export default function ServiceStyleOne() {
     const [faq, setFaq] = useState<number | null>(1)
 
     const handleFaq = (id: number) => {
@@ -32,11 +28,11 @@ export default function ServiceStyleOne({ params: { slug } }: { params: { slug: 
                     <MenuOne />
                 </header>
                 <main className="content">
-                    <BreadcrumbItem link="Our Services" img="/images/banner/about1.png" title={foundPost?.title || 'Our Services'} desc={foundPost?.desc || "Expand your knowledge and skills in cryptocurrency trading through our educational resources."} />
+                    <BreadcrumbItem link="Our Services" img="/images/banner/about1.png" title="Our Services" desc="Expand your knowledge and skills in cryptocurrency trading through our educational resources." />
                     <div className="content-detail-block lg:py-[100px] sm:py-16 py-10">
                         <div className="container">
                             <div className="flex max-xl:flex-col gap-y-8">
-                                <div className="w-full xl:w-3/4">
+                                <div className="col-12 xl:w-3/4">
                                     <div className="content-para xl:pr-[80px]">
                                         <div className="heading3">Portfolio Management for Financial Growth</div>
                                         <div className="body2 text-secondary mt-4">Our objective for this project was to develop a comprehensive financial management platform that provided users with a centralized dashboard for managing their finances. We wanted to create a platform that was user-friendly, easy to navigate, and offered a range of features to help users track their spending, monitor their investments, and plan for their financial future. Our goal was to provide users with the tools and resources they need to make informed financial decisions and achieve their financial goals.</div>
@@ -46,30 +42,24 @@ export default function ServiceStyleOne({ params: { slug } }: { params: { slug: 
                                         <div className="list-feature mt-8">
                                             <div className="flex max-lg:flex-col gap-y-3">
                                                 <div className="w-full lg:w-1/2 gap-y-3 flex flex-col">
-                                                    <div className="item flex items-center gap-4">
-                                                        <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
+                                                    <div className="item flex items-center gap-4"> <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
                                                         <div className="text-button">Identification of monthly income</div>
                                                     </div>
-                                                    <div className="item flex items-center gap-4">
-                                                        <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
+                                                    <div className="item flex items-center gap-4"> <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
                                                         <div className="text-button">Creation of savings and investment plan</div>
                                                     </div>
-                                                    <div className="item flex items-center gap-4">
-                                                        <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
+                                                    <div className="item flex items-center gap-4"> <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
                                                         <div className="text-button">Management and calculation of monthly expenses</div>
                                                     </div>
                                                 </div>
                                                 <div className="w-full lg:w-1/2 gap-y-3 flex flex-col">
-                                                    <div className="item flex items-center gap-4">
-                                                        <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
+                                                    <div className="item flex items-center gap-4"> <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
                                                         <div className="text-button">Research and Analysis</div>
                                                     </div>
-                                                    <div className="item flex items-center gap-4">
-                                                        <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
+                                                    <div className="item flex items-center gap-4"> <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
                                                         <div className="text-button">Investment Management and Investment Advice</div>
                                                     </div>
-                                                    <div className="item flex items-center gap-4">
-                                                        <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
+                                                    <div className="item flex items-center gap-4"> <Icon.CheckCircle weight="fill" className="text-xl text-blue flex-shrink-0" />
                                                         <div className="text-button">Education and Resources</div>
                                                     </div>
                                                 </div>
@@ -91,7 +81,7 @@ export default function ServiceStyleOne({ params: { slug } }: { params: { slug: 
                                                         )}
                                                     </div>
                                                     <div className="content-question">
-                                                       <div className="border-line w-full"></div>
+                                                        <div className="border-line w-full"></div>
                                                         <div className="body3 text-secondary pb-4">{item.desc}</div>
                                                     </div>
                                                 </div>
@@ -150,9 +140,7 @@ export default function ServiceStyleOne({ params: { slug } }: { params: { slug: 
                                                 as={"/service/service-detail/financial-planning"}
                                             >
                                                 <div className="text-button text-secondary">
-                                                    Personal Financial</div><i className="ph-bold ph-caret-right hidden"></i>
-                                            </Link>
-                                        </div>
+                                                    Personal Financial</div><i className="ph-bold ph-caret-right hidden"></i></Link></div>
                                     </div>
                                     <div className="ads-block rounded-lg md:mt-10 mt-6 relative">
                                         <div className="bg-img"> <Image width={5000} height={5000} src="/images/component/ads.png" alt="" /></div>
