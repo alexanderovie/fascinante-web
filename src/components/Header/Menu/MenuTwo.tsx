@@ -36,8 +36,8 @@ const MenuTwo = () => {
                     <Link className="menu-left-block" href="/">
                         <Image
                             src={'/images/Logo.svg'}
-                            width={1800}
-                            height={1600}
+                            width={900}
+                            height={800}
                             alt="logo"
                             priority={true}
                             className="w-[149px] max-sm:w-[132px]"
