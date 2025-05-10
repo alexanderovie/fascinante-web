@@ -40,7 +40,7 @@ const Footer = () => {
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/about/about-one">About us</Link></li>
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/service/service-one">Services</Link></li>
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/case-studies/case-studies-one">Case Studies</Link></li>
-                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/contact/contact-two">Contact</Link></li>
+                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/contact/contact-one">Contact</Link></li>
                                     </ul>
                                 </div>
                                 <div className="footer-nav-item max-sm:hidden">
@@ -49,7 +49,7 @@ const Footer = () => {
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/pages/faqs">FAQs</Link></li>
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/pricing">Pricing</Link></li>
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/pages/partners">Partners</Link></li>
-                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/contact/contact-two">Support Center</Link></li>
+                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/contact/contact-one">Support Center</Link></li>
                                     </ul>
                                 </div>
                                 <div className="footer-nav-item">
