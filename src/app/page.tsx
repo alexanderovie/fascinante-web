@@ -4,7 +4,7 @@ import AboutTwo from "@/components/Section/About/AboutTwo";
 import CounterTwo from "@/components/Section/Counter/CounterTwo";
 import PartnerOne from "@/components/Section/Partner/PartnerOne";
 import ProjectTwo from "@/components/Section/Project/ProjectTwo";
-import SliderOne from "@/components/Slider/SliderOne";
+import SliderFive from "@/components/Slider/SliderFive";
 import serviceData from '@/data/service.json';
 import ServiceTwo from "@/components/Section/Service/ServiceTwo";
 import TestimonialTwo from "@/components/Section/Testimonial/TestimonialTwo";
@@ -23,7 +23,7 @@ export default function Home() {
                     <MenuTwo />
                 </header>
                 <main className="content">
-                    <SliderOne />
+                    <SliderFive />
                     <PartnerOne classname='bg-dark-blue' />
                     <AboutTwo />
                     <CounterTwo classname='lg:py-10 py-7 border-t border-line' />

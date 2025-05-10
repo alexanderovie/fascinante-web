@@ -38,14 +38,18 @@ const SliderOne = () => {
                     >
                         {/* --- Diapositiva 1: Tema "Auditoría SEO" con Degradado 1 --- */}
                         <SwiperSlide>
+                            {/* Eliminados estilos en línea de depuración */}
                             <div className="slider-item slider-first">
                                 {/* Fondo con degradado moderno 1 */}
                                 <div className="bg-img bg-gradient-to-r from-blue-500 to-purple-600"> {/* Ejemplo de degradado Tailwind */}
                                     {/* Las imágenes de fondo ya no están aquí */}
                                 </div>
                                 {/* Contenido de texto y botón */}
-                                <div className="container">
-                                    {/* Clases añadidas para centrar horizontalmente y alinear texto en TODAS las vistas */}
+                                {/* Añadida clase 'mx-auto' para centrar horizontalmente el contenedor */}
+                                {/* Eliminados estilos en línea de depuración */}
+                                <div className="container mx-auto"> {/* Añadida clase mx-auto */}
+                                    {/* Clases para centrar horizontalmente y alinear texto en TODAS las vistas */}
+                                    {/* Eliminados estilos en línea de depuración */}
                                     <div className="text-content flex-columns-between items-center text-center"> {/* 'items-center' y 'text-center' */}
                                         {/* Título Principal (Adaptado para Auditoría SEO) */}
                                         <div className="heading2">
@@ -76,14 +80,18 @@ const SliderOne = () => {
 
                         {/* --- Diapositiva 2: Tema "Descubrir Oportunidades" con Degradado 2 --- */}
                         <SwiperSlide>
+                            {/* Eliminados estilos en línea de depuración */}
                             <div className="slider-item slider-second">
                                 {/* Fondo con degradado moderno 2 */}
                                 <div className="bg-img bg-gradient-to-r from-teal-500 to-cyan-600"> {/* Ejemplo de degradado Tailwind */}
                                     {/* Las imágenes de fondo ya no están aquí */}
                                 </div>
                                 {/* Contenido de texto y botón */}
-                                <div className="container">
-                                     {/* Clases añadidas para centrar horizontalmente y alinear texto en TODAS las vistas */}
+                                {/* Añadida clase 'mx-auto' para centrar horizontalmente el contenedor */}
+                                {/* Eliminados estilos en línea de depuración */}
+                                <div className="container mx-auto"> {/* Añadida clase mx-auto */}
+                                     {/* Clases para centrar horizontalmente y alinear texto en TODAS las vistas */}
+                                    {/* Eliminados estilos en línea de depuración */}
                                     <div className="text-content flex-columns-between items-center text-center"> {/* 'items-center' y 'text-center' */}
                                         {/* Título Principal (Adaptado para Descubrir Oportunidades) */}
                                         <div className="heading2">
@@ -114,14 +122,18 @@ const SliderOne = () => {
 
                         {/* --- Diapositiva 3: Tema "Visibilidad en Línea" con Degradado 3 --- */}
                         <SwiperSlide>
+                            {/* Eliminados estilos en línea de depuración */}
                             <div className="slider-item slider-third">
                                 {/* Fondo con degradado moderno 3 */}
                                 <div className="bg-img bg-gradient-to-r from-orange-500 to-red-600"> {/* Ejemplo de degradado Tailwind */}
                                     {/* Las imágenes de fondo ya no están aquí */}
                                 </div>
                                 {/* Contenido de texto y botón */}
-                                <div className="container">
-                                     {/* Clases añadidas para centrar horizontalmente y alinear texto en TODAS las vistas */}
+                                {/* Añadida clase 'mx-auto' para centrar horizontalmente el contenedor */}
+                                {/* Eliminados estilos en línea de depuración */}
+                                <div className="container mx-auto"> {/* Añadida clase mx-auto */}
+                                     {/* Clases para centrar horizontalmente y alinear texto en TODAS las vistas */}
+                                    {/* Eliminados estilos en línea de depuración */}
                                     <div className="text-content flex-columns-between items-center text-center"> {/* 'items-center' y 'text-center' */}
                                         {/* Título Principal (Adaptado para Visibilidad en Línea) */}
                                         <div className="heading2">
