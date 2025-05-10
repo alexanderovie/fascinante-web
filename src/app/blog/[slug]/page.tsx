@@ -1,6 +1,6 @@
 'use client'
 
-import TopNavOne from "@/components/Header/TopNav/TopNavOne"
+import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import MenuTwo from "@/components/Header/Menu/MenuTwo"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import LayoutDetailOne from "@/components/Blog/LayoutDetail"
@@ -63,7 +63,7 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
         <>
             <div className="overflow-x-hidden">
                 <header id="header">
-                    <TopNavOne />
+                    <TopNavTwo />
                     <MenuTwo />
                 </header>
                 <main className="content">

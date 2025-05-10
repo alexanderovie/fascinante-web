@@ -20,6 +20,7 @@ export default function RootLayout({
       <Head>
         {/* Meta Tags */}
         <meta name="apple-mobile-web-app-title" content="Fascinante" />
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href="/favicon.ico" />
