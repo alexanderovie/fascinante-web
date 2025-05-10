@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import LayoutDetailTwo from "@/components/Blog/LayoutDetailTwo"
 import blogData from '@/data/blog.json'
@@ -63,7 +63,7 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
             <div className="overflow-x-hidden">
                 <header id="header">
                     <TopNavOne />
-                    <MenuOne />
+                    <MenuTwo />
                 </header>
                 <main className="content">
                     <div className="breadcrumb-block w-full lg:h-[400px] h-[360px] relative">

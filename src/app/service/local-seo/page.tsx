@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from 'next/link'
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuTwo"
+import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import ServiceFilter from "@/components/Section/Service/ServiceFilter"
 import serviceData from '@/data/service.json'
@@ -25,7 +25,7 @@ export default function ServiceStyleOne() {
             <div className="overflow-x-hidden">
                 <header id="header">
                     <TopNavOne />
-                    <MenuOne />
+                    <MenuTwo />
                 </header>
                 <main className="content">
                     <BreadcrumbItem link="Our Services" img="/images/banner/about1.png" title="Our Services" desc="Expand your knowledge and skills in cryptocurrency trading through our educational resources." />

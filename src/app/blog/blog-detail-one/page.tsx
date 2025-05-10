@@ -1,7 +1,7 @@
 'use client'
 
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import LayoutDetailOne from "@/components/Blog/LayoutDetailOne"
 import blogData from '@/data/blog.json'
@@ -61,7 +61,7 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
             <div className="overflow-x-hidden">
                 <header id="header">
                     <TopNavOne />
-                    <MenuOne />
+                    <MenuTwo />
                 </header>
                 <main className="content">
                     <BreadcrumbItem link="Case Studies" img="/images/banner/1920x400.png" title="Blog Detail" desc="Discover valuable insights and expert advice on budgeting, investing, and retirement planning in our Financial Blogs section." />
