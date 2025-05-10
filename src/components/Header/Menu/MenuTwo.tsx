@@ -9,6 +9,8 @@ import Image from "next/image"
 import Link from "next/link"
 // Importa iconos de la biblioteca Phosphor-icons
 import * as Icon from "@phosphor-icons/react/dist/ssr";
+// Importa el componente CtaTwo que se va a integrar.
+import CtaTwo from "@/components/Section/CTA/CtaTwo"; // Asegúrate de que la ruta de importación sea correcta según la ubicación de tu archivo CtaTwo.
 
 // Componente funcional para el menú de navegación principal
 const MenuTwo = () => {
@@ -159,26 +161,11 @@ const MenuTwo = () => {
                             </li>
                         </ul>
                     </div>
-                    {/* Bloque derecho del menú: Iconos de redes sociales (oculto en pantallas pequeñas) */}
+                    {/* Bloque derecho del menú: Sustituido por el componente CtaTwo (oculto en pantallas pequeñas) */}
+                    {/* Se mantiene la clase max-sm:hidden para que el CTA también se oculte en móvil */}
                     <div className="menu-right-block max-sm:hidden">
-                        <div className="list-social style-two flex items-center gap-2.5 style-one">
-                            {/* Enlaces a redes sociales */}
-                            <Link className="item rounded-full w-7 h-7 border-grey border flex items-center justify-center" href="https://www.facebook.com/" target="_blank">
-                                <i className="icon-facebook text-sm"></i>
-                            </Link>
-                            <Link className="item rounded-full w-7 h-7 border-grey border flex items-center justify-center" href="https://www.linkedin.com/" target="_blank">
-                                <i className="icon-in text-xs"></i>
-                            </Link>
-                            <Link className="item rounded-full w-7 h-7 border-grey border flex items-center justify-center" href="https://www.twitter.com/" target="_blank">
-                                <i className="icon-twitter text-[10px]"></i>
-                            </Link>
-                            <Link className="item rounded-full w-7 h-7 border-grey border flex items-center justify-center" href="https://www.instagram.com/" target="_blank">
-                                <i className="icon-insta text-[10px]"></i>
-                            </Link>
-                            <Link className="item rounded-full w-7 h-7 border-grey border flex items-center justify-center" href="https://www.youtube.com/" target="_blank">
-                                <i className="icon-youtube text-[10px]"></i>
-                            </Link>
-                        </div>
+                        {/* Se inserta el componente CtaTwo aquí */}
+                        <CtaTwo />
                     </div>
                     {/* Icono de hamburguesa para el menú móvil (visible solo en pantallas pequeñas) */}
                     {/* Al hacer clic, alterna el estado de openMenuMobile */}
@@ -279,6 +266,11 @@ const MenuTwo = () => {
                                     </Link>
                                 </li>
                             </ul>
+                             {/* Bloque para el CtaTwo en el menú móvil */}
+                            {/* Removimos la clase max-sm:hidden para que sea visible en móvil */}
+                            <div className="menu-cta-mobile pt-4 pb-4 pl-3 pr-3">
+                                <CtaTwo />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import TopNavOne from "@/components/Header/TopNav/TopNavOne"
+import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import MenuOne from "@/components/Header/Menu/MenuTwo"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import CtaOne from "@/components/Section/CTA/CtaOne"
@@ -19,7 +19,7 @@ export default function Pricing() {
         <>
             <div className="overflow-x-hidden">
                 <header id="header">
-                    <TopNavOne />
+                    <TopNavTwo />
                     <MenuOne />
                 </header>
                 <main className="content">
