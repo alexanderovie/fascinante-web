@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import caseStudyData from '@/data/case-study.json'
 import CtaOne from "@/components/Section/CTA/CtaOne"
@@ -19,7 +19,7 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
       <div className="overflow-x-hidden">
         <header id="header">
           <TopNavOne />
-          <MenuOne />
+          <MenuTwo />
         </header>
         <main className="content">
           <BreadcrumbItem
