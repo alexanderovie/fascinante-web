@@ -1,11 +1,11 @@
 'use client'
 
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/MenuTwo"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
-import LayoutDetailOne from "@/components/Blog/LayoutDetailOne"
+import LayoutDetailOne from "@/components/Blog/LayoutDetail"
 import blogData from '@/data/blog.json'
-import { BlogType } from '@/type/BlogType'
+import { BlogType } from '@/type/BlogType';
 import CtaOne from "@/components/Section/CTA/CtaOne"
 import Footer from "@/components/Footer/Footer"
 import { useRouter } from "next/navigation"
@@ -20,7 +20,6 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
     if (foundPost === undefined) {
         foundPost = blogData[0]
     }
-    
 
     const handleNextBlogDetail = () => {
         if (foundPost) {
@@ -51,10 +50,14 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
             }
             const nextBlog = blogData.find(item => item.id === nextId);
             if (nextBlog) {
-                router.push(`/blog/blog-detail-one/${nextBlog.title.toLowerCase().replace(/ /g, '-')}`);
+                router.push(`/${nextBlog.title.toLowerCase().replace(/ /g, '-')}`);
             }
         }
     };
+
+    if (!foundPost) {
+        return <h3>Post not found.</h3>;
+    }
 
     return (
         <>
@@ -64,7 +67,7 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
                     <MenuTwo />
                 </header>
                 <main className="content">
-                    <BreadcrumbItem link="Case Studies" img="/images/banner/1920x400.png" title="Blog Detail" desc="Discover valuable insights and expert advice on budgeting, investing, and retirement planning in our Financial Blogs section." />
+                    <BreadcrumbItem link="Case Studies" img="/images/blog/blog.webp" title={"Blog Detail"} desc={"Discover valuable insights and expert advice on budgeting, investing, and retirement planning in our Financial Blogs section."} />
                     <LayoutDetailOne data={foundPost as BlogType} handleNextBlogDetail={handleNextBlogDetail} handlePrevBlogDetail={handlePrevBlogDetail} />
                     <CtaOne />
                 </main>

@@ -118,8 +118,8 @@ const LayoutListOne = () => {
                 {blogData.slice(4, 7).map(item => (
                   <Link
                     key={item.id}
-                    href={"/blog/blog-detail-one/[slug]"}
-                    as={"/blog/blog-detail-one/" + item.title.toLowerCase().replace(/ /g, '-')}
+                    href={"/blog/[slug]"}
+                    as={"/blog/" + item.title.toLowerCase().replace(/ /g, '-')}
                     className="recent-post-item flex items-start gap-4 cursor-pointer"
                   >
                     <div className="item-img flex-shrink-0 w-20 h-20 rounded">

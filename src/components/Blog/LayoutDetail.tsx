@@ -20,11 +20,11 @@ const LayoutDetailOne: React.FC<Props> = ({ data, handleNextBlogDetail, handlePr
   const router = useRouter()
 
   const handleCategory = (category: string) => {
-    router.push(`/blog/blog-list-one?category=${category}`)
+    router.push(`/blog?category=${category}`)
   }
 
   const handleTag = (tag: string) => {
-    router.push(`/blog/blog-list-one?tag=${tag}`)
+    router.push(`/blog?tag=${tag}`)
   }
 
   return (
@@ -39,7 +39,8 @@ const LayoutDetailOne: React.FC<Props> = ({ data, handleNextBlogDetail, handlePr
             <div className="cate-block md:mt-10 mt-6">
               <div className="heading7">Categories</div>
               <div className="list-nav mt-4">
-                {['financial planning', 'payment solution', 'cryptocurrency financial', 'blockchain', 'online banking', 'personal financial'].map(item => (
+                {/* Updated categories for 'fascinante digital' */}
+                {['Tecnología', 'Innovación', 'Marketing Digital', 'Diseño Web', 'Desarrollo de Software', 'Inteligencia Artificial'].map(item => (
                   <div
                     key={item}
                     className={`nav-item rounded-lg flex items-center justify-between p-3 cursor-pointer text-button text-secondary capitalize ${item === category ? 'active' : ''}`}
@@ -78,7 +79,8 @@ const LayoutDetailOne: React.FC<Props> = ({ data, handleNextBlogDetail, handlePr
             <div className="tags-popular-block md:mt-10 mt-6">
               <div className="tag-heading heading7">Popular Tags</div>
               <div className="list-tag mt-4 flex flex-wrap gap-3">
-                {['featured', 'experience', 'interview', 'skill', 'business', 'design'].map(item => (
+                {/* You might want to update these tags as well to match 'fascinante digital' */}
+                {['Tecnología', 'Digital', 'Innovación', 'Desarrollo', 'Diseño', 'Marketing'].map(item => (
                   <div
                     key={item}
                     className={`caption2 py-2 px-4 bg-surface rounded-2xl hover:bg-black hover:text-white duration-300 cursor-pointer ${item === tag ? 'active' : ''}`}
@@ -170,9 +172,10 @@ const LayoutDetailOne: React.FC<Props> = ({ data, handleNextBlogDetail, handlePr
                 <div className="tags-cloud-block flex items-center gap-3 max-sm:flex-wrap">
                   <div className="body3">Tag(s):</div>
                   <div className="list-nav flex items-center gap-3 max-sm:flex-wrap">
-                    <span className="caption2 py-2 px-4 bg-surface rounded-2xl hover:bg-black hover:text-white duration-300 cursor-pointer" onClick={() => handleTag('featured')}>Featured</span>
-                    <span className="caption2 py-2 px-4 bg-surface rounded-2xl hover:bg-black hover:text-white duration-300 cursor-pointer" onClick={() => handleTag('interview')}>Interview</span>
-                    <span className="caption2 py-2 px-4 bg-surface rounded-2xl hover:bg-black hover:text-white duration-300 cursor-pointer" onClick={() => handleTag('business')}>Business</span></div>
+                    {/* You might want to update these tags as well to match 'fascinante digital' */}
+                    <span className="caption2 py-2 px-4 bg-surface rounded-2xl hover:bg-black hover:text-white duration-300 cursor-pointer" onClick={() => handleTag('Tecnología')}>Tecnología</span>
+                    <span className="caption2 py-2 px-4 bg-surface rounded-2xl hover:bg-black hover:text-white duration-300 cursor-pointer" onClick={() => handleTag('Digital')}>Digital</span>
+                    <span className="caption2 py-2 px-4 bg-surface rounded-2xl hover:bg-black hover:text-white duration-300 cursor-pointer" onClick={() => handleTag('Marketing')}>Marketing</span></div>
                 </div>
                 <div className="share-block flex items-center gap-4 max-sm:flex-wrap">
                   <div className="caption2 py-2 px-4 rounded-lg border border-line">Copy the link</div>

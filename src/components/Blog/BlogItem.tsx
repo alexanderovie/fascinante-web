@@ -16,8 +16,8 @@ const BlogItem: React.FC<BlogProps> = ({ data, type }) => {
             {type === 'list-one' && (
                 <Link
                     className="blog-item flex max-md:flex-col md:items-center gap-7 gap-y-5"
-                    href={"/blog/blog-detail-one/[slug]"}
-                    as={"/blog/blog-detail-one/" + data.title.toLowerCase().replace(/ /g, '-')}
+                    href={"/blog/[slug]"}
+                    as={"/blog/" + data.title.toLowerCase().replace(/ /g, '-')}
                 >
                     <div className="w-full md:w-1/2">
                         <div className="bg-img w-full overflow-hidden rounded-2xl"><Image width={5000} height={5000} className="w-full h-full block" src={data.img} alt={data.title} /></div>
@@ -40,8 +40,8 @@ const BlogItem: React.FC<BlogProps> = ({ data, type }) => {
             {type === 'list-two' && (
                 <Link
                     className="blog-item block"
-                    href={"/blog/blog-detail-one/[slug]"}
-                    as={"/blog/blog-detail-one/" + data.title.toLowerCase().replace(/ /g, '-')}
+                    href={"/blog/[slug]"}
+                    as={"/blog/" + data.title.toLowerCase().replace(/ /g, '-')}
                 >
                     <div className="w-full">
                         <div className="bg-img w-full overflow-hidden rounded-2xl">
@@ -72,8 +72,8 @@ const BlogItem: React.FC<BlogProps> = ({ data, type }) => {
                 <div className="blog-item">
                     <Link
                         className="blog-item-main h-full block bg-white border border-line overflow-hidden rounded-2xl hover-box-shadow duration-500"
-                        href={"/blog/blog-detail-one/[slug]"}
-                        as={"/blog/blog-detail-one/" + data.title.toLowerCase().replace(/ /g, '-')}
+                        href={"/blog/[slug]"}
+                        as={"/blog/" + data.title.toLowerCase().replace(/ /g, '-')}
                     >
                         <div className="bg-img w-full overflow-hidden">
                             <Image width={5000} height={5000} className="w-full h-full block" src={data.img} alt={data.title} />

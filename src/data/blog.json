@@ -1,227 +1,242 @@
 [
     {
         "id": 1,
-        "tag": "featured",
-        "category": "financial planning",
-        "img": "/images/blog/930x593.png",
-        "title": "Investment Opportunities Explore Options",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "essential-local-seo-guide-physical-businesses",
+        "tag": "seo",
+        "category": "local-listing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Essential Local SEO Guide for Physical Businesses",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "May 10, 2025",
+        "desc": "Learn how to optimize your online presence to attract local customers directly to your doorstep.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 2,
-        "tag": "experience",
-        "category": "payment solution",
-        "img": "/images/blog/930x593.png",
-        "title": "Credit Card Management Use Wisely",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "web-design-trends-2025-business-must-know",
+        "tag": "design",
+        "category": "web-design",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Web Design Trends 2025: What Your Business Must Know",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "May 05, 2025",
+        "desc": "Discover the web design trends you can't ignore to keep your site modern, functional, and appealing in 2025.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 3,
-        "tag": "interview",
-        "category": "cryptocurrency financial",
-        "img": "/images/blog/930x593.png",
-        "title": "Savings Strategies Strong Foundation",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "digital-marketing-strategies-smes-2025",
+        "tag": "marketing",
+        "category": "digital-marketing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Digital Marketing Strategies for SMEs in 2025",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "April 28, 2025",
+        "desc": "SMEs have unique opportunities in digital marketing. Learn how to leverage the most effective strategies to grow in 2025.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 4,
-        "tag": "skill",
-        "category": "blockchain",
-        "img": "/images/blog/930x593.png",
-        "title": "Stock Market Trends Analyze Movements",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "importance-local-directory-listing",
+        "tag": "local",
+        "category": "local-listing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "The Importance of Local Directory Listing for Your Business",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "April 15, 2025",
+        "desc": "Discover why appearing in local online directories is fundamental for the visibility and credibility of your physical business.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 5,
-        "tag": "business",
-        "category": "online banking",
-        "img": "/images/blog/930x593.png",
-        "title": "Estate Planning Secure Your Legacy",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "key-ux-ui-principles-converting-website",
+        "tag": "design",
+        "category": "web-design",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Key UXUI Principles for a Website That Converts",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "April 08, 2025",
+        "desc": "User-centric design is fundamental to converting visitors into customers. Discover the UX/UI principles that make a difference.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 6,
-        "tag": "design",
-        "category": "personal financial",
-        "img": "/images/blog/930x593.png",
-        "title": "Wealth Building Sustainable Growth",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "content-marketing-attract-retain-audience",
+        "tag": "content",
+        "category": "digital-marketing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Content Marketing: How to Attract and Retain Your Ideal Audience",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "March 30, 2025",
+        "desc": "Content marketing is a powerful strategy to build authority, generate trust, and attract qualified leads. Learn how to implement it.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 7,
-        "tag": "featured",
-        "category": "financial planning",
-        "img": "/images/blog/930x593.png",
-        "title": "Insurance Essentials Protect Your Assets",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "technical-seo-improve-website-ranking",
+        "tag": "seo",
+        "category": "digital-marketing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Technical SEO: Keys to Improve Your Website Ranking",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "March 25, 2025",
+        "desc": "Technical SEO is the foundation for good search engine performance. Discover the crucial aspects you need to optimize.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 8,
-        "tag": "experience",
-        "category": "payment solution",
-        "img": "/images/blog/930x593.png",
-        "title": "Financial Freedom Achieve Your Goals",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "website-loading-speed-importance",
+        "tag": "performance",
+        "category": "web-design",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Website Loading Speed: Why It's Crucial for UX and SEO",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "March 20, 2025",
+        "desc": "A fast site retains users and improves your search engine position. Learn how to optimize your website's speed.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 9,
-        "tag": "interview",
-        "category": "cryptocurrency financial",
-        "img": "/images/blog/930x593.png",
-        "title": "Real Estate Investing Build Wealth",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "online-reputation-management-local-businesses",
+        "tag": "local",
+        "category": "local-listing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Online Reputation Management for Local Businesses",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "March 15, 2025",
+        "desc": "Online reviews and opinions impact your local business. Learn how to manage your digital reputation effectively.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 10,
-        "tag": "skill",
-        "category": "blockchain",
-        "img": "/images/blog/930x593.png",
-        "title": "Debt Management Break the Cycle",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "email-marketing-automation-smes",
+        "tag": "email",
+        "category": "digital-marketing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Email Marketing and Automation for SMEs",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "March 10, 2025",
+        "desc": "Discover how automated email marketing can help you nurture leads and retain customers with less effort.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 11,
-        "tag": "business",
-        "category": "online banking",
-        "img": "/images/blog/930x593.png",
-        "title": "Tax Saving Tips Maximize Your Returns",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "mobile-first-web-design-why-start-mobile",
+        "tag": "design",
+        "category": "web-design",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Mobile-First Web Design: Why Start with Mobile",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "March 05, 2025",
+        "desc": "Most users browse from mobile devices. A mobile-first approach ensures the best experience for your audience.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 12,
-        "tag": "design",
-        "category": "personal financial",
-        "img": "/images/blog/930x593.png",
-        "title": "Economic Outlook Navigating Market",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "web-analytics-improve-digital-strategy",
+        "tag": "analytics",
+        "category": "digital-marketing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Web Analytics: Use Data to Improve Your Digital Strategy",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "February 28, 2025",
+        "desc": "Your website data is gold. Learn how to use analytics to understand your users and optimize your marketing actions.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 13,
-        "tag": "experience",
-        "category": "financial planning",
-        "img": "/images/blog/930x593.png",
-        "title": "Insurance Essentials Protecting Your Assets",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "how-to-create-seo-friendly-content-that-ranks",
+        "tag": "content",
+        "category": "seo",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "How to Create SEO-Friendly Content That Ranks",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "February 20, 2025",
+        "desc": "Writing for users and search engines is possible. Discover the keys to content that attracts organic traffic.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 14,
-        "tag": "interview",
-        "category": "cryptocurrency financial",
-        "img": "/images/blog/930x593.png",
-        "title": "Retirement Planning Secure Your Future",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "benefits-optimized-google-maps-listing",
+        "tag": "local",
+        "category": "local-listing",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Benefits of an Optimized Google Maps Listing",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "February 15, 2025",
+        "desc": "Appearing on Google Maps is vital for local businesses. Optimize your listing to be easily found by nearby customers.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     },
     {
         "id": 15,
-        "tag": "business",
-        "category": "blockchain",
-        "img": "/images/blog/930x593.png",
-        "title": "Budgeting Tips Mastering Your Finances",
-        "author": "Avitex",
-        "avatar": "/images/member/60x60.png",
-        "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "slug": "designing-high-converting-landing-pages",
+        "tag": "design",
+        "category": "web-design",
+        "img": "/images/blog/fascinante-blog-placeholder.webp",
+        "title": "Designing High-Converting Landing Pages",
+        "author": "Fascinante Digital Team",
+        "avatar": "/images/member/fascinante-avatar-placeholder.png",
+        "date": "February 10, 2025",
+        "desc": "An effective landing page can boost your leads and sales. Learn the design principles to convert visitors.",
         "listImg": [
-            "/images/blog/930x593.png",
-            "/images/blog/930x593.png"
+            "/images/blog/fascinante-blog-placeholder.webp",
+            "/images/blog/fascinante-blog-placeholder.webp"
         ]
     }
 ]
