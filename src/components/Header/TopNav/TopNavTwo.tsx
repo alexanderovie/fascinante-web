@@ -18,7 +18,7 @@ const TopNavTwo = () => {
                     <div className="right-block flex items-center">
                         <div className="location flex items-center max-lg:hidden">
                             <Icon.MapPin className="text-white text-xl" />
-                            <span className="ml-2 caption1 text-white">West Palm Beach, FL</span>
+                            <span className="ml-2 caption1 text-white">2054 Vista Pkwy # 400, West Palm Beach, FL 33411</span>
                         </div>
                         <div className="mail lg:ml-7 flex items-center">
                             <Icon.Envelope className="text-white text-xl" />
