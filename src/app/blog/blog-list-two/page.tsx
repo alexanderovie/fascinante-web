@@ -1,6 +1,6 @@
 import Link from "next/link"
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import LayoutListTwo from "@/components/Blog/LayoutListTwo"
 import CtaOne from "@/components/Section/CTA/CtaOne"
@@ -13,7 +13,7 @@ export default function BlogListStyleTwo() {
             <div className="overflow-x-hidden">
                 <header id="header">
                     <TopNavOne />
-                    <MenuOne />
+                    <MenuTwo />
                 </header>
                 <main className="content">
                     <BreadcrumbItem link="Blog" img="/images/banner/about1.png" title="Blog" desc="Discover valuable insights and expert advice on budgeting, investing, and retirement planning in our Financial Blogs section." />

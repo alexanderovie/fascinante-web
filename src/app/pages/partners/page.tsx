@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import CtaOne from "@/components/Section/CTA/CtaOne"
 import Footer from "@/components/Footer/Footer"
@@ -21,7 +21,7 @@ export default function Pricing() {
             <div className="overflow-x-hidden">
                 <header id="header">
                     <TopNavOne />
-                    <MenuOne />
+                    <MenuTwo />
                 </header>
                 <main className="content">
                     <BreadcrumbItem link="Contact us" img="/images/banner/about1.png" title="Contact us" desc="Discover transparent pricing options tailored to your budget on our Pricing page." />

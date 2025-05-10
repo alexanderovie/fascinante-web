@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuOne from "@/components/Header/Menu/MenuOne"
+import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import faqData from '@/data/faqs.json'
 import CtaOne from "@/components/Section/CTA/CtaOne"
@@ -23,7 +23,7 @@ export default function Faqs() {
             <div className="overflow-x-hidden">
                 <header id="header">
                     <TopNavOne />
-                    <MenuOne />
+                    <MenuTwo />
                 </header>
                 <main className="content">
                     <BreadcrumbItem link="FAQs" img="/images/banner/about1.png" title="FAQs" desc="Explore our frequently asked questions and our answers to them." />
