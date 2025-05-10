@@ -35,7 +35,7 @@ const MenuTwo = () => {
                 <div className="container flex items-center justify-between h-20">
                     <Link className="menu-left-block" href="/">
                         <Image
-                            src={'/images/Logo.svg'}
+                            src={'/images/Logo.png'}
                             width={1800}
                             height={1600}
                             alt="logo"
