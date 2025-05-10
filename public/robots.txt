@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /api/
+
+# Host
+Host: https://fascinantedigital.com
+
+# Sitemaps
+Sitemap: https://fascinantedigital.com/sitemap.xml
