@@ -1,173 +1,629 @@
 [
     {
         "id": 1,
-        "category": "fintech",        
-        "subTitle": "made financial planning",
-        "title": "Retirement Planning Strategies",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "web-design",
+        "subTitle": "Responsive Website Redesign",
+        "title": "E-commerce Platform Transformation",
+        "desc": "Revitalized an online store with a modern, responsive design and improved user experience, resulting in increased sales and engagement.",
+        "shortDesc": "A successful e-commerce website redesign case study.",
+        "img": "/images/banner/case-studies.webp",
+        "projectInfo": {
+            "client": "Fashion Forward Boutique",
+            "completedDate": "15/09/2024",
+            "manager": "Jane Smith",
+            "location": "Los Angeles, CA"
+        },
+        "counts": [
+            {"label": "Increase in Sales", "value": "30%"},
+            {"label": "Improved User Engagement", "value": "45%"},
+            {"label": "Mobile Conversion Rate", "value": "20%+"}
+        ],
+        "howWeDidItHeading": "Our Approach to the Redesign",
+        "howWeDidItText": "We started with a deep analysis of the existing platform, identifying user pain points and conversion blockers. Our design phase focused on creating a modern, mobile-first interface. Development involved migrating to a more robust e-commerce platform and implementing custom features for a seamless shopping experience. Rigorous testing ensured performance and usability across all devices.",
+        "featuresList": [
+            "User-centric design process",
+            "Mobile-first responsive development",
+            "Seamless platform migration",
+            "Custom feature implementation",
+            "Performance optimization",
+            "Comprehensive testing"
+        ],
+        "finalOutcomeHeading": "Tangible Results and Future Growth",
+        "finalOutcomeDesc": "The new e-commerce platform led to a significant increase in online sales and customer satisfaction. The improved mobile experience drastically reduced bounce rates. The client is now well-positioned for future growth and expansion into new markets.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 2,
-        "category": "fintech",        
-        "subTitle": "retirement planning",
-        "title": "Taxes Optimization Solutions",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "digital-marketing",
+        "subTitle": "SEO Strategy Implementation",
+        "title": "Boosting Organic Traffic by 150%",
+        "desc": "Implemented a comprehensive SEO strategy including keyword research, on-page optimization, and link building, significantly increasing organic search visibility.",
+        "shortDesc": "A case study on achieving massive organic traffic growth through SEO.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Local Tech Startup",
+            "completedDate": "20/10/2024",
+            "manager": "David Lee",
+            "location": "Austin, TX"
+        },
+        "counts": [
+            {"label": "Organic Traffic Increase", "value": "150%"},
+            {"label": "Keyword Rankings Improved", "value": "Top 10 for 50+"},
+            {"label": "Website Authority Boost", "value": "Significant"}
+        ],
+        "howWeDidItHeading": "Our SEO Methodology",
+        "howWeDidItText": "Our process began with in-depth keyword and competitor analysis. We performed extensive on-page optimization across the website, improving content relevance and technical SEO factors. An ethical link building strategy was implemented to build authority and credibility. Continuous monitoring and reporting allowed for agile adjustments to the strategy.",
+        "featuresList": [
+            "In-depth keyword research",
+            "Technical SEO audit & fixes",
+            "On-page content optimization",
+            "Ethical link building",
+            "Performance tracking & reporting",
+            "Competitor analysis"
+        ],
+        "finalOutcomeHeading": "Sustainable Online Visibility",
+        "finalOutcomeDesc": "The implemented SEO strategy resulted in a sustained increase in organic traffic, positioning the client as an authority in their niche. Higher search rankings led to more qualified leads and increased brand visibility. The client now has a strong foundation for continued online growth.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 3,
-        "category": "fintech",        
-        "subTitle": "account management tools",
-        "title": "Business Succession Planning",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "local-listing",
+        "subTitle": "Optimizing Local Business Presence",
+        "title": "Enhanced Local Search Visibility",
+        "desc": "Managed and optimized local business listings across key directories, improving local search rankings and driving more foot traffic.",
+        "shortDesc": "Case study on improving local search visibility for a service business.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Community Cafe",
+            "completedDate": "01/11/2024",
+            "manager": "Sarah Chen",
+            "location": "Chicago, IL"
+        },
+        "counts": [
+            {"label": "Increase in Map Views", "value": "75%"},
+            {"label": "Increase in Website Clicks", "value": "50%"},
+            {"label": "Increase in Phone Calls", "value": "40%+"}
+        ],
+        "howWeDidItHeading": "Our Local Listing Strategy",
+        "howWeDidItText": "We started by claiming and verifying the client's Google My Business profile. We ensured consistency of NAP (Name, Address, Phone Number) across all major online directories. Optimization of business descriptions, categories, and photos was performed. We also implemented a strategy for encouraging and managing customer reviews.",
+        "featuresList": [
+            "Google My Business optimization",
+            "NAP consistency across directories",
+            "Citation building",
+            "Online review management",
+            "Localized content optimization",
+            "Performance monitoring"
+        ],
+        "finalOutcomeHeading": "More Local Customers",
+        "finalOutcomeDesc": "Improved local search visibility led to a noticeable increase in foot traffic and phone inquiries. The consistent online presence built trust with potential local customers. The client saw a direct impact on their bottom line from enhanced local search performance.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 4,
-        "category": "fintech",        
-        "subTitle": "made financial planning",
-        "title": "Digital Finance Solutions",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "web-design",
+        "subTitle": "Custom SaaS Application UI/UX",
+        "title": "Intuitive Software Interface Design",
+        "desc": "Designed a user-friendly interface for a complex SaaS application, streamlining workflows and enhancing user adoption.",
+        "shortDesc": "Designing a user-friendly interface for a complex B2B software.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Enterprise Software Solutions",
+            "completedDate": "10/12/2024",
+            "manager": "Michael Brown",
+            "location": "Seattle, WA"
+        },
+        "counts": [
+             {"label": "User Adoption Rate", "value": "Increased by 25%"},
+             {"label": "Support Tickets Related to UI", "value": "Reduced by 40%"},
+             {"label": "User Satisfaction Score", "value": "Improved"}
+         ],
+         "howWeDidItHeading": "Our UI/UX Design Process",
+         "howWeDidItText": "We conducted extensive user research and created detailed user personas and journey maps. Wireframing and prototyping allowed for iterative testing and feedback collection. Our design system ensured consistency and scalability. The final design focused on simplifying complex workflows and improving overall usability.",
+         "featuresList": [
+             "User research & analysis",
+             "Wireframing & prototyping",
+             "Iterative testing",
+             "Design system creation",
+             "Workflow optimization",
+             "Accessibility considerations"
+         ],
+         "finalOutcomeHeading": "Enhanced User Productivity",
+         "finalOutcomeDesc": "The redesigned interface significantly improved user productivity and reduced the learning curve for new users. The client received positive feedback on the intuitiveness and ease of use of the application. This led to higher user retention and satisfaction.",
+         "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 41,
-        "category": "fintech",        
-        "subTitle": "account management tools",
-        "title": "Fintech Growth Case",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "digital-marketing",
+        "subTitle": "Social Media Campaign Success",
+        "title": "Engaging Social Media Growth",
+        "desc": "Developed and executed a targeted social media campaign that increased brand awareness and generated qualified leads.",
+        "shortDesc": "A case study on a successful social media lead generation campaign.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Online Course Provider",
+            "completedDate": "05/01/2025",
+            "manager": "Emily White",
+            "location": "Remote"
+        },
+        "counts": [
+             {"label": "Social Media Engagement", "value": "Increased by 60%"},
+             {"label": "Website Traffic from Social", "value": "Up 80%"},
+             {"label": "Qualified Leads Generated", "value": "Significant Increase"}
+         ],
+         "howWeDidItHeading": "Our Social Media Strategy",
+         "howWeDidItText": "We defined the target audience and selected the most relevant social media platforms. A content calendar was developed with engaging and shareable content. Targeted ad campaigns were run to reach a wider audience and generate leads. We continuously monitored analytics to optimize campaign performance.",
+         "featuresList": [
+             "Audience research & targeting",
+             "Content strategy & creation",
+             "Paid social media advertising",
+             "Community engagement",
+             "Performance analytics",
+             "A/B testing"
+         ],
+         "finalOutcomeHeading": "Stronger Brand Presence & Leads",
+         "finalOutcomeDesc": "The social media campaign successfully increased brand awareness and drove a significant number of qualified leads to the client's website. The client saw a direct return on investment from the targeted advertising efforts. Their social media channels became valuable touchpoints for customer interaction.",
+         "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 42,
-        "category": "fintech",        
-        "subTitle": "made financial planning",
-        "title": "Innovative Fintech Stories",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "local-listing",
+        "subTitle": "Multi-Location Directory Management",
+        "title": "Consistent Brand Across Locations",
+        "desc": "Ensured accurate and consistent information for multiple business locations across key directories.",
+        "shortDesc": "Ensuring brand consistency for a business with multiple branches.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Regional Restaurant Chain",
+            "completedDate": "18/02/2025",
+            "manager": "Chris Green",
+            "location": "Various Locations"
+        },
+        "counts": [
+             {"label": "Directory Listing Accuracy", "value": "100%"},
+             {"label": "Online Visibility Score", "value": "Improved"},
+             {"label": "Customer Trust", "value": "Enhanced"}
+         ],
+         "howWeDidItHeading": "Our Multi-Location Approach",
+         "howWeDidItText": "We audited existing listings across all relevant directories for each location. A centralized system was implemented to manage and update information consistently. We claimed and verified all profiles and actively monitored for inaccuracies or duplicate listings. Optimization included adding photos, hours, and service details.",
+         "featuresList": [
+             "Directory audit & cleanup",
+             "Centralized listing management",
+             "Profile claiming & verification",
+             "NAP consistency enforcement",
+             "Listing optimization",
+             "Duplicate listing suppression"
+         ],
+         "finalOutcomeHeading": "Unified Online Brand",
+        "finalOutcomeDesc": "The client achieved a consistent and accurate online presence across all their locations, which is crucial for local search. This improved customer trust and made it easier for customers to find correct information regardless of the platform they used. The client saw a positive impact on local search rankings and customer engagement.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 5,
-        "category": "investing",        
-        "subTitle": "retirement planning",
-        "title": "Consulting Firms Online",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "web-design",
+        "subTitle": "Lead Generation Landing Page",
+        "title": "High-Converting Landing Page",
+        "desc": "Created a focused landing page designed to capture leads effectively, resulting in a significant increase in conversion rates.",
+        "shortDesc": "Designing a landing page optimized for lead capture.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Marketing Agency",
+            "completedDate": "03/03/2025",
+            "manager": "Anna Black",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Conversion Rate", "value": "Increased by 50%"},
+             {"label": "Cost Per Lead", "value": "Reduced by 20%"},
+             {"label": "Lead Quality", "value": "Improved"}
+         ],
+         "howWeDidItHeading": "Our Landing Page Design Process",
+         "howWeDidItText": "We defined the target audience and the specific goal of the landing page. The design focused on clear messaging, compelling visuals, and a strong call to action. A/B testing was used to optimize different elements for maximum conversion. Mobile responsiveness was a key focus.",
+         "featuresList": [
+             "Target audience analysis",
+             "Clear value proposition design",
+             "Compelling call to action",
+             "A/B testing & optimization",
+             "Mobile responsiveness",
+             "Fast loading speed"
+         ],
+         "finalOutcomeHeading": "More Leads, Lower Cost",
+        "finalOutcomeDesc": "The new landing page significantly increased the number of qualified leads generated from marketing campaigns. The optimized design led to a lower cost per lead, improving the overall efficiency of their marketing spend. The client was able to scale their lead generation efforts effectively.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 6,
-        "category": "investing",        
-        "subTitle": "account management tools",
-        "title": "Web-Based Investments",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "digital-marketing",
+        "subTitle": "Email Marketing Automation",
+        "title": "Streamlined Customer Communication",
+        "desc": "Set up and optimized email marketing automation sequences to nurture leads and engage existing customers.",
+        "shortDesc": "Automating email communication for better customer engagement.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Subscription Box Service",
+            "completedDate": "10/04/2025",
+            "manager": "Robert Blue",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Email Open Rate", "value": "Increased by 20%"},
+             {"label": "Click-Through Rate", "value": "Up 15%"},
+             {"label": "Customer Retention", "value": "Improved"}
+         ],
+         "howWeDidItHeading": "Our Email Automation Strategy",
+         "howWeDidItText": "We mapped out the customer journey to identify key touchpoints for automated emails. We designed and wrote compelling email content tailored to each stage. Automation sequences were set up using the client's preferred email marketing platform. We continuously monitored performance metrics and optimized sequences based on data.",
+         "featuresList": [
+             "Customer journey mapping",
+             "Targeted email content creation",
+             "Automation sequence setup",
+             "A/B testing email elements",
+             "Performance tracking",
+             "Integration with CRM"
+         ],
+         "finalOutcomeHeading": "Engaged and Retained Customers",
+        "finalOutcomeDesc": "The automated email sequences resulted in more engaged customers and improved retention rates. Customers received timely and relevant communications, enhancing their overall experience. The client saved significant time on manual communication tasks.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 7,
-        "category": "investing",        
-        "subTitle": "account management tools",
-        "title": "Online Finance Portals",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "local-listing",
+        "subTitle": "Google My Business Optimization",
+        "title": "Improved Google Maps Ranking",
+        "desc": "Optimized Google My Business profiles to enhance visibility in local search results and Google Maps.",
+        "shortDesc": "Optimizing GMB for better local search performance.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Local Restaurant",
+            "completedDate": "17/05/2025",
+            "manager": "Laura Grey",
+            "location": "Miami, FL"
+        },
+        "counts": [
+             {"label": "Google Maps Views", "value": "Up 100%"},
+             {"label": "Discovery Searches", "value": "Increased by 80%"},
+             {"label": "Direct Searches", "value": "Increased by 60%"}
+         ],
+         "howWeDidItHeading": "Our GMB Optimization Process",
+         "howWeDidItText": "We claimed and fully completed the Google My Business profile, ensuring accurate and comprehensive information. We added high-quality photos and videos. We optimized business categories and service areas. We implemented a strategy for responding to reviews and utilizing GMB posts.",
+         "featuresList": [
+             "Profile claiming & completion",
+             "Photo & video optimization",
+             "Category & service area optimization",
+             "Review response strategy",
+             "GMB posts utilization",
+             "Insights monitoring"
+         ],
+         "finalOutcomeHeading": "Increased Local Visibility & Foot Traffic",
+        "finalOutcomeDesc": "Optimizing the Google My Business profile led to a significant improvement in local search rankings and visibility on Google Maps. This directly resulted in more potential customers finding the restaurant online and visiting in person. The client saw a clear increase in business from local searches.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 8,
-        "category": "crypto",        
-        "subTitle": "made financial planning",
-        "title": "Crypto Implementation Case",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "web-design",
+        "subTitle": "Portfolio Website Development",
+        "title": "Showcasing Creative Work Online",
+        "desc": "Developed a professional and visually appealing portfolio website for a creative professional.",
+        "shortDesc": "Building an online portfolio to showcase creative talent.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Freelance Photographer",
+            "completedDate": "24/06/2025",
+            "manager": "Kevin Red",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Website Visits", "value": "Increased by 70%"},
+             {"label": "Inquiry Form Submissions", "value": "Up 50%"},
+             {"label": "Portfolio View Duration", "value": "Improved"}
+         ],
+         "howWeDidItHeading": "Our Portfolio Development Process",
+         "howWeDidItText": "We collaborated with the client to curate their best work and define the target audience. The website design focused on clean aesthetics and easy navigation to highlight the visuals. We implemented galleries and project detail pages. Optimization for fast loading and mobile viewing was crucial.",
+         "featuresList": [
+             "Content curation",
+             "Visually appealing design",
+             "Intuitive navigation",
+             "High-quality image display",
+             "Mobile optimization",
+             "Fast loading speed"
+         ],
+         "finalOutcomeHeading": "Professional Online Presence",
+        "finalOutcomeDesc": "The new portfolio website effectively showcases the client's creative work, leading to more inquiries and project opportunities. The professional design built credibility and made it easy for potential clients to explore their portfolio. The client now has a powerful online tool for their freelance business.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 81,
-        "category": "crypto",        
-        "subTitle": "retirement planning",
-        "title": "Cryptocurrency Trading Finance",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "digital-marketing",
+        "subTitle": "Content Marketing Strategy",
+        "title": "Engaging Content Drives Authority",
+        "desc": "Developed a content strategy focused on creating valuable and informative content to attract and retain a target audience.",
+        "shortDesc": "Developing a content strategy for thought leadership.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Industry Consultant",
+            "completedDate": "01/07/2025",
+            "manager": "Olivia Yellow",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Website Sessions", "value": "Up 90%"},
+             {"label": "Average Session Duration", "value": "Increased"},
+             {"label": "Lead Magnet Downloads", "value": "Increased"}
+         ],
+         "howWeDidItHeading": "Our Content Strategy Process",
+         "howWeDidItText": "We identified key topics and target audience interests. A content calendar was developed, outlining blog posts, articles, and lead magnets. Content was created with a focus on providing value and demonstrating expertise. Distribution channels were optimized to reach the target audience effectively.",
+         "featuresList": [
+             "Audience & topic research",
+             "Content calendar planning",
+             "High-quality content creation",
+             "SEO for content",
+             "Multi-channel distribution",
+             "Performance analysis"
+         ],
+         "finalOutcomeHeading": "Established Authority & Engaged Audience",
+        "finalOutcomeDesc": "The content marketing strategy successfully positioned the client as a thought leader in their industry. Engaging content attracted a relevant audience and increased website traffic. The client saw an increase in leads generated through their valuable content offerings.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 82,
-        "category": "crypto",        
-        "subTitle": "Budget Planning",
-        "title": "Digital Currency Stories",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "local-listing",
+        "subTitle": "Citation Building Campaign",
+        "title": "Building Local Authority Online",
+        "desc": "Executed a citation building campaign to increase online mentions and improve local search engine trust.",
+        "shortDesc": "Building online citations for local SEO.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Dental Clinic",
+            "completedDate": "08/08/2025",
+            "manager": "Daniel Orange",
+            "location": "Denver, CO"
+        },
+        "counts": [
+             {"label": "Number of Citations", "value": "Increased by 100+"},
+             {"label": "Local Search Rankings", "value": "Improved"},
+             {"label": "Online Trust Score", "value": "Enhanced"}
+         ],
+         "howWeDidItHeading": "Our Citation Building Process",
+         "howWeDidItText": "We identified relevant local and industry-specific directories. We manually built and submitted accurate business citations across these platforms. We cleaned up any existing incorrect or inconsistent citations. Monitoring ensured accuracy and identified new opportunities.",
+         "featuresList": [
+             "Directory research",
+             "Manual citation submission",
+             "Citation cleanup",
+             "Consistency verification",
+             "Local SEO impact tracking",
+             "Ongoing monitoring"
+         ],
+         "finalOutcomeHeading": "Stronger Local Search Presence",
+        "finalOutcomeDesc": "The citation building campaign significantly strengthened the client's local search presence and authority. Consistent and accurate citations improved their rankings in local search results. This made it easier for patients in their service area to find the clinic online.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 9,
-        "category": "blockchain",        
-        "subTitle": "made financial planning",
-        "title": "Blockchain Adoption Success",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "web-design",
+        "subTitle": "Membership Site Development",
+        "title": "Building an Exclusive Online Community",
+        "desc": "Created a secure and feature-rich membership website with different access levels.",
+        "shortDesc": "Developing a platform for an online membership community.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Educational Platform",
+            "completedDate": "15/09/2025",
+            "manager": "Sophia Purple",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Membership Sign-ups", "value": "Increased by 40%"},
+             {"label": "Member Engagement", "value": "High"},
+             {"label": "Content Consumption", "value": "Increased"}
+         ],
+         "howWeDidItHeading": "Our Membership Site Development Process",
+         "howWeDidItText": "We defined membership tiers and access permissions. The website was built with a secure login system and content restriction features. We integrated payment gateways and member management tools. The design focused on creating an engaging and easy-to-navigate member area.",
+         "featuresList": [
+             "Membership tier definition",
+             "Secure login & access control",
+             "Payment gateway integration",
+             "Member management tools",
+             "Engaging member area design",
+             "Content protection"
+         ],
+         "finalOutcomeHeading": "Thriving Online Community",
+        "finalOutcomeDesc": "The membership website successfully launched and attracted a growing number of members. The platform provided a valuable space for the community to connect and access exclusive content. The client saw a new revenue stream and built a loyal audience.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 91,
-        "category": "blockchain",        
-        "subTitle": "Budget Planning",
-        "title": "Innovative Blockchain Solutions",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "digital-marketing",
+        "subTitle": "Paid Advertising Campaign",
+        "title": "Targeted Ads Deliver High ROI",
+        "desc": "Managed and optimized paid advertising campaigns across platforms like Google Ads and social media.",
+        "shortDesc": "Running successful paid ad campaigns for lead generation.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "E-commerce Store",
+            "completedDate": "22/10/2025",
+            "manager": "Ethan Pink",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Return on Ad Spend (ROAS)", "value": "5x"},
+             {"label": "Qualified Leads", "value": "Generated 500+"},
+             {"label": "Website Conversions", "value": "Increased by 60%"}
+         ],
+         "howWeDidItHeading": "Our Paid Advertising Process",
+         "howWeDidItText": "We identified the target audience and defined campaign objectives. Ad creatives and copy were developed with compelling messaging. Campaigns were set up on relevant platforms (Google Ads, Facebook Ads, etc.) with precise targeting. Continuous monitoring and optimization ensured maximum ROI.",
+         "featuresList": [
+             "Audience targeting",
+             "Ad creative & copy development",
+             "Platform-specific campaign setup",
+             "Budget management",
+             "Performance tracking & optimization",
+             "A/B testing ads"
+         ],
+         "finalOutcomeHeading": "Profitable Customer Acquisition",
+        "finalOutcomeDesc": "The paid advertising campaigns delivered a high return on ad spend, significantly increasing the client's sales and customer base. Targeted advertising ensured that the budget was spent effectively on reaching the most relevant audience. The client achieved scalable and profitable customer acquisition.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 92,
-        "category": "blockchain",        
-        "subTitle": "retirement planning",
-        "title": "Blockchain Industry Impact",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "local-listing",
+        "subTitle": "Online Reputation Management Basics",
+        "title": "Managing Online Reviews",
+        "desc": "Assisted a local business in managing their online reviews and improving their overall online reputation.",
+        "shortDesc": "Helping a local business improve their online reputation.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Healthcare Provider",
+            "completedDate": "29/11/2025",
+            "manager": "Noah Brown",
+            "location": "Phoenix, AZ"
+        },
+        "counts": [
+             {"label": "Average Star Rating", "value": "Increased by 0.5"},
+             {"label": "Number of New Reviews", "value": "Increased by 30%"},
+             {"label": "Customer Trust", "value": "Improved"}
+         ],
+         "howWeDidItHeading": "Our Reputation Management Process",
+         "howWeDidItText": "We set up monitoring for new reviews across key platforms. We developed a strategy for responding to both positive and negative reviews professionally and promptly. We implemented methods to encourage satisfied customers to leave reviews. Analysis of feedback helped identify areas for improvement.",
+         "featuresList": [
+             "Review monitoring setup",
+             "Professional response strategy",
+             "Review generation methods",
+             "Feedback analysis",
+             "Online presence consistency",
+             "Crisis management basics"
+         ],
+         "finalOutcomeHeading": "Enhanced Online Credibility",
+        "finalOutcomeDesc": "Proactive online reputation management led to an improved average star rating and a higher number of recent reviews. This enhanced the client's credibility and trustworthiness online. Potential patients were more likely to choose the provider based on positive online feedback.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 11,
-        "category": "planning",        
-        "subTitle": "made financial planning",
-        "title": "Effective Planning Wins",
-        "desc": "Get personalized financial advice to help reach your financial goals.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "web-design",
+        "subTitle": "Website Maintenance & Support",
+        "title": "Ensuring Website Performance",
+        "desc": "Provided ongoing maintenance and support to keep a website secure, updated, and performing optimally.",
+        "shortDesc": "Providing reliable maintenance for a business website.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Small Business Owner",
+            "completedDate": "06/12/2025",
+            "manager": "Isabella Green",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Website Uptime", "value": "99.9%"},
+             {"label": "Security Incidents", "value": "Zero"},
+             {"label": "Performance Score", "value": "Maintained High"}
+         ],
+         "howWeDidItHeading": "Our Maintenance & Support Services",
+         "howWeDidItText": "We implemented regular backups and security scans. Software and plugin updates were performed promptly. Performance monitoring ensured the website remained fast and responsive. We provided ongoing technical support for any issues that arose.",
+         "featuresList": [
+             "Regular backups",
+             "Security monitoring & scans",
+             "Software updates",
+             "Performance checks",
+             "Bug fixes",
+             "Technical support"
+         ],
+         "finalOutcomeHeading": "Peace of Mind & Reliability",
+        "finalOutcomeDesc": "The client's website remained secure, fast, and reliable, allowing them to focus on their business without worrying about technical issues. Regular maintenance prevented costly problems and ensured a positive user experience for their customers. The client had peace of mind knowing their online presence was well-maintained.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 12,
-        "category": "planning",        
-        "subTitle": "Budget Planning",
-        "title": "Strategic Planning Case",
-        "desc": "Get personalized financial advice to help reach your financial goals.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "digital-marketing",
+        "subTitle": "Analytics and Reporting",
+        "title": "Data-Driven Marketing Decisions",
+        "desc": "Set up analytics tracking and provided regular reports to inform marketing strategy adjustments.",
+        "shortDesc": "Using data analytics to refine marketing strategies.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Marketing Manager",
+            "completedDate": "13/01/2026",
+            "manager": "James Blue",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Data Accuracy", "value": "High"},
+             {"label": "Insights Provided", "value": "Actionable"},
+             {"label": "Strategy Adjustments Based on Data", "value": "Enabled"}
+         ],
+         "howWeDidItHeading": "Our Analytics & Reporting Process",
+         "howWeDidItText": "We configured analytics platforms (like Google Analytics) to track key metrics relevant to the client's goals. Custom dashboards and reports were created for easy visualization of data. Regular analysis provided actionable insights and recommendations for optimizing marketing campaigns.",
+         "featuresList": [
+             "Analytics platform setup",
+             "Goal & event tracking",
+             "Custom dashboard creation",
+             "Regular reporting",
+             "Data analysis & insights",
+             "Recommendations for optimization"
+         ],
+         "finalOutcomeHeading": "Informed & Effective Marketing",
+        "finalOutcomeDesc": "The client was able to make data-driven marketing decisions, leading to more effective campaigns and improved ROI. Clear reporting made it easy to understand performance and identify areas for improvement. The client gained confidence in their marketing efforts through reliable data.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 13,
-        "category": "planning",        
-        "subTitle": "retirement planning",
-        "title": "Innovative Planning Solutions",
-        "desc": "Get personalized financial advice to help reach your financial goals.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "local-listing",
+        "subTitle": "Local SEO Strategy",
+        "title": "Dominating Local Search Results",
+        "desc": "Developed and implemented a local SEO strategy combining on-page, off-page, and local listing optimization.",
+        "shortDesc": "A comprehensive local SEO strategy case study.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Plumbing Service",
+            "completedDate": "20/02/2026",
+            "manager": "Mia Red",
+            "location": "San Diego, CA"
+        },
+        "counts": [
+             {"label": "Local Pack Rankings", "value": "Improved Significantly"},
+             {"label": "Local Organic Traffic", "value": "Increased by 120%"},
+             {"label": "Phone Calls from Search", "value": "Up 80%"}
+         ],
+         "howWeDidItHeading": "Our Local SEO Strategy",
+         "howWeDidItText": "We performed local keyword research and optimized website content for local relevance. We managed and optimized Google My Business and other local listings. A citation building and online review strategy was implemented. We monitored local search rankings and adjusted the strategy as needed.",
+         "featuresList": [
+             "Local keyword research",
+             "On-page local optimization",
+             "GMB & local listing management",
+             "Citation building",
+             "Online review strategy",
+             "Local ranking tracking"
+         ],
+         "finalOutcomeHeading": "Increased Local Business",
+        "finalOutcomeDesc": "The comprehensive local SEO strategy resulted in the client dominating local search results for their services. This led to a substantial increase in phone calls and job inquiries from customers in their service area. The client saw a direct and measurable impact on their local business.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     },
     {
         "id": 14,
-        "category": "planning",        
-        "subTitle": "Budget Planning",
-        "title": "Strategic Execution Wins",
-        "desc": "Get personalized financial advice to help reach your financial goals.",
-        "shortDesc": "",        
-        "img": "/images/blog/930x593.png"
+        "category": "web-design",
+        "subTitle": "Blog Integration and Design",
+        "title": "Engaging Content Hub Creation",
+        "desc": "Integrated and designed a blog section within an existing website to improve content marketing efforts.",
+        "shortDesc": "Adding a blog to an existing website for content marketing.",
+        "img": "/images/banner/case-studies.webp",
+         "projectInfo": {
+            "client": "Consulting Firm",
+            "completedDate": "27/03/2026",
+            "manager": "Leo Orange",
+            "location": "Online"
+        },
+        "counts": [
+             {"label": "Website Traffic from Blog", "value": "Increased by 50%"},
+             {"label": "Average Time on Site", "value": "Increased"},
+             {"label": "Content Shares", "value": "Increased"}
+         ],
+         "howWeDidItHeading": "Our Blog Integration Process",
+         "howWeDidItText": "We designed a blog layout that was visually appealing and easy to read. The blog was integrated seamlessly into the existing website structure. We implemented features for categories, tags, and author profiles. Optimization for SEO and social sharing was included.",
+         "featuresList": [
+             "Custom blog design",
+             "Seamless website integration",
+             "Category & tag implementation",
+             "Author profiles",
+             "SEO optimization for blog",
+             "Social sharing features"
+         ],
+         "finalOutcomeHeading": "Valuable Content Resource",
+        "finalOutcomeDesc": "The integrated blog section became a valuable resource for the client's audience and significantly boosted their content marketing efforts. Increased website traffic and engagement demonstrated the effectiveness of the new content hub. The client could now easily publish and share their expertise.",
+        "finalOutcomeImage": "/images/component/assessment.png"
     }
 ]

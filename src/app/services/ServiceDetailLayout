@@ -1,0 +1,72 @@
+
+import React from 'react';
+import TopNavTwo from "@/components/Header/TopNav/TopNavTwo"; // Assuming TopNavTwo is used for service pages
+import MenuOne from "@/components/Header/Menu/MenuTwo"; // Assuming MenuTwo is used
+import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
+import CtaOne from "@/components/Section/CTA/CtaOne"; // Assuming CtaOne is used
+import Footer from "@/components/Footer/Footer"; // Assuming Footer is used
+
+// Props interface for clarity (optional, but good practice)
+// interface BreadcrumbProps {
+//   link: string;
+//   img: string;
+//   title: string;
+//   desc: string;
+// }
+
+// interface ServiceDetailLayoutProps {
+//   breadcrumb: BreadcrumbProps;
+//   mainContent: React.ReactNode; // Accepts any renderable React element or component
+//   sidebarContent: React.ReactNode; // Accepts any renderable React element or component
+// }
+
+// ServiceDetailLayout component function
+// const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({ breadcrumb, mainContent, sidebarContent }) => {
+const ServiceDetailLayout = ({ breadcrumb, mainContent, sidebarContent }) => { // Using plain JS for simplicity
+  return (
+    <>
+      <div className="overflow-x-hidden">
+        <header id="header">
+          {/* Standard Top Navigation and Menu */}
+          <TopNavTwo />
+          <MenuOne />
+        </header>
+        <main className="content">
+          {/* Breadcrumb Section - Content passed via props */}
+          <BreadcrumbItem
+            link={breadcrumb.link}
+            img={breadcrumb.img}
+            title={breadcrumb.title}
+            desc={breadcrumb.desc}
+          />
+
+          {/* Main Content Area with Two-Column Layout */}
+          <div className="content-detail-block lg:py-[100px] sm:py-16 py-10">
+            <div className="container">
+              <div className="flex max-xl:flex-col gap-y-8">
+                {/* Left Column for Main Service Content */}
+                <div className="col-12 xl:w-3/4">
+                  {/* Render the main content passed as a prop */}
+                  {mainContent}
+                </div>
+                {/* Right Column for Sidebar Content */}
+                <div className="w-full xl:w-1/4">
+                  {/* Render the sidebar content passed as a prop */}
+                  {sidebarContent}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Standard Call to Action and Footer */}
+          <CtaOne />
+        </main>
+        <footer id="footer">
+          <Footer />
+        </footer>
+      </div>
+    </>
+  );
+};
+
+export default ServiceDetailLayout;

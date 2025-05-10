@@ -1,4 +1,6 @@
-import TopNavOne from "@/components/Header/TopNav/TopNavOne"
+'use client'
+
+import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import LayoutGrid from "@/components/Blog/LayoutGrid"
@@ -11,11 +13,17 @@ export default function BlogListStyleTwo() {
         <>
             <div className="overflow-x-hidden">
                 <header id="header">
-                    <TopNavOne />
+                    <TopNavTwo />
                     <MenuTwo />
                 </header>
                 <main className="content">
-                    <BreadcrumbItem link="Blog" img="/images/banner/about1.png" title="Blog" desc="Discover valuable insights and expert advice on budgeting, investing, and retirement planning in our Financial Blogs section." />
+                    {/* Breadcrumb updated for Fascinante Digital's blog content */}
+                    <BreadcrumbItem
+                        link="Blog"
+                        img="/images/banner/about1.webp" // Assuming this image is suitable or a placeholder
+                        title="Our Blog & Insights" // Updated title
+                        desc="Explore articles and expert tips on Web Design, Digital Marketing, SEO, and more from Fascinante Digital." // Updated description
+                    />
                     <Suspense>
                         <LayoutGrid />
                     </Suspense>

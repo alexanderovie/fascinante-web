@@ -23,7 +23,8 @@ export default function Pricing() {
                     <MenuOne />
                 </header>
                 <main className="content">
-                    <BreadcrumbItem link="Contact us" img="/images/banner/about1.png" title="Contact us" desc="Discover transparent pricing options tailored to your budget on our Pricing page." />
+                    {/* Breadcrumb corrected for Pricing page */}
+                    <BreadcrumbItem link="Pricing" img="/images/banner/about1.webp" title="Our Pricing Plans" desc="Find the perfect digital solution for your business with Fascinante Digital's transparent pricing." />
                     <div className="pricing-block style-pricing">
                         <div className="pricing-main lg:py-[100px] sm:py-16 py-10">
                             <div className="container">
