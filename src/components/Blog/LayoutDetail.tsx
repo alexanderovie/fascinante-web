@@ -199,7 +199,6 @@ const LayoutDetailOne: React.FC<Props> = ({ data, handleNextBlogDetail, handlePr
                 <div className="next-block">
                   <div className="sm:text-right cursor-pointer" onClick={handleNextBlogDetail}>
                     <div className="text-button-uppercase text-blue">Next</div>
-                    <div className="heading7 mt-1">{data?.id === blogData.length ? blogData[0].title : blogData[data.id].title}</div>
                   </div>
                 </div>
               </div>
@@ -215,7 +214,7 @@ const LayoutDetailOne: React.FC<Props> = ({ data, handleNextBlogDetail, handlePr
                   </div>
                   <div className="w-full">
                     <div className="body3 pb-3">Email</div>
-                    <input className="bg-white rounded-lg p-4 w-full" type="email" placeholder="avitex@mail.com" required />
+                    <input className="bg-white rounded-lg p-4 w-full" type="email" placeholder="usuario@mail.com" required />
                   </div>
                   <div className="w-full sm:col-span-2">
                     <div className="body3 pb-3">Comment</div>
