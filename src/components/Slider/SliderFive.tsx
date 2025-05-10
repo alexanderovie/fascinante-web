@@ -42,7 +42,7 @@ const SliderFive = () => {
                                 {/* Image hidden on mobile, shown on sm and above */}
                                 <div className="bg-img hidden sm:block">
                                     <Image
-                                        src={'/images/slider/1920x874.png'} // Image source (consider updating)
+                                        src={'/images/slider/client-smiling.webp'} // Image source (consider updating)
                                         width={4000} // Intrinsic width
                                         height={3000} // Intrinsic height
                                         alt="bgslider" // Alt text
