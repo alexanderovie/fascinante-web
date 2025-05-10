@@ -1,9 +1,9 @@
 import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import AboutTwo from "@/components/Section/About/AboutTwo";
-import CounterTwo from "@/components/Section/Counter/CounterTwo";
-import PartnerOne from "@/components/Section/Partner/PartnerOne";
-import ProjectTwo from "@/components/Section/Project/ProjectTwo";
+import AboutHome from "@/components/Section/About/AboutHome";
+import Counter from "@/components/Section/Counter/Counter";
+import Partner from "@/components/Section/Partner/Partner";
+import Project from "@/components/Section/Project/Project";
 import SliderFive from "@/components/Slider/SliderFive";
 import serviceData from '@/data/service.json';
 import ServiceTwo from "@/components/Section/Service/ServiceTwo";
@@ -24,13 +24,13 @@ export default function Home() {
                 </header>
                 <main className="content">
                     <SliderFive />
-                    <PartnerOne classname='bg-dark-blue' />
-                    <AboutTwo />
-                    <CounterTwo classname='lg:py-10 py-7 border-t border-line' />
-                    <ProjectTwo />
+                    <Partner classname='bg-dark-blue' />
+                    <AboutHome />
+                    <Counter classname='lg:py-10 py-7 border-t border-line' />
+                    <Project />
                     <ServiceTwo data={serviceData} />
                     <TestimonialTwo />
-                    <FormRequestTwo classname="style-two" bgImg="/images/banner/form-benefit-two.png" />
+                    <FormRequestTwo classname="style-two" bgImg="/images/banner/team-celebrating.png" />
                     <BlogOne data={blogData} />
                     <div className="pb-[100px]"></div>
                     <CtaOne />

@@ -3,8 +3,8 @@
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import MenuOne from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
-import AboutTwo from "@/components/Section/About/AboutTwo" // Assuming this component's content is relevant or will be adapted
-import CounterTwo from "@/components/Section/Counter/CounterTwo" // Assuming this component is relevant or will be adapted
+import AboutTwo from "@/components/Section/About/AboutHome" // Assuming this component's content is relevant or will be adapted
+import CounterTwo from "@/components/Section/Counter/Counter" // Assuming this component is relevant or will be adapted
 import ServiceAboutOne from "@/components/Section/Service/ServiceAboutOne" // Assuming this component is relevant or will be adapted
 import serviceData from '@/data/service.json' // Assuming this data is relevant or will be adapted
 import OurTeam from "@/components/Section/OurTeam/OurTeam" // Assuming this component is relevant or will be adapted

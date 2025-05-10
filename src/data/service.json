@@ -1,170 +1,170 @@
 [
     {
         "icon": "icon-coin-chair",
-        "category": "payment solution",
-        "title": "Cryptocurrency Trading",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "Digital Strategy",
+        "title": "Comprehensive Digital Strategy",
+        "desc": "Develop a winning strategy to navigate the digital landscape and achieve your business goals with our expert guidance.",
+        "shortDesc": "Develop a winning digital strategy."
     },
     {
         "icon": "icon-hand-tick",
-        "category": "payment solution",
-        "title": "Portfolio Management",
-        "desc": "We analyze market trends, manage risks, and optimize your portfolio to maximize returns and achieve your financial goals.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "SEO & Content",
+        "title": "Advanced SEO & Content Marketing",
+        "desc": "Boost your online visibility and attract qualified traffic with our data-driven SEO and compelling content strategies.",
+        "shortDesc": "Boost visibility with SEO & content."
     },
     {
         "icon": "icon-hand-house",
-        "category": "payment solution",
-        "title": "Investment Advice",
-        "desc": "Our team of experienced advisors will guide you in making informed investment, whether you're a beginner trader.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "Paid Media",
+        "title": "Targeted Paid Advertising",
+        "desc": "Reach your ideal customers and maximize ROI with expertly managed paid advertising campaigns across key platforms.",
+        "shortDesc": "Maximize ROI with paid ads."
     },
     {
         "icon": "icon-gear-warning",
-        "category": "payment solution",
-        "title": "Risk Management",
-        "desc": "We employ industry-leading tools and techniques to protect your investments and minimize potential losses.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "Analytics & Reporting",
+        "title": "Digital Performance Analysis",
+        "desc": "Understand your digital performance with in-depth analytics and reporting to make informed decisions and optimize your campaigns.",
+        "shortDesc": "Analyze digital performance."
     },
     {
         "icon": "icon-text-search",
-        "category": "payment solution",
-        "title": "Research and Analysis",
-        "desc": "We provide timely reports, market updates, and data-driven insights to help you make informed trading decisions.",
-        "shortDesc": "We provide timely reports, market updates, and data-driven insights to help you make informed trading decisions."
+        "category": "Market Research",
+        "title": "In-depth Market Research",
+        "desc": "Gain valuable insights into your market, competitors, and audience to build a strong foundation for your digital strategy.",
+        "shortDesc": "Gain market insights."
     },
     {
         "icon": "icon-education",
-        "category": "payment solution",
-        "title": "Education and Resources",
-        "desc": "Expand your knowledge and skills in cryptocurrency trading through our educational resources.",
-        "shortDesc": "We provide timely reports, market updates, and data-driven insights to help you make informed trading decisions."
+        "category": "Digital Education",
+        "title": "Digital Marketing Training",
+        "desc": "Empower your team with customized workshops and resources to enhance their digital marketing knowledge and skills.",
+        "shortDesc": "Empower your team with training."
     },
     {
         "icon": "icon-coin-hand",
-        "category": "financial planning",
-        "title": "Budget planning",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "Content Marketing",
+        "title": "Strategic Content Planning",
+        "desc": "Craft a content strategy that resonates with your audience, builds authority, and drives engagement across all digital channels.",
+        "shortDesc": "Craft engaging content strategies."
     },
     {
         "icon": "icon-coin-pig",
-        "category": "financial planning",
-        "title": "Savings advice",
-        "desc": "We analyze market trends, manage risks, and optimize your portfolio to maximize returns and achieve your financial goals.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "Conversion Optimization",
+        "title": "Conversion Rate Optimization (CRO)",
+        "desc": "Optimize your website and landing pages to turn more visitors into leads and customers, increasing your conversion rates.",
+        "shortDesc": "Increase conversion rates."
     },
     {
         "icon": "icon-coin-virus",
-        "category": "financial planning",
-        "title": "Financial assessment",
-        "desc": "Our team of experienced advisors will guide you in making informed investment, whether you're a beginner trader.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "Digital Audit",
+        "title": "Digital Presence Audit",
+        "desc": "Receive a thorough assessment of your current digital footprint to identify strengths, weaknesses, and opportunities for growth.",
+        "shortDesc": "Get a digital presence audit."
     },
     {
         "icon": "icon-hand-protect",
-        "category": "financial planning",
-        "title": "Insurance advice",
-        "desc": "We employ industry-leading tools and techniques to protect your investments and minimize potential losses.",
-        "shortDesc": "Get personalized financial advice to help reach your financial goals."
+        "category": "Online Reputation",
+        "title": "Online Reputation Management",
+        "desc": "Protect and enhance your brand's image online by actively managing reviews, mentions, and public perception.",
+        "shortDesc": "Manage online reputation."
     },
     {
         "icon": "icon-hand-touch",
-        "category": "online banking",
-        "title": "Internet Banking",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "With our Internet Banking service, you can access your accounts anytime, anywhere"
+        "category": "Web Development",
+        "title": "Interactive Website Design",
+        "desc": "Create engaging and user-friendly websites that provide a seamless experience for your visitors and drive conversions.",
+        "shortDesc": "Design interactive websites."
     },
     {
         "icon": "icon-user-lock",
-        "category": "online banking",
-        "title": "Mobile Banking",
-        "desc": "We analyze market trends, manage risks, and optimize your portfolio to maximize returns and achieve your financial goals.",
-        "shortDesc": "Our Mobile Banking app brings you fast and convenient mobile financial experience."
+        "category": "Cybersecurity",
+        "title": "Digital Security Solutions",
+        "desc": "Ensure the safety and integrity of your digital assets and customer data with robust cybersecurity measures.",
+        "shortDesc": "Ensure digital security."
     },
     {
         "icon": "icon-coin-bag",
-        "category": "online banking",
-        "title": "Money Transfers",
-        "desc": "Our team of experienced advisors will guide you in making informed investment, whether you're a beginner trader.",
-        "shortDesc": "Our money transfer service allows you to send money quickly and securely to anywhere in the world"
+        "category": "E-commerce",
+        "title": "E-commerce Platform Development",
+        "desc": "Build a powerful and scalable e-commerce platform designed to optimize the customer journey and maximize online sales.",
+        "shortDesc": "Develop e-commerce platforms."
     },
     {
         "icon": "icon-chart-blue",
-        "category": "online banking",
-        "title": "Account Management",
-        "desc": "We employ industry-leading tools and techniques to protect your investments and minimize potential losses.",
-        "shortDesc": "Managing your accounts has never been easier with Online Banking. Check your balances."
+        "category": "Analytics & Reporting",
+        "title": "Advanced Analytics & Insights",
+        "desc": "Leverage advanced analytics to gain deep insights into customer behavior, campaign performance, and market trends.",
+        "shortDesc": "Gain insights with analytics."
     },
     {
         "icon": "icon-coin-chair",
-        "category": "personal finance",
-        "title": "Retirement Planning",
-        "desc": "We help you define retirement goals and create a savings and investment plan that ensures a comfortable and financially stable life after retirement.",
-        "shortDesc": "With our Internet Banking service, you can access your accounts anytime, anywhere"
+        "category": "Social Media",
+        "title": "Social Media Engagement Strategy",
+        "desc": "Develop a strategy to build a strong community, increase engagement, and drive brand loyalty across social media platforms.",
+        "shortDesc": "Build social media engagement."
     },
     {
         "icon": "icon-hand-message",
-        "category": "personal finance",
-        "title": "Financial Planning",
-        "desc": "We create tailored savings and investment plans that align with your financial situation, helping to increase income and ensure financial security in the future",
-        "shortDesc": "Our Mobile Banking app brings you fast and convenient mobile financial experience."
+        "category": "CRM Integration",
+        "title": "CRM & Marketing Automation",
+        "desc": "Streamline your marketing processes, nurture leads, and personalize customer interactions with integrated CRM and automation tools.",
+        "shortDesc": "Automate marketing with CRM."
     },
     {
         "icon": "icon-hand-house",
-        "category": "personal finance",
-        "title": "Estate Planning",
-        "desc": "We provide advice on suitable insurance products such as health insurance and asset protection to ensure maximum protection for you and your family.",
-        "shortDesc": "Our money transfer service allows you to send money quickly and securely to anywhere in the world"
+        "category": "Local SEO",
+        "title": "Local SEO Optimization",
+        "desc": "Increase your visibility in local search results and attract nearby customers to your physical business location.",
+        "shortDesc": "Optimize for local search."
     },
     {
         "icon": "icon-hand-chart",
-        "category": "personal finance",
-        "title": "Investment Management",
-        "desc": "We create tailored savings and investment plans that align with your financial situation, helping to increase income and ensure financial security in the future.",
-        "shortDesc": "Managing your accounts has never been easier with Online Banking. Check your balances."
+        "category": "Performance Marketing",
+        "title": "Performance Marketing Campaigns",
+        "desc": "Focus on results-driven marketing with campaigns designed to achieve specific, measurable outcomes and maximize your ROI.",
+        "shortDesc": "Run performance campaigns."
     },
     {
         "icon": "icon-pc-code",
-        "category": "blockchain",
-        "title": "Blockchain Development",
-        "desc": "Experience the excitement and potential of the cryptocurrency market with our expert trading services.",
-        "shortDesc": "We offer comprehensive blockchain development services to help businesses harness the power of this transformative technology"
+        "category": "Web Development",
+        "title": "Custom Web Application Development",
+        "desc": "Build bespoke web applications tailored to your unique business needs, enhancing functionality and user experience.",
+        "shortDesc": "Develop custom web apps."
     },
     {
         "icon": "icon-code",
-        "category": "blockchain",
-        "title": "Smart Contract Development",
-        "desc": "We analyze market trends, manage risks, and optimize your portfolio to maximize returns and achieve your financial goals.",
-        "shortDesc": "Our experts specialize in creating smart contracts that automate processes and enable decentralized applications."
+        "category": "Technical SEO",
+        "title": "Technical SEO Implementation",
+        "desc": "Ensure your website's technical foundation is optimized for search engines, improving crawlability and indexability.",
+        "shortDesc": "Implement technical SEO."
     },
     {
         "icon": "icon-lamp-gear",
-        "category": "blockchain",
-        "title": "Blockchain Integration",
-        "desc": "Our team of experienced advisors will guide you in making informed investment, whether you're a beginner trader.",
-        "shortDesc": "By seamlessly integrating blockchain with your operations, you can enhance data security, transparency, and traceability, leading to improved efficiency and trust."
+        "category": "Digital Innovation",
+        "title": "Digital Innovation & Consulting",
+        "desc": "Explore and integrate emerging technologies and innovative strategies to stay ahead of the competition in the digital space.",
+        "shortDesc": "Consult on digital innovation."
     },
     {
         "icon": "icon-text-pen",
-        "category": "blockchain",
-        "title": "Blockchain Consulting",
-        "desc": "We employ industry-leading tools and techniques to protect your investments and minimize potential losses.",
-        "shortDesc": "Our experienced consultants offer strategic guidance and insights to help you navigate the complex landscape of blockchain technology."
+        "category": "Copywriting",
+        "title": "Professional Copywriting Services",
+        "desc": "Craft compelling and persuasive copy for your website, landing pages, ads, and marketing materials that drives action.",
+        "shortDesc": "Professional copywriting."
     },
     {
         "icon": "icon-chart",
-        "category": "blockchain",
-        "title": "ICO/STO Development",
-        "desc": "We provide timely reports, market updates, and data-driven insights to help you make informed trading decisions.",
-        "shortDesc": "We assist businesses in launching successful Initial Coin Offerings (ICOs) and Security Token Offerings (STOs)."
+        "category": "Marketing Strategy",
+        "title": "Full-Funnel Marketing Strategy",
+        "desc": "Develop a comprehensive marketing strategy that covers every stage of the customer journey, from awareness to conversion and loyalty.",
+        "shortDesc": "Develop full-funnel strategy."
     },
     {
         "icon": "icon-vali",
-        "category": "blockchain",
-        "title": "Wallet Development",
-        "desc": "Expand your knowledge and skills in cryptocurrency trading through our educational resources.",
-        "shortDesc": "We develop secure and user-friendly cryptocurrency wallets that enable seamless storage and management of digital assets"
+        "category": "Brand Identity",
+        "title": "Digital Brand Identity Development",
+        "desc": "Build a strong, consistent, and memorable brand identity that resonates with your target audience across all digital platforms.",
+        "shortDesc": "Develop digital brand identity."
     }
 ]

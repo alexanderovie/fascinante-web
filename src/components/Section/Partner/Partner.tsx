@@ -11,7 +11,7 @@ interface Props {
     classname: string
 }
 
-const PartnerOne: React.FC<Props> = ({ classname }) => {
+const Partner: React.FC<Props> = ({ classname }) => {
     return (
         <>
             <div className={`brand-block py-9 ${classname}`}>
@@ -50,7 +50,7 @@ const PartnerOne: React.FC<Props> = ({ classname }) => {
                                         src={'/images/partner/203x44.png'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='Leading Brand Partner Logo 1'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -61,7 +61,7 @@ const PartnerOne: React.FC<Props> = ({ classname }) => {
                                         src={'/images/partner/203x44.png'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='Top Industry Collaborator Logo 2'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -72,7 +72,7 @@ const PartnerOne: React.FC<Props> = ({ classname }) => {
                                         src={'/images/partner/203x44.png'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='Digital Marketing Alliance Logo 3'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -83,7 +83,7 @@ const PartnerOne: React.FC<Props> = ({ classname }) => {
                                         src={'/images/partner/203x44.png'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='Strategic Client Partner Logo 4'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -94,7 +94,7 @@ const PartnerOne: React.FC<Props> = ({ classname }) => {
                                         src={'/images/partner/203x44.png'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='Innovator in Digital Solutions Logo 5'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -105,7 +105,7 @@ const PartnerOne: React.FC<Props> = ({ classname }) => {
                                         src={'/images/partner/203x44.png'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='Trusted Business Partner Logo 6'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -118,4 +118,4 @@ const PartnerOne: React.FC<Props> = ({ classname }) => {
     )
 }
 
-export default PartnerOne
+export default Partner

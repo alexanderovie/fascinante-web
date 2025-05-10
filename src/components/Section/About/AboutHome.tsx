@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
-const AboutTwo = () => {
+const AboutHome = () => {
   const [tabActive, setTabActive] = useState<string>('about us')
 
   const handleTabActive = (item: string) => {
@@ -22,13 +22,13 @@ const AboutTwo = () => {
                 src="/images/component/assessment.png"
                 width={4000}
                 height={4000}
-                alt=""
+                alt="Digital marketing strategy assessment dashboard"
                 className="w-full h-full block"
               />
             </div>
           </div>
           <div className="w-full lg:w-1/2 flex-col lg:pl-20">
-            <div className="heading3">Financial assessment</div>
+            <div className="heading3">Digital Strategy Assessment</div>
             <div className="nav-infor mt-8">
               <div className="list-nav flex items-center gap-10 border-b border-line w-fit">
                 {
@@ -44,54 +44,54 @@ const AboutTwo = () => {
               </div>
               <div className={`description item-filter ${tabActive === 'about us' ? 'show' : 'hide'}`}>
                 <div className="title text-secondary mt-4">
-                  We are devoted team providing premium financial solutions.
-                  Explore our mission, values, and achievements as we empower
-                  clients for a secure financial future.
+                  We are a dedicated team crafting cutting-edge digital marketing solutions.
+                  Explore our expertise, values, and achievements as we empower
+                  brands for a thriving online future.
                 </div>
                 <div className="more-infor mt-6">
                   <div className="infor flex items-center gap-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Identification of monthly income
+                      Identification of target audience insights
                     </div>
                   </div>
                   <div className="infor flex items-center gap-3 mt-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Creation of savings and investment plan
+                      Development of tailored digital marketing plans
                     </div>
                   </div>
                   <div className="infor flex items-center gap-3 mt-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Management and calculation of monthly expenses
+                      Optimization and analysis of campaign performance
                     </div>
                   </div>
                 </div>
               </div>
               <div className={`description item-filter ${tabActive === 'mission' ? 'show' : 'hide'}`}>
                 <div className="title body3 text-secondary mt-4">
-                  Our mission is to provide comprehensive and personalized
-                  financial solutions that empower our clients to achieve their
-                  financial goals and secure their future.
+                  Our mission at Fascinante Digital is to provide comprehensive and personalized
+                  digital marketing solutions that empower our clients to achieve their
+                  business objectives and secure a dominant online presence.
                 </div>
                 <div className="more-infor mt-6">
                   <div className="infor flex items-center gap-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Management and calculation of monthly expenses
+                      Crafting data-driven content strategies
                     </div>
                   </div>
                   <div className="infor flex items-center gap-3 mt-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Identification of monthly income
+                      Implementing effective SEO and SEM campaigns
                     </div>
                   </div>
                   <div className="infor flex items-center gap-3 mt-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Creation of savings and investment plan
+                      Building engaging social media communities
                     </div>
                   </div>
                 </div>
@@ -99,26 +99,26 @@ const AboutTwo = () => {
               <div className={`description item-filter ${tabActive === 'vision' ? 'show' : 'hide'}`}>
                 <div className="title body3 text-secondary mt-4">
                   Our unwavering vision is to be the most trusted and preferred
-                  partner in achieving financial success, diligently guiding our
-                  valued clients toward a secure and prosperous future.
+                  partner in achieving digital marketing excellence, diligently guiding our
+                  valued clients toward a leading and prosperous online future.
                 </div>
                 <div className="more-infor mt-6">
                   <div className="infor flex items-center gap-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Creation of savings and investment plan
+                      Driving measurable growth and ROI for clients
                     </div>
                   </div>
                   <div className="infor flex items-center gap-3 mt-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Management and calculation of monthly expenses
+                      Pioneering innovative digital strategies
                     </div>
                   </div>
                   <div className="infor flex items-center gap-3 mt-3">
                     <Icon.CheckCircle weight="fill" className="text-blue text-xl" />
                     <div className="text-button">
-                      Identification of monthly income
+                      Fostering long-term client relationships
                     </div>
                   </div>
                 </div>
@@ -133,10 +133,10 @@ const AboutTwo = () => {
               </a>
               <a
                 className="button-main text-on-surface hover:bg-black hover:text-white hover:border-transparent bg-white text-button rounded-full border-2 border-blue flex items-center gap-2"
-                href="contact-two.html"
+                href="tel:+18008864981" // <-- CAMBIO AQUÍ: se usa "tel:" seguido del número
               >
                 <i className="ph ph-phone text-xl"></i>
-                <span>(00) 123 456 789</span>
+                <span>+1 (800) 886 4981</span>
               </a>
             </div>
           </div>
@@ -145,4 +145,4 @@ const AboutTwo = () => {
     </div>
   );
 };
-export default AboutTwo;
+export default AboutHome;

@@ -40,61 +40,55 @@ const PartnerAbout = () => {
                                 },
                             }}
                         >
+                            {/* Adapted Partner 1 using uploaded image */}
                             <SwiperSlide>
                                 <div className="partner-item relative flex items-center justify-center md:h-16 h-10">
                                     <Image
-                                        src={'/images/partner/lh.png'}
+                                        src={'/images/partner/lh.webp'} // Updated image source
                                         width={500}
                                         height={500}
-                                        alt='1'
+                                        alt='LH.Tech Logo' // Updated alt text
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
                             </SwiperSlide>
+                            {/* Adapted Partner 2 using uploaded image */}
                             <SwiperSlide>
                                 <div className="partner-item relative flex items-center justify-center md:h-16 h-10">
                                     <Image
-                                        src={'/images/partner/shang.png'}
+                                        src={'/images/partner/shang.webp'} // Updated image source
                                         width={500}
                                         height={500}
-                                        alt='1'
+                                        alt='Shangxi Logo' // Updated alt text
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
                             </SwiperSlide>
+                            {/* Adapted Partner 3 using uploaded image */}
                             <SwiperSlide>
                                 <div className="partner-item relative flex items-center justify-center md:h-16 h-10">
                                     <Image
-                                        src={'/images/partner/pana.png'}
+                                        src={'/images/partner/pana.webp'} // Updated image source
                                         width={500}
                                         height={500}
-                                        alt='1'
+                                        alt='PANADOXN Logo' // Updated alt text
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
                             </SwiperSlide>
+                            {/* Adapted Partner 4 using uploaded image */}
                             <SwiperSlide>
                                 <div className="partner-item relative flex items-center justify-center md:h-16 h-10">
                                     <Image
-                                        src={'/images/partner/masa.png'}
+                                        src={'/images/partner/van.webp'} // Updated image source
                                         width={500}
                                         height={500}
-                                        alt='1'
+                                        alt='Vanfaba Logo' // Updated alt text
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
                             </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="partner-item relative flex items-center justify-center md:h-16 h-10">
-                                    <Image
-                                        src={'/images/partner/van.png'}
-                                        width={500}
-                                        height={500}
-                                        alt='1'
-                                        className='h-full w-auto duration-500 relative object-cover'
-                                    />
-                                </div>
-                            </SwiperSlide>
+                            {/* Removed the fifth slide as requested */}
                         </Swiper>
                     </div>
                 </div>

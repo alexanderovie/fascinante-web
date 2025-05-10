@@ -1,92 +1,92 @@
 [
     {
         "id": 1,
-        "category": "fintech",
-        "author": "Maverick",        
-        "position": "Chariman, Avitex Inc",        
+        "category": "Client Success",
+        "author": "Maverick",
+        "position": "Marketing Director, Global Corp",
         "img": "/images/member/60x60.png",
-        "title": "Variety of Styles!",
+        "title": "Exceptional Results!",
         "star": 5,
-        "desc": "Working with this agency has been a game-changer for our business. Their team is knowledgeable, responsive, and always goes the extra mile."
+        "desc": "Partnering with Fascinante Digital has been transformative for our online presence. Their strategic approach and execution delivered results beyond our expectations."
     },
     {
         "id": 2,
-        "category": "fintech",
-        "author": "Leonardo",        
-        "position": "Designer, TechX Corp",        
+        "category": "Digital Marketing",
+        "author": "Leonardo",
+        "position": "Founder, Innovate Solutions",
         "img": "/images/member/60x60.png",
-        "title": "Congratulation!",
+        "title": "True Digital Experts!",
         "star": 4,
-        "desc": "Your personalized approach and care have improved my financial planning. I highly value your services and attention to detail in crafting financial plans."
+        "desc": "Their personalized digital marketing strategies have significantly improved our lead generation. We highly value their expertise and attention to detail in campaign management."
     },
     {
         "id": 3,
-        "category": "fintech",
-        "author": "De Rossi",        
-        "position": "CEO, Hivelab Agency",        
+        "category": "Client Success",
+        "author": "De Rossi",
+        "position": "CEO, Creative Agency X",
         "img": "/images/member/60x60.png",
-        "title": "Variety of Styles!",
+        "title": "Highly Recommended!",
         "star": 4,
-        "desc": "I'm extremely satisfied with your services! Your meticulous financial planning helped me manage my assets efficiently and achieve my financial goals."
+        "desc": "We're extremely satisfied with Fascinante Digital! Their meticulous digital planning helped us optimize our online spend efficiently and achieve our marketing goals."
     },
     {
         "id": 4,
-        "category": "fintech",
-        "author": "Benjamin",        
-        "position": "Chariman, Avitex Inc",        
+        "category": "Digital Strategy",
+        "author": "Benjamin",
+        "position": "Head of Digital, E-commerce Pro",
         "img": "/images/member/60x60.png",
-        "title": "Congratulation!",
+        "title": "Strategic Partnership!",
         "star": 5,
-        "desc": "I highly value and appreciate your services and the attention to detail you provide in crafting financial plans. Thank you for helping shape my financial future!"
+        "desc": "I highly value and appreciate their digital strategy services and the attention to detail they provide in crafting online campaigns. Thank you for helping shape our digital future!"
     },
     {
         "id": 5,
-        "category": "fintech",
-        "author": "Alexander",        
-        "position": "Designer, ThreeS Corp",        
+        "category": "SEO & Content",
+        "author": "Alexander",
+        "position": "Content Manager, Media Group",
         "img": "/images/member/60x60.png",
-        "title": "Congratulation!",
+        "title": "Content Masters!",
         "star": 5,
-        "desc": "Your personalized approach and care have improved my financial planning. I highly value your services and attention to detail in crafting financial plans."
+        "desc": "Their personalized approach to SEO and content has dramatically improved our organic reach. We highly value their services and attention to detail in developing content strategies."
     },
     {
         "id": 6,
-        "category": "fintech",
-        "author": "De Rossi",        
-        "position": "CEO, Hivelab Agency",        
+        "category": "Paid Media",
+        "author": "De Rossi",
+        "position": "Advertising Lead, AdTech Solutions",
         "img": "/images/member/484x512.png",
-        "title": "Variety of Styles!",
+        "title": "ROI Focused!",
         "star": 4,
-        "desc": "I'm extremely satisfied with your services! Your meticulous financial planning helped me manage my assets efficiently and achieve my financial goals."
+        "desc": "I'm extremely satisfied with their paid media management! Their meticulous campaign optimization helped us manage our ad budget efficiently and achieve our conversion goals."
     },
     {
         "id": 7,
-        "category": "fintech",
-        "author": "Benjamin",        
-        "position": "Chariman, Avitex Inc",        
+        "category": "Web Development",
+        "author": "Benjamin",
+        "position": "Product Manager, SaaS Company",
         "img": "/images/member/484x512.png",
-        "title": "Congratulation!",
+        "title": "Seamless Execution!",
         "star": 5,
-        "desc": "I highly value and appreciate your services and the attention to detail you provide in crafting financial plans. Thank you for helping financial future!"
+        "desc": "I highly value and appreciate their web development services and the attention to detail they provide in building digital platforms. Thank you for helping our online presence!"
     },
     {
         "id": 8,
-        "category": "fintech",
-        "author": "Alexander",        
-        "position": "Designer, ThreeS Corp",        
+        "category": "Analytics",
+        "author": "Alexander",
+        "position": "Data Analyst, Insights Co.",
         "img": "/images/member/484x512.png",
-        "title": "Congratulation!",
+        "title": "Data-Driven Insights!",
         "star": 5,
-        "desc": "Your personalized approach and care have improved my financial planning. I highly value your services and attention to detail in crafting financial plans."
+        "desc": "Their personalized approach to analytics and reporting has improved our understanding of user behavior. We highly value their services and attention to detail in providing actionable insights."
     },
     {
         "id": 9,
-        "category": "fintech",
-        "author": "Christina",        
-        "position": "CEO, Texas Instruments",        
+        "category": "Client Success",
+        "author": "Christina",
+        "position": "Operations Manager, Logistics Inc.",
         "img": "/images/member/484x512.png",
-        "title": "Congratulation!",
+        "title": "Fantastic Support!",
         "star": 5,
-        "desc": "I highly value and appreciate your services and the attention to detail you provide in crafting financial plans. Thank you for helping financial future!"
+        "desc": "I highly value and appreciate their dedicated client support and the attention to detail they provide in managing our account. Thank you for being a great digital partner!"
     }
 ]
