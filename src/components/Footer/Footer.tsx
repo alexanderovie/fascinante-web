@@ -47,7 +47,7 @@ const Footer = () => {
                                     <div className="item-heading text-button-sm text-white">Pages</div>
                                     <ul className="list-nav mt-1">
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/pages/faqs">FAQs</Link></li>
-                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/pages/pricing">Pricing</Link></li>
+                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/pricing">Pricing</Link></li>
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/pages/partners">Partners</Link></li>
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/contact/contact-two">Support Center</Link></li>
                                     </ul>
