@@ -2,13 +2,13 @@
     {
         "id": 1,
         "tag": "featured",
-        "category": "financial planning",
+        "category": "strategic marketing",
         "img": "/images/blog/930x593.png",
-        "title": "Investment Opportunities Explore Options",
+        "title": "Digital Opportunities: Explore Your Online Growth Options",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "The digital landscape evolves rapidly. Discover how to identify and seize growth opportunities for your business in today's online environment.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -16,14 +16,14 @@
     },
     {
         "id": 2,
-        "tag": "experience",
-        "category": "payment solution",
+        "tag": "insights",
+        "category": "social media marketing",
         "img": "/images/blog/930x593.png",
-        "title": "Credit Card Management Use Wisely",
+        "title": "Social Media Management: Boost Your Brand Strategically",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "Beyond likes, a well-executed social media strategy drives conversions. Learn to manage your profiles for real impact.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -31,14 +31,14 @@
     },
     {
         "id": 3,
-        "tag": "interview",
-        "category": "cryptocurrency financial",
+        "tag": "expert-talks",
+        "category": "seo & content marketing",
         "img": "/images/blog/930x593.png",
-        "title": "Savings Strategies Strong Foundation",
+        "title": "SEO Strategies: Building a Strong Foundation for Your Visibility",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "In a conversation with our experts, we unveil the keys to robust organic positioning that guarantees long-term success.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -46,14 +46,14 @@
     },
     {
         "id": 4,
-        "tag": "skill",
-        "category": "blockchain",
+        "tag": "strategies",
+        "category": "web analytics",
         "img": "/images/blog/930x593.png",
-        "title": "Stock Market Trends Analyze Movements",
+        "title": "Digital Marketing Trends: Analyze and Adapt to the Market",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "The pulse of the digital market is constant. We teach you how to interpret trends and adjust your strategies to maintain relevance.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -61,14 +61,14 @@
     },
     {
         "id": 5,
-        "tag": "business",
-        "category": "online banking",
+        "tag": "digital-business",
+        "category": "e-commerce",
         "img": "/images/blog/930x593.png",
-        "title": "Estate Planning Secure Your Legacy",
+        "title": "E-commerce Planning: Secure Your Brand's Digital Legacy",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "From conceptualization to execution, we guide you to build an online store that not only sells but also endures and grows.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -76,14 +76,14 @@
     },
     {
         "id": 6,
-        "tag": "design",
-        "category": "personal financial",
+        "tag": "web-design",
+        "category": "web development",
         "img": "/images/blog/930x593.png",
-        "title": "Wealth Building Sustainable Growth",
+        "title": "Web Design for Sustainable Growth: A Fascinating Experience",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "Your website is your digital business card. Discover how strategic design and optimized user experience drive long-term growth.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -92,13 +92,13 @@
     {
         "id": 7,
         "tag": "featured",
-        "category": "financial planning",
+        "category": "content marketing",
         "img": "/images/blog/930x593.png",
-        "title": "Insurance Essentials Protect Your Assets",
+        "title": "Essential Content: Protect and Empower Your Digital Brand",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "In the saturated digital world, valuable content is your best defense and your most powerful weapon. Learn to create strategies that resonate with your audience.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -106,14 +106,14 @@
     },
     {
         "id": 8,
-        "tag": "experience",
-        "category": "payment solution",
+        "tag": "insights",
+        "category": "digital advertising",
         "img": "/images/blog/930x593.png",
-        "title": "Financial Freedom Achieve Your Goals",
+        "title": "Freedom in Digital Advertising: Achieve Your Sales Goals",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "Mastering online advertising gives you the freedom to scale your business. Discover how smart campaigns can lead you to your objectives.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -121,14 +121,14 @@
     },
     {
         "id": 9,
-        "tag": "interview",
-        "category": "cryptocurrency financial",
+        "tag": "expert-talks",
+        "category": "local seo",
         "img": "/images/blog/930x593.png",
-        "title": "Real Estate Investing Build Wealth",
+        "title": "Local SEO: Build Wealth with Your Physical Business's Visibility",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "An exclusive interview with local SEO experts reveals how your business can dominate nearby searches and attract customers to your door.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -136,14 +136,14 @@
     },
     {
         "id": 10,
-        "tag": "skill",
-        "category": "blockchain",
+        "tag": "strategies",
+        "category": "email marketing",
         "img": "/images/blog/930x593.png",
-        "title": "Debt Management Break the Cycle",
+        "title": "Email Marketing Management: Break the Cycle and Connect with Your Audience",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "Learn to create email marketing campaigns that not only reach the inbox but also generate interaction and brand loyalty.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -151,14 +151,14 @@
     },
     {
         "id": 11,
-        "tag": "business",
-        "category": "online banking",
+        "tag": "digital-business",
+        "category": "conversion optimization",
         "img": "/images/blog/930x593.png",
-        "title": "Tax Saving Tips Maximize Your Returns",
+        "title": "CRO Tips: Maximize Your Digital Returns",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "Small adjustments can lead to big gains. Discover how to optimize your conversion funnels for maximum return on your digital investment.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -166,14 +166,14 @@
     },
     {
         "id": 12,
-        "tag": "design",
-        "category": "personal financial",
+        "tag": "web-design",
+        "category": "user experience (ux)",
         "img": "/images/blog/930x593.png",
-        "title": "Economic Outlook Navigating Market",
+        "title": "UX Design Outlook: Navigating the Digital Market",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "In an increasingly competitive market, exceptional user experience is key. We explore how UX/UI design directly impacts your online success.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -181,14 +181,14 @@
     },
     {
         "id": 13,
-        "tag": "experience",
-        "category": "financial planning",
+        "tag": "insights",
+        "category": "online reputation management",
         "img": "/images/blog/930x593.png",
-        "title": "Insurance Essentials Protecting Your Assets",
+        "title": "Essential Online Reputation: Protecting Your Digital Assets",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "Your online reputation is invaluable. Learn strategies to protect your brand and ensure your digital presence is always positive.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -196,14 +196,14 @@
     },
     {
         "id": 14,
-        "tag": "interview",
-        "category": "cryptocurrency financial",
+        "tag": "expert-talks",
+        "category": "marketing automation",
         "img": "/images/blog/930x593.png",
-        "title": "Retirement Planning Secure Your Future",
+        "title": "Marketing Automation Planning: Secure Your Future",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "In a deep conversation, we explore how automation can free up resources and ensure sustained growth for your agency and your clients.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
@@ -211,14 +211,14 @@
     },
     {
         "id": 15,
-        "tag": "business",
-        "category": "blockchain",
+        "tag": "digital-business",
+        "category": "marketing roi",
         "img": "/images/blog/930x593.png",
-        "title": "Budgeting Tips Mastering Your Finances",
+        "title": "Digital Budgeting Tips: Master Your Marketing Finances",
         "author": "Avitex",
         "avatar": "/images/member/60x60.png",
         "date": "2 days ago",
-        "desc": "The jobs report soundly beat expectations, with job gains broadly spread across the economy and about 60% higher…",
+        "desc": "Smart budget management is crucial. Discover how to allocate your marketing resources to maximize ROI and achieve your goals.",
         "listImg": [
             "/images/blog/930x593.png",
             "/images/blog/930x593.png"
