@@ -32,7 +32,7 @@ export default function CaseStudyDetail({ params: { slug } }: { params: { slug: 
             }
             const nextBlog = blogData.find(item => item.id === nextId);
             if (nextBlog) {
-                router.push(`/blog/blog-detail-one/${nextBlog.title.toLowerCase().replace(/ /g, '-')}`);
+                router.push(`/${nextBlog.title.toLowerCase().replace(/ /g, '-')}`);
             }
         }
     };
