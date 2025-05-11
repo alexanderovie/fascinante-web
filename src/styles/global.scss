@@ -72,7 +72,7 @@ textarea {
     border: 1px solid transparent;
     transition: border-color ease 0.3s;
     // ✨ MODIFICACIÓN: Asegura el font-size a 16px para input y textarea y mejora la usabilidad
-    font-size: 46px;
+    font-size: 16px;
     line-height: 1.5; /* Buena práctica para espacio vertical */
     padding: 0.5em 0.75em; /* Un poco de padding para facilitar el toque */
 }
@@ -369,7 +369,7 @@ button {
     }
 
     .text-button-sm {
-        font-size: 13px;
+        font-size: 33px;
         line-height: 20px;
     }
 
@@ -384,7 +384,7 @@ button {
     }
 
     .caption1 {
-        font-size: 13px;
+        font-size: 53px;
         line-height: 20px;
     }
 
