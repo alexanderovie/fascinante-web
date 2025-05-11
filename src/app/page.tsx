@@ -2,7 +2,7 @@ import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import AboutHome from "@/components/Section/About/AboutHome";
 import Counter from "@/components/Section/Counter/Counter";
-import Partner from "@/components/Section/Partner/Partner";
+// import Partner from "@/components/Section/Partner/Partner";
 import Project from "@/components/Section/Project/Project";
 import SliderFive from "@/components/Slider/SliderFive";
 import serviceData from '@/data/service.json';
@@ -24,7 +24,10 @@ export default function Home() {
                 </header>
                 <main className="content">
                     <SliderFive />
-                    <Partner classname='bg-dark-blue' />
+                    
+                    {/* Partner Section (Desactivado temporalmente) */}
+                    {/* <Partner classname='bg-dark-blue' /> */}
+                    
                     <AboutHome />
                     <Counter classname='lg:py-10 py-7 border-t border-line' />
                     <Project />
