@@ -199,6 +199,7 @@ const LayoutDetailOne: React.FC<Props> = ({ data, handleNextBlogDetail, handlePr
                 <div className="next-block">
                   <div className="sm:text-right cursor-pointer" onClick={handleNextBlogDetail}>
                     <div className="text-button-uppercase text-blue">Next</div>
+                    <div className="heading7 mt-1">{data?.id === blogData.length ? blogData[0].title : blogData[data.id].title}</div>
                   </div>
                 </div>
               </div>
