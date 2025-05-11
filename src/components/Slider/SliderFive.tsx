@@ -1,3 +1,4 @@
+// src/components/Slider/SliderFive.tsx (o la ruta correcta de tu componente)
 'use client'
 
 import React from "react"; // Import React
@@ -69,9 +70,9 @@ const SliderFive = () => {
                                         </div>
                                         {/* Description for SEO Audit */}
                                         <div className="body2 mt-3 text-secondary">Our comprehensive audit uncovers hidden issues and <br /> untapped strengths for top search rankings.</div>
-                                        {/* CTA Button for SEO Audit */}
+                                        {/* CTA Button for SEO Audit - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/audit">Start Your Audit</Link> {/* Link to audit page */}
+                                            <Link className="button-main bg-blue text-white" href="/website-audit">Start Your Audit</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -111,9 +112,10 @@ const SliderFive = () => {
                                         </div>
                                         {/* Description for Discover Opportunities */}
                                         <div className="body2 mt-3 text-secondary">We pinpoint fresh strategies to expand your <br /> reach and drive more significant conversions.</div>
-                                        {/* CTA Button for Discover Opportunities */}
+                                        {/* CTA Button for Discover Opportunities - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/services">Explore Options</Link> {/* Link to services page */}
+                                            {/* Puedes considerar cambiar el texto del botón si "Explore Options" ya no es relevante */}
+                                            <Link className="button-main bg-blue text-white" href="/website-audit">Explore Options</Link> 
                                         </div>
                                     </div>
                                 </div>
@@ -153,9 +155,10 @@ const SliderFive = () => {
                                         </div>
                                         {/* Description for Online Visibility */}
                                         <div className="body2 mt-3 text-secondary">Ensure your business is seen by the right <br /> customers across all digital platforms.</div>
-                                        {/* CTA Button for Online Visibility */}
+                                        {/* CTA Button for Online Visibility - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/contact">Get Discovered</Link> {/* Link to contact page */}
+                                            {/* Puedes considerar cambiar el texto del botón si "Get Discovered" ya no es relevante */}
+                                            <Link className="button-main bg-blue text-white" href="/website-audit">Get Discovered</Link>
                                         </div>
                                     </div>
                                 </div>

@@ -1,68 +1,32 @@
+// src/components/Section/CTA/CtaTwo.tsx (o la ruta correcta de tu componente)
 'use client'
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from "next/link";
-import Modal from "@/components/Modal/Modal";
+// Se eliminan los imports y el estado del Modal ya que no se usará
 
 const CtaTwo = () => {
-    // Estado para controlar la visibilidad del modal
-    const [isModalOpen, setModalOpen] = useState(false);
-
-    const openModal = () => setModalOpen(true);
-    const closeModal = () => setModalOpen(false);
-
     return (
         <>
             <div className="button-block">
-                <button 
-                    onClick={openModal} 
-                    className="button-main bg-blue text-white"
-                >
-                    Start Your Audit
-                </button>
+                {/* Envolver el botón con el componente Link de Next.js */}
+                <Link href="/website-audit" passHref legacyBehavior>
+                    <a className="button-main bg-blue text-white"> {/* Aplicar clases directamente al <a> si es necesario o al botón interno */}
+                        Start Your Audit
+                    </a>
+                </Link>
+                {/* Alternativamente, si el botón tiene estilos complejos o interactividad que quieres mantener como <button>: */}
+                {/* <Link href="/website-audit" passHref>
+                    <button 
+                        className="button-main bg-blue text-white" // Asegúrate que estas clases estilicen bien el botón
+                    >
+                        Start Your Audit
+                    </button>
+                </Link>
+                */}
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={closeModal} title="Request an Audit">
-                <form onSubmit={(e) => { 
-                    e.preventDefault(); 
-                    closeModal(); 
-                    alert("Audit request submitted!");
-                }}>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Business Name</label>
-                        <input
-                            type="text"
-                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
-                            placeholder="Enter your business name"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Owner Name</label>
-                        <input
-                            type="text"
-                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
-                            placeholder="Enter your name"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700">Owner Email</label>
-                        <input
-                            type="email"
-                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
-                            placeholder="Enter your email"
-                            required
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors"
-                    >
-                        Submit
-                    </button>
-                </form>
-            </Modal>
+            {/* El componente Modal y su lógica han sido eliminados */}
         </>
     )
 }
