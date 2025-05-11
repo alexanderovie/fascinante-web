@@ -10,6 +10,7 @@
     "sitemap": "next-sitemap"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.2",
     "@phosphor-icons/react": "^2.0.15",
     "animate.css": "^4.1.1",
     "framer-motion": "^11.0.8",

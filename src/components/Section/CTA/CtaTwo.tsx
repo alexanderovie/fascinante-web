@@ -1,20 +1,70 @@
 'use client'
 
-// Importa componentes esenciales de Next.js.
-import Link from "next/link"
+import React, { useState } from 'react';
+import Link from "next/link";
+import Modal from "@/components/Modal/Modal";
 
-// Define el componente CtaTwo.
 const CtaTwo = () => {
+    // Estado para controlar la visibilidad del modal
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
+
     return (
-        // Contenedor principal del botón de llamada a la acción (CTA).
-        <div className="button-block">
-            {/* Enlace al formulario de auditoría */}
-            <Link href="/audit" className="button-main bg-blue text-white">
-                Start Your Audit
-            </Link>
-        </div>
+        <>
+            <div className="button-block">
+                <button 
+                    onClick={openModal} 
+                    className="button-main bg-blue text-white"
+                >
+                    Start Your Audit
+                </button>
+            </div>
+
+            <Modal isOpen={isModalOpen} onClose={closeModal} title="Request an Audit">
+                <form onSubmit={(e) => { 
+                    e.preventDefault(); 
+                    closeModal(); 
+                    alert("Audit request submitted!");
+                }}>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">Business Name</label>
+                        <input
+                            type="text"
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
+                            placeholder="Enter your business name"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">Owner Name</label>
+                        <input
+                            type="text"
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
+                            placeholder="Enter your name"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">Owner Email</label>
+                        <input
+                            type="email"
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
+                            placeholder="Enter your email"
+                            required
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </Modal>
+        </>
     )
 }
 
-// Exporta el componente para usarlo en otras partes del proyecto.
-export default CtaTwo
+export default CtaTwo;
