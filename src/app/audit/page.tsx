@@ -1,72 +1,62 @@
-"use client";
+'use client';
 
-import { Metadata } from 'next';
-import { useState } from 'react';
-import { Inter } from 'next/font/google';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import Image from 'next/image';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Audit - Fascinante Digital',
-  description: 'Request a free local audit for your business with Fascinante Digital.',
-};
+import Link from 'next/link';
 
 export default function AuditPage() {
   const [businessName, setBusinessName] = useState('');
-  const [address, setAddress] = useState('');
-  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ businessName, address, phone });
-    alert('Audit request submitted successfully!');
+    alert(`Business Name: ${businessName}\nEmail: ${email}\nMessage: ${message}`);
   };
 
   return (
-    <main className={`${inter.className} min-h-screen bg-gray-100 flex items-center justify-center p-8`}>
-      <div className="bg-white rounded-2xl shadow-lg p-10 max-w-3xl w-full">
-        <h1 className="text-4xl font-bold mb-6 text-center">Request a Free Local Audit</h1>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-lg font-semibold mb-2">Business Name</label>
+    <main className="audit-main">
+      <div className="container">
+        <h1 className="audit-title">Request Your Free Local Audit</h1>
+        <form onSubmit={handleSubmit} className="audit-form">
+          <div className="form-group">
+            <label htmlFor="businessName">Business Name</label>
             <input
               type="text"
+              id="businessName"
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-xl"
-              placeholder="e.g., Fascinante Digital"
+              placeholder="Enter your business name"
               required
             />
           </div>
-          <div>
-            <label className="block text-lg font-semibold mb-2">Business Address</label>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
             <input
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-xl"
-              placeholder="e.g., 123 Main St, West Palm Beach, FL"
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
               required
             />
           </div>
-          <div>
-            <label className="block text-lg font-semibold mb-2">Business Phone</label>
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-xl"
-              placeholder="e.g., (561) 123-4567"
+
+          <div className="form-group">
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              rows={4}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Enter your message"
               required
             />
           </div>
-          <button type="submit" className="w-full py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700">Submit Audit Request</button>
+
+          <button type="submit" className="submit-button">Submit Request</button>
         </form>
-        <div className="mt-6 text-center">
-          <Link href="/" className="text-blue-600 hover:underline">Back to Home</Link>
-        </div>
       </div>
     </main>
   );
