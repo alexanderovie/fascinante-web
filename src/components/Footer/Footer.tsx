@@ -131,14 +131,14 @@ const Footer = () => {
                         </div>
                         {/* Legal links - Updated hrefs */}
                         <div className="nav-link flex items-center gap-2.5">
-                            {/* Link updated to /Terms-Of-Services */}
-                            <a className="text-surface caption1 hover-underline" href="/Terms-Of-Services">Terms Of Services</a>
+                            {/* Link updated to /terms-of-services */}
+                            <a className="text-surface caption1 hover-underline" href="/terms-of-services">Terms Of Services</a>
                             <span className="text-surface caption1">|</span>
-                            {/* Link updated to /Privacy-Policy */}
-                            <a className="text-surface caption1 hover-underline" href="/Privacy-Policy">Privacy Policy</a>
+                            {/* Link updated to /privacy-policy */}
+                            <a className="text-surface caption1 hover-underline" href="/privacy-policy">Privacy Policy</a>
                             <span className="text-surface caption1">|</span>
-                            {/* Link updated to /Cookie-Policy */}
-                            <a className="text-surface caption1 hover-underline" href="/Cookie-Policy">Cookie Policy</a>
+                            {/* Link updated to /cookie-policy */}
+                            <a className="text-surface caption1 hover-underline" href="/cookie-policy">Cookie Policy</a>
                         </div>
                     </div>
                 </div>
@@ -146,4 +146,4 @@ const Footer = () => {
         </div>
     )
 }
-export default Footer
+export default Footer;
