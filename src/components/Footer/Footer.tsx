@@ -111,7 +111,7 @@ const Footer = () => {
                                 </div>
                                 {/* Newsletter form - Assuming this functionality is desired */}
                                 <form className="send-block mt-5 flex items-center h-[46px] rounded-lg overflow-hidden">
-                                    <input className="caption1 text-secondary h-full w-full pr-4 pl-3" type="text" placeholder="Enter your email" required />
+                                    <input className="caption11 text-secondary h-full w-full pr-4 pl-3" type="text" placeholder="Enter your email" required />
                                     <button className="flex items-center justify-center w-[46px] h-[46px] bg-blue flex-shrink-0" aria-label="Subscribe">
                                         <Icon.PaperPlaneTilt className="text-white" />
                                     </button>
