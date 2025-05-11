@@ -102,10 +102,8 @@ export default function WebsiteAuditPage() {
     }
   };
 
-  // Función para renderizar las puntuaciones principales de Lighthouse horizontalmente
   const renderLighthouseScoresHorizontal = (categories: LighthouseResult['categories'] | undefined) => {
     if (!categories) {
-      // Este mensaje no debería mostrarse si la lógica principal ya maneja la ausencia de lighthouseResult
       return <p style={{ width: '100%', textAlign: 'center' }}>No se pudieron cargar las categorías de Lighthouse.</p>;
     }
 
@@ -120,28 +118,27 @@ export default function WebsiteAuditPage() {
         <div 
           key={key} 
           style={{ 
-            border: '1px solid #e0e0e0', // Borde sutil por defecto
+            border: '1px solid #e0e0e0',
             padding: '20px',
             borderRadius: '8px', 
-            backgroundColor: '#ffffff', // Fondo blanco por defecto, o deja que herede
+            backgroundColor: '#ffffff',
             textAlign: 'center',
-            flex: '1 1 200px', // Permite que los items crezcan y se encojan, con base de 200px
-            minWidth: '180px', // Para que no se hagan demasiado pequeños
-            boxShadow: '0 2px 4px rgba(0,0,0,0.05)' // Sombra sutil por defecto
+            flex: '1 1 200px',
+            minWidth: '180px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
           }}
         >
-          <h3 style={{ marginTop: '0', marginBottom: '10px', fontSize: '1.1em', color: '#333' /* color de texto por defecto */ }}>
+          <h3 style={{ marginTop: '0', marginBottom: '10px', fontSize: '1.1em', color: '#333' }}>
             {title}
           </h3>
           {score !== null ? (
             <p style={{ 
               fontSize: '2.2em', 
               fontWeight: 'bold', 
-              margin: '5px 0 0 0', // Ajuste de margen
-              color: score >= 90 ? '#34a853' : score >= 50 ? '#fbbc05' : '#ea4335' // Colores típicos de PSI
+              margin: '5px 0 0 0',
+              color: score >= 90 ? '#34a853' : score >= 50 ? '#fbbc05' : '#ea4335'
             }}>
               {score}
-              {/* Eliminamos el "/ 100" para un look más limpio como los gauges de PSI */}
             </p>
           ) : (
             <p style={{ fontSize: '1.8em', fontWeight: 'bold', color: '#757575', margin: '5px 0 0 0' }}>N/A</p>
@@ -153,30 +150,58 @@ export default function WebsiteAuditPage() {
 
   // --- JSX del Componente ---
   return (
-    <div style={{ maxWidth: '800px', margin: '40px auto', padding: '20px', fontFamily: 'sans-serif' /* Fuente genérica por defecto */ }}>
+    // El estilo en línea del div principal puede ser reemplazado por clases de Tailwind si tienes un contenedor global,
+    // ej: className="container mx-auto max-w-3xl py-10 px-4 sm:px-6 lg:px-8"
+    <div style={{ maxWidth: '800px', margin: '40px auto', padding: '20px', fontFamily: 'sans-serif' }}>
       <header style={{ textAlign: 'center', marginBottom: '30px' }}>
-        <h1>Auditoría Web Simple</h1>
-        <p>Ingresa una URL para obtener un informe básico de PageSpeed Insights.</p>
+        {/* Estas clases para h1 y p son ejemplos, ajústalos a tu sistema de diseño Tailwind */}
+        <h1 className="text-3xl font-bold text-gray-800">Auditoría Web Simple</h1>
+        <p className="text-md text-gray-600 mt-2">Ingresa una URL para obtener un informe básico de PageSpeed Insights.</p>
       </header>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', marginBottom: '40px' /* Más espacio antes de resultados */ }}>
+      {/* FORMULARIO CON ESTILOS DE TAILWIND ADAPTADOS DE ContactStyleOne */}
+      <form 
+        onSubmit={handleSubmit} 
+        // Clases de Tailwind para el layout del formulario
+        className="flex flex-col sm:flex-row items-center gap-3 mb-10" // sm:flex-row para que en pantallas pequeñas sea columna
+      >
         <input
           type="url"
           value={url}
           onChange={(e) => { setUrl(e.target.value); setError(null); }}
           placeholder="https://ejemplo.com"
           required
-          style={{ flexGrow: 1, padding: '12px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '1em' }}
+          // Clases del formulario de contacto: "w-full bg-surface text-secondary caption1 px-4 py-3 rounded-lg"
+          // Adaptadas:
+          // - 'flex-grow' para que el input se expanda.
+          // - 'sm:w-auto' para que en pantallas pequeñas (cuando es columna) ocupe el ancho y en grandes se ajuste al flex-grow.
+          // - Asegúrate que 'bg-surface', 'text-secondary', 'caption1' estén definidas en tu Tailwind/CSS.
+          // - 'focus:ring-blue-500 focus:border-blue-500' son ejemplos de estilos de foco.
+          className="flex-grow w-full sm:w-auto bg-surface text-secondary caption1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
-        <button type="submit" disabled={isLoading} style={{ padding: '12px 20px', backgroundColor: isLoading ? '#ccc' : '#1a73e8' /* Azul Google */, color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '1em' }}>
+        <button
+          type="submit"
+          disabled={isLoading}
+          // Clases del formulario de contacto: "button-main hover:border-blue bg-blue text-white text-button rounded-full"
+          // Adaptadas, incluyendo padding, estado de carga y transiciones:
+          // - 'w-full sm:w-auto' para responsividad.
+          // - 'px-6 py-3' para un padding generoso.
+          // - Asegúrate que 'button-main', 'text-button', 'bg-blue' (o el color que uses) estén definidos.
+          className={`button-main text-white text-button rounded-full px-6 py-3 w-full sm:w-auto transition-colors duration-150 ease-in-out whitespace-nowrap
+                      ${isLoading 
+                        ? 'bg-gray-400 hover:bg-gray-400 cursor-not-allowed' 
+                        : 'bg-blue hover:bg-blue-600' // Reemplaza 'bg-blue' por tu clase de color principal si es diferente
+                      }`}
+        >
           {isLoading ? 'Auditando...' : 'Auditar Sitio'}
         </button>
       </form>
 
-      {isLoading && <p style={{ textAlign: 'center', fontSize: '1.1em', margin: '20px 0' }}>Cargando resultados...</p>}
+      {isLoading && <p className="text-center text-lg text-gray-600 my-5">Cargando resultados...</p>}
       
       {error && (
-        <p style={{ color: '#d93025' /* Rojo Google */, textAlign: 'center', background: '#fce8e6', border: '1px solid #fcc6c0', padding: '10px', borderRadius: '4px', margin: '20px 0' }}>
+        // Clases de Tailwind para el mensaje de error, ejemplo:
+        <p className="text-center text-red-600 bg-red-100 border border-red-300 p-3 rounded-md my-5">
           Error: {error}
         </p>
       )}
@@ -184,37 +209,30 @@ export default function WebsiteAuditPage() {
       {results && !error && (
         <div>
           {results.lighthouseResult && results.lighthouseResult.requestedUrl && (
-            <h2 style={{ textAlign: 'center', marginBottom: '20px', fontSize: '1.4em', color: '#3c4043' }}>
-              Resultados para: <a href={results.lighthouseResult.requestedUrl} target="_blank" rel="noopener noreferrer" style={{color: '#1a73e8'}}>{results.lighthouseResult.requestedUrl}</a>
+            // Ejemplo de clases para el encabezado de resultados
+            <h2 className="text-center text-xl font-semibold text-gray-700 mb-5">
+              Resultados para: <a href={results.lighthouseResult.requestedUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">{results.lighthouseResult.requestedUrl}</a>
             </h2>
           )}
 
           {/* Contenedor para las puntuaciones horizontales */}
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'row', 
-            justifyContent: 'space-around', // O 'space-between'
-            flexWrap: 'wrap', // Para que se ajusten en pantallas pequeñas
-            gap: '20px', // Espacio entre los bloques de puntuación
-            marginBottom: '40px' 
-          }}>
+          <div className="flex flex-row flex-wrap justify-around gap-5 mb-10">
             {results.lighthouseResult ? 
               renderLighthouseScoresHorizontal(results.lighthouseResult.categories) :
-              // Este mensaje se mostraría si !results.lighthouseResult pero results sí existe y no hay error
-              // Lo cual fue manejado en handleSubmit, por lo que es menos probable que se vea aquí.
-              <p style={{ width: '100%', textAlign: 'center' }}>No se encontraron datos de Lighthouse para esta URL.</p> 
+              <p className="w-full text-center text-gray-600">No se encontraron datos de Lighthouse para esta URL.</p> 
             }
           </div>
           
           {/* Indicador simple para Core Web Vitals (datos de campo) */}
           {(results.loadingExperience && results.loadingExperience.metrics && Object.keys(results.loadingExperience.metrics).length > 0) || 
            (results.loadingExperience && (!results.loadingExperience.metrics || Object.keys(results.loadingExperience.metrics).length === 0)) ? (
-            <div style={{ marginTop: '30px', borderTop: '1px solid #e0e0e0', paddingTop: '20px', paddingBottom: '20px', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
-              <h3 style={{ textAlign: 'center', marginTop: 0, marginBottom: '15px', color: '#3c4043' }}>Experiencia de Carga (Core Web Vitals)</h3>
+            // Ejemplo de clases para la sección de Core Web Vitals
+            <div className="mt-8 pt-5 pb-5 border-t border-gray-200 bg-gray-50 rounded-lg">
+              <h3 className="text-center text-lg font-semibold text-gray-700 mt-0 mb-3">Experiencia de Carga (Core Web Vitals)</h3>
               {results.loadingExperience.metrics && Object.keys(results.loadingExperience.metrics).length > 0 ? (
-                <p style={{textAlign: 'center', color: '#34a853', fontSize: '1.1em' }}>Se encontraron datos de campo para esta URL.</p>
+                <p className="text-center text-green-600 text-lg">Se encontraron datos de campo para esta URL.</p>
               ) : (
-                <p style={{ textAlign: 'center', color: '#5f6368' }}>No se encontraron métricas de datos de campo para esta URL.</p>
+                <p className="text-center text-gray-500">No se encontraron métricas de datos de campo para esta URL.</p>
               )}
             </div>
           ) : null }
