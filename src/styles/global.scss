@@ -33,7 +33,7 @@ html {
 
 html,
 body {
-    font-size: 16px;
+    font-size: 16px; /* Base font size */
     line-height: 26px;
     font-weight: 400;
     color: var(--black);
@@ -50,6 +50,10 @@ p {
 select {
     appearance: none;
     outline: none;
+    // ✨ MODIFICACIÓN: Asegura el font-size a 16px para select y mejora la usabilidad
+    font-size: 16px;
+    line-height: 1.5; /* Buena práctica para espacio vertical */
+    padding: 0.5em 0.75em; /* Un poco de padding para facilitar el toque */
 }
 
 .select-block {
@@ -67,6 +71,10 @@ textarea {
     outline: none;
     border: 1px solid transparent;
     transition: border-color ease 0.3s;
+    // ✨ MODIFICACIÓN: Asegura el font-size a 16px para input y textarea y mejora la usabilidad
+    font-size: 16px;
+    line-height: 1.5; /* Buena práctica para espacio vertical */
+    padding: 0.5em 0.75em; /* Un poco de padding para facilitar el toque */
 }
 
 input:focus,
@@ -316,7 +324,7 @@ button {
 
     html,
     body {
-        font-size: 14px;
+        font-size: 14px; // Esto está bien para el texto general del body, pero NO para inputs/textareas/selects
         line-height: 24px;
     }
 
