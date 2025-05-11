@@ -147,7 +147,7 @@ export default function ContactStyleOne() {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div className="w-full">
                         <input
-                          className="w-full bg-surface text-secondary caption1 px-4 py-3 rounded-lg"
+                          className="w-full bg-surface text-secondary caption11 px-4 py-3 rounded-lg"
                           type="text"
                           placeholder="Your Name" // Placeholder updated
                           required
@@ -155,7 +155,7 @@ export default function ContactStyleOne() {
                       </div>
                       <div className="w-full">
                         <input
-                          className="w-full bg-surface text-secondary caption1 px-4 py-3 rounded-lg"
+                          className="w-full bg-surface text-secondary caption11 px-4 py-3 rounded-lg"
                           type="text"
                           placeholder="Subject"
                           required
@@ -163,7 +163,7 @@ export default function ContactStyleOne() {
                       </div>
                       <div className="col-span-2">
                         <input
-                          className="w-full bg-surface text-secondary caption1 px-4 py-3 rounded-lg"
+                          className="w-full bg-surface text-secondary caption11 px-4 py-3 rounded-lg"
                           type="email" // Changed type to email
                           placeholder="Your Email" // Placeholder updated
                           required
@@ -172,7 +172,7 @@ export default function ContactStyleOne() {
                       <div className="col-span-2">
                         {/* Select options updated for Fascinante Digital's services */}
                         <select
-                          className="w-full bg-surface text-secondary caption1 pl-3 py-3 rounded-lg"
+                          className="w-full bg-surface text-secondary caption11 pl-3 py-3 rounded-lg"
                           name="serviceOfInterest" // Updated name
                           defaultValue="" // Added default value
                           required // Added required attribute

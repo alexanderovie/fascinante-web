@@ -290,7 +290,7 @@ export default function WebsiteAuditPage() {
                 onChange={(e) => { setUrl(e.target.value); setError(null); }}
                 placeholder="https://ejemplo.com"
                 required
-                className="flex-grow w-full sm:w-auto bg-surface text-secondary caption1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="flex-grow w-full sm:w-auto bg-surface text-secondary caption11 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <button
                 type="submit"
