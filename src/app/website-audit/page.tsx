@@ -35,12 +35,14 @@ interface PageSpeedApiResult {
   lighthouseResult?: LighthouseResult;
   loadingExperience?: { // Core Web Vitals (Datos de campo)
     metrics: {
+      // La estructura exacta puede variar, pero típicamente son objetos
       [key: string]: {
         percentile: number;
         category: string; // Ejemplo: 'FAST', 'AVERAGE', 'SLOW'
+        // Podría haber más campos como distributions, etc.
       }
-    }
-  };
+    } | null; // metrics puede ser null
+  } | null; // loadingExperience puede ser null
   // La API puede devolver un error a nivel raíz también
   error?: {
     code: number;
@@ -85,14 +87,15 @@ export default function WebsiteAuditPage() {
       const data: PageSpeedApiResult = await response.json();
 
       if (!response.ok) {
-        // Usar el mensaje de error de nuestra API si está disponible
+        // Usar el mensaje de error de nuestra API si está disponible, o el statusText del response
         throw new Error(data.error?.message || `Error al auditar: ${response.statusText}`);
       }
       
-      if (data.error) { // Errores devueltos por la API de PageSpeed en el cuerpo JSON
+      // Comprobar si la propia API de PageSpeed devolvió un error en el cuerpo de la respuesta
+      if (data.error) {
         console.error("Error de la API de PageSpeed:", data.error);
         setError(`Error de PageSpeed: ${data.error.message}`);
-        setResults(null);
+        setResults(null); // Asegurarse de limpiar resultados previos si hay error
       } else {
         setResults(data);
       }
@@ -112,12 +115,22 @@ export default function WebsiteAuditPage() {
     
     return scoresToShow.map(key => {
       const category = categories[key];
-      if (!category) return null;
+      // Asegurarse de que la categoría existe antes de intentar renderizarla
+      if (!category || category.score === null || category.score === undefined) {
+        return (
+            <div key={key} style={{ border: '1px solid #ddd', padding: '15px', margin: '10px 0', borderRadius: '8px', backgroundColor: '#f9f9f9' }}>
+              <h3>{category?.title || key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+              <p style={{ fontSize: '1.5em', fontWeight: 'bold', color: 'grey' }}>
+                Puntuación: N/A
+              </p>
+            </div>
+          );
+      }
       return (
         <div key={category.id} style={{ border: '1px solid #ddd', padding: '15px', margin: '10px 0', borderRadius: '8px', backgroundColor: '#f9f9f9' }}>
           <h3>{category.title}</h3>
-          <p style={{ fontSize: '1.5em', fontWeight: 'bold', color: category.score !== null && category.score >= 0.9 ? 'green' : category.score !== null && category.score >= 0.5 ? 'orange' : 'red' }}>
-            Puntuación: {category.score !== null ? Math.round(category.score * 100) : 'N/A'} / 100
+          <p style={{ fontSize: '1.5em', fontWeight: 'bold', color: category.score >= 0.9 ? 'green' : category.score >= 0.5 ? 'orange' : 'red' }}>
+            Puntuación: {Math.round(category.score * 100)} / 100
           </p>
         </div>
       );
@@ -135,7 +148,7 @@ export default function WebsiteAuditPage() {
         <input
           type="url"
           value={url}
-          onChange={(e) => { setUrl(e.target.value); setError(null); }}
+          onChange={(e) => { setUrl(e.target.value); setError(null); }} // Limpiar error al escribir
           placeholder="https://ejemplo.com"
           required
           style={{ flexGrow: 1, padding: '12px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '1em' }}
@@ -166,22 +179,48 @@ export default function WebsiteAuditPage() {
               )}
               {renderScores(results.lighthouseResult.categories)}
             </>
-          ) : results.error ? (
+          ) : results.error ? ( // Si hubo un error a nivel raíz de la API de PageSpeed
             <p style={{ textAlign: 'center' }}>No se pudieron obtener los resultados de Lighthouse debido a un error de la API: {results.error.message}</p>
           ) : (
-            <p style={{ textAlign: 'center' }}>No se encontraron resultados de Lighthouse para esta URL. Puede que la URL no sea pública o accesible.</p>
+            // Si no hay lighthouseResult Y no hay un error a nivel raíz, puede ser un caso extraño o una URL no auditable.
+            !isLoading && !error && <p style={{ textAlign: 'center' }}>No se encontraron resultados de Lighthouse para esta URL. Puede que la URL no sea pública, no sea accesible o no haya devuelto datos de Lighthouse.</p>
           )}
           
-          {results.loadingExperience && (
+          {/* Sección para mostrar Core Web Vitals (loadingExperience) actualizada */}
+          {results && results.loadingExperience && results.loadingExperience.metrics && Object.keys(results.loadingExperience.metrics).length > 0 ? (
             <div style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
               <h3 style={{ textAlign: 'center' }}>Experiencia de Carga (Core Web Vitals - Datos de Campo):</h3>
-              {Object.entries(results.loadingExperience.metrics).map(([metricName, metricData]) => (
-                <div key={metricName} style={{ border: '1px solid #eee', padding: '10px', margin: '10px 0', borderRadius: '5px' }}>
-                  <strong>{metricName}:</strong> {metricData.percentile} (Categoría: {metricData.category})
-                </div>
-              ))}
+              {Object.entries(results.loadingExperience.metrics).map(([metricName, metricDataObject]) => {
+                // Formatear el nombre de la métrica para mejor legibilidad
+                const formattedMetricName = metricName
+                  .replace(/_/g, ' ')
+                  .split(' ')
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' ');
+
+                // Asegurarse que metricDataObject es un objeto y tiene las propiedades esperadas
+                // La API puede devolver objetos vacíos para algunas métricas si no hay datos.
+                if (typeof metricDataObject === 'object' && metricDataObject !== null && 'percentile' in metricDataObject && 'category' in metricDataObject) {
+                  return (
+                    <div key={metricName} style={{ border: '1px solid #eee', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: '#fcfcfc' }}>
+                      <strong>{formattedMetricName}:</strong>{' '}
+                      {metricDataObject.percentile} (Categoría: {metricDataObject.category})
+                    </div>
+                  );
+                }
+                return ( // Mostrar algo si la métrica no tiene datos completos
+                    <div key={metricName} style={{ border: '1px solid #eee', padding: '10px', margin: '10px 0', borderRadius: '5px', backgroundColor: '#fcfcfc' }}>
+                      <strong>{formattedMetricName}:</strong> Datos no disponibles
+                    </div>
+                );
+              })}
             </div>
-          )}
+          ) : results && results.loadingExperience && (!results.loadingExperience.metrics || Object.keys(results.loadingExperience.metrics).length === 0) ? (
+            <div style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
+              <h3 style={{ textAlign: 'center' }}>Experiencia de Carga (Core Web Vitals - Datos de Campo):</h3>
+              <p style={{ textAlign: 'center' }}>No se encontraron métricas de datos de campo para esta URL.</p>
+            </div>
+          ) : null}
         </div>
       )}
     </div>
