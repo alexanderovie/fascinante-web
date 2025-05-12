@@ -64,19 +64,19 @@ const Footer = () => {
                                 <Image width={145} height={40} className="footer-logo w-[145px] h-auto" src="/images/logo-white.svg" alt="Fascinante Digital Logo" />
                                 <div className="text caption1 text-white">We specialize in elevating your online presence through expert Web Design, effective Digital Marketing, and strategic Local Directory Listing.</div>
                                 <div className="list-social flex items-center gap-2.5 style-one">
-                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.facebook.com/fascinantedigital" target="_blank" aria-label="Facebook">
                                         <i className="icon-facebook text-sm"></i> {/* Manteniendo tus clases de iconos originales */}
                                     </Link>
-                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
+                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.linkedin.com/in/fascinantedigital/" target="_blank" aria-label="LinkedIn">
                                         <i className="icon-in text-sm"></i>
                                     </Link>
-                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.twitter.com/" target="_blank" aria-label="Twitter">
+                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://x.com/FascinanteD" target="_blank" aria-label="Twitter">
                                         <i className="icon-twitter text-xs"></i>
                                     </Link>
-                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.instagram.com/fascinantedigital/" target="_blank" aria-label="Instagram">
                                         <i className="icon-insta text-xs"></i>
                                     </Link>
-                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.youtube.com/" /* Ajusta la URL de YouTube si es necesario */ target="_blank" aria-label="YouTube">
+                                    <Link className="item rounded-full w-7 h-7 border-2 border-grey flex items-center justify-center" href="https://www.youtube.com/@FascinanteDigital" /* Ajusta la URL de YouTube si es necesario */ target="_blank" aria-label="YouTube">
                                         <i className="icon-youtube text-xs"></i>
                                     </Link>
                                 </div>
@@ -106,9 +106,9 @@ const Footer = () => {
                                     <div className="item-heading text-button-sm text-white">Recursos</div>
                                     <ul className="list-nav mt-1">
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/blog">Blog</Link></li>
-                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/services/web-audit">Auditoria Web</Link></li>
-                                        <li className="mt-3"><a className="caption1 has-line-before line-white text-surface hover-underline" href="#!">Chat en Vivo</a></li>
-                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="#!">Herramienta Gratuita de Auditoría SEO</Link></li>
+                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/services/website-audit">Auditoria Web</Link></li>
+                                        <li className="mt-3"><a className="caption1 has-line-before line-white text-surface hover-underline" href="/contact">Chat en Vivo</a></li>
+                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/services/website-audit">Herramienta Gratuita de Auditoría SEO</Link></li>
                                     </ul>
                                 </div>
                             </div>
