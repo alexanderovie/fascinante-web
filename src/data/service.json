@@ -4,27 +4,69 @@
         "icon": "icon-coin-chair",
         "category": "Digital Strategy",
         "title": "Comprehensive Digital Strategy",
-        "menuTitle": "Digital Strategy", 
+        "menuTitle": "Digital Strategy",
         "desc": "Develop a winning strategy to navigate the digital landscape and achieve your business goals with our expert guidance.",
-        "shortDesc": "Develop a winning digital strategy."
+        "shortDesc": "Develop a winning digital strategy.",
+        "bannerImageUrl": "/images/banner/team-celebrating.png",
+        "detailHeading": "Unlocking Your Digital Potential: A Comprehensive Strategy",
+        "detailParagraph1": "Our Comprehensive Digital Strategy service is designed to provide a clear roadmap for your online success. We delve deep into your business, market, and audience to craft a tailored strategy that integrates all necessary digital channels effectively. From SEO to content, social media, and paid advertising, we ensure a cohesive approach.",
+        "contentImageUrl": "/images/component/about-home5.png",
+        "detailSubHeading": "What Our Digital Strategy Encompasses",
+        "detailParagraph2": "We cover every angle: competitive analysis, target audience persona development, channel strategy, content planning, KPI setting, and performance measurement frameworks. Our goal is to equip you with a sustainable and adaptable strategy that drives growth and maximizes your digital ROI.",
+        "features": [
+            "In-depth Market & Competitor Analysis",
+            "Custom Audience Persona Creation",
+            "Multi-channel Digital Roadmap",
+            "Content Strategy & Planning",
+            "KPI Definition & Performance Tracking",
+            "Ongoing Optimization & Reporting"
+        ]
     },
     {
         "id": "advanced-seo-content-marketing",
         "icon": "icon-hand-tick",
         "category": "SEO & Content Marketing",
         "title": "Advanced SEO & Content Marketing",
-        "menuTitle": "SEO & Content", 
+        "menuTitle": "SEO & Content",
         "desc": "Boost your online visibility, attract qualified traffic, and build authority with our data-driven SEO and compelling content strategies across all digital channels.",
-        "shortDesc": "Boost visibility with SEO & engaging content."
+        "shortDesc": "Boost visibility with SEO & engaging content.",
+        "bannerImageUrl": "/images/banner/case-studies.webp",
+        "detailHeading": "Dominating Search & Engaging Audiences",
+        "detailParagraph1": "Elevate your online presence with our Advanced SEO & Content Marketing services. We combine cutting-edge SEO techniques with compelling content creation to attract qualified traffic, build authority, and convert visitors into loyal customers across all digital touchpoints.",
+        "contentImageUrl": "/images/blog/fascinante-blog-placeholder.webp",
+        "detailSubHeading": "Our SEO & Content Methodology",
+        "detailParagraph2": "From comprehensive keyword research and on-page optimization to technical SEO audits and high-quality content production (blogs, articles, videos), we ensure your brand stands out. We focus on sustainable strategies that deliver long-term results and a strong organic footprint.",
+        "features": [
+            "Advanced Keyword Research & Strategy",
+            "Technical SEO Audits & Implementation",
+            "On-Page & Off-Page Optimization",
+            "High-Quality Content Creation & Distribution",
+            "Link Building & Outreach",
+            "Performance Analytics & Reporting"
+        ]
     },
     {
         "id": "targeted-paid-advertising-performance-campaigns",
         "icon": "icon-hand-house",
         "category": "Paid Media & Performance Marketing",
         "title": "Targeted Paid Advertising & Performance Campaigns",
-        "menuTitle": "Paid Advertising", 
+        "menuTitle": "Paid Advertising",
         "desc": "Reach your ideal customers, maximize ROI, and achieve specific, measurable outcomes with expertly managed paid advertising and results-driven performance marketing campaigns.",
-        "shortDesc": "Maximize ROI with paid ads & performance campaigns."
+        "shortDesc": "Maximize ROI with paid ads & performance campaigns.",
+        "bannerImageUrl": "/images/banner/form-benefit-two.png",
+        "detailHeading": "Maximizing ROI with Precision-Targeted Ads",
+        "detailParagraph1": "Reach your ideal customers and achieve measurable outcomes with our Targeted Paid Advertising & Performance Campaigns. We manage your ad spend efficiently across platforms like Google Ads, Facebook, Instagram, and LinkedIn to maximize your return on investment.",
+        "contentImageUrl": "/images/component/graphic-features3.png",
+        "detailSubHeading": "Our Approach to Paid Media",
+        "detailParagraph2": "We handle everything from campaign setup, ad copywriting, and creative design to A/B testing, bid management, and detailed performance analysis. Our focus is on driving conversions, whether it's leads, sales, or specific engagement goals.",
+        "features": [
+            "Google Ads (Search, Display, Video)",
+            "Social Media Advertising (Facebook, Instagram, LinkedIn)",
+            "Campaign Strategy & A/B Testing",
+            "Conversion Tracking & ROI Optimization",
+            "Audience Targeting & Retargeting",
+            "Detailed Reporting & Insights"
+        ]
     },
     {
         "id": "interactive-web-e-commerce-development",
@@ -33,7 +75,21 @@
         "title": "Interactive Web & E-commerce Development",
         "menuTitle": "Web Development",
         "desc": "Create engaging, user-friendly websites and powerful, scalable e-commerce platforms designed to optimize the customer journey, enhance functionality, and maximize online sales.",
-        "shortDesc": "Design interactive websites & e-commerce platforms."
+        "shortDesc": "Design interactive websites & e-commerce platforms.",
+        "bannerImageUrl": "/images/banner/websites-design.webp",
+        "detailHeading": "Building Engaging Digital Experiences & Online Stores",
+        "detailParagraph1": "Create stunning, user-friendly websites and powerful e-commerce platforms with our Interactive Web & E-commerce Development services. We design and build sites that not only look great but also perform flawlessly to enhance the customer journey and drive sales.",
+        "contentImageUrl": "/images/component/Website-Design.webp",
+        "detailSubHeading": "Our Web & E-commerce Expertise",
+        "detailParagraph2": "We specialize in custom WordPress development, Shopify store setups, and full-stack web applications. Our process includes UX/UI design, responsive development, secure payment gateway integration, and ensuring optimal site speed and performance.",
+        "features": [
+            "Custom Website Design & Development",
+            "E-commerce Platform Development (Shopify, WooCommerce)",
+            "Responsive & Mobile-First Design",
+            "UX/UI Design & Prototyping",
+            "CMS Integration & Customization",
+            "API Integrations & Custom Functionality"
+        ]
     },
     {
         "id": "digital-performance-analysis-cro",
@@ -42,15 +98,43 @@
         "title": "Digital Performance Analysis & CRO",
         "menuTitle": "Analytics & CRO",
         "desc": "Understand your digital performance with in-depth analytics, gain deep insights into customer behavior, and optimize your website to turn more visitors into leads and customers.",
-        "shortDesc": "Analyze performance & increase conversions."
+        "shortDesc": "Analyze performance & increase conversions.",
+        "bannerImageUrl": "/images/banner/about1.webp",
+        "detailHeading": "Turning Data into Growth: Analytics & Conversion Optimization",
+        "detailParagraph1": "Understand your digital footprint and optimize for higher conversions with our Digital Performance Analysis & CRO (Conversion Rate Optimization) services. We use data-driven insights to identify bottlenecks and opportunities in your user funnels.",
+        "contentImageUrl": "/images/component/assessment.png",
+        "detailSubHeading": "How We Optimize for Conversions",
+        "detailParagraph2": "Our services include setting up advanced analytics tracking, A/B testing, heatmap analysis, user journey mapping, and implementing changes to improve user experience and guide more visitors towards your desired actions, ultimately boosting your conversion rates.",
+        "features": [
+            "Google Analytics & Tag Manager Setup",
+            "Conversion Funnel Analysis",
+            "A/B & Multivariate Testing",
+            "User Experience (UX) Audits",
+            "Landing Page Optimization (LPO)",
+            "Data Visualization & Actionable Reporting"
+        ]
     },
     {
         "id": "digital-brand-identity-online-reputation",
         "icon": "icon-vali",
         "category": "Brand Identity & Reputation Management",
         "title": "Digital Brand Identity & Online Reputation",
-        "menuTitle": "Brand Identity", 
+        "menuTitle": "Brand Identity",
         "desc": "Build a strong, consistent brand identity across digital platforms and protect/enhance your brand's image by actively managing online perception.",
-        "shortDesc": "Develop brand identity & manage online reputation."
+        "shortDesc": "Develop brand identity & manage online reputation.",
+        "bannerImageUrl": "/images/banner/project-above-home5.png",
+        "detailHeading": "Crafting & Protecting Your Digital Brand",
+        "detailParagraph1": "Build a compelling Digital Brand Identity and manage your Online Reputation effectively with our specialized services. We help you create a consistent and memorable brand presence across all digital platforms while actively monitoring and shaping online perceptions.",
+        "contentImageUrl": "/images/component/earth6.png",
+        "detailSubHeading": "Our Branding & Reputation Services",
+        "detailParagraph2": "This includes logo design, brand guidelines, social media branding, online review management, sentiment analysis, and strategies to address negative feedback or crisis situations. We aim to build trust and foster a positive image for your brand online.",
+        "features": [
+            "Brand Strategy & Positioning",
+            "Logo Design & Visual Identity",
+            "Online Reputation Monitoring",
+            "Review Management & Generation",
+            "Social Media Listening & Sentiment Analysis",
+            "Content Strategies for Brand Building"
+        ]
     }
 ]
