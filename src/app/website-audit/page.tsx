@@ -95,20 +95,33 @@ export default function WebsiteAuditPage() {
   
   const [activeStrategyTab, setActiveStrategyTab] = useState<'mobile' | 'desktop'>('mobile');
 
-  const toggleAuditExpansion = (auditId: string) => { 
-    const key = `${auditId}-${activeStrategyTab}`;
-    setExpandedAuditIds(prev => ({ ...prev, [key]: !prev[key] }));
-  }
-  const showMoreDetailItems = (auditId: string, totalItems: number) => { 
-    const key = `${auditId}-${activeStrategyTab}`;
-    setVisibleDetailItems(prev => {
-      const currentVisible = prev[key] || INITIAL_DETAIL_ITEMS_TO_SHOW;
-      return { ...prev, [key]: Math.min(currentVisible + 5, totalItems) };
+  const toggleAuditExpansion = (keyToToggle: string) => { 
+    // Se mantienen los console.log de depuración por si acaso, puedes eliminarlos si ya no los necesitas.
+    console.log('[DEBUG] ToggleAuditExpansion - Key:', keyToToggle);
+    setExpandedAuditIds(prev => {
+      const newState = { ...prev, [keyToToggle]: !prev[keyToToggle] };
+      console.log('[DEBUG] ToggleAuditExpansion - Previous State:', prev);
+      console.log('[DEBUG] ToggleAuditExpansion - New State:', newState);
+      return newState;
     });
   }
-  const showLessDetailItems = (auditId: string) => { 
-    const key = `${auditId}-${activeStrategyTab}`;
-    setVisibleDetailItems(prev => ({ ...prev, [key]: INITIAL_DETAIL_ITEMS_TO_SHOW }));
+  const showMoreDetailItems = (keyForItems: string, totalItems: number) => { 
+    console.log('[DEBUG] ShowMoreDetailItems - Key:', keyForItems, 'Total:', totalItems);
+    setVisibleDetailItems(prev => {
+      const currentVisible = prev[keyForItems] || INITIAL_DETAIL_ITEMS_TO_SHOW;
+      const newCount = Math.min(currentVisible + 5, totalItems);
+      const newState = { ...prev, [keyForItems]: newCount };
+      console.log('[DEBUG] ShowMoreDetailItems - New State:', newState);
+      return newState;
+    });
+  }
+  const showLessDetailItems = (keyForItems: string) => { 
+    console.log('[DEBUG] ShowLessDetailItems - Key:', keyForItems);
+    setVisibleDetailItems(prev => {
+      const newState = { ...prev, [keyForItems]: INITIAL_DETAIL_ITEMS_TO_SHOW };
+      console.log('[DEBUG] ShowLessDetailItems - New State:', newState);
+      return newState;
+    });
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -257,6 +270,9 @@ export default function WebsiteAuditPage() {
             {diagnosticAudits.map((audit) => {
               const keyForExpansion = `${audit.id}-${activeStrategyTab}`; 
               const isExpanded = !!expandedAuditIds[keyForExpansion];
+              // CONSOLE LOG PARA DEPURAR isExpanded (se mantiene por si acaso)
+              // console.log(`[DEBUG] RenderDiagnostics - Audit: ${audit.title}, Key: ${keyForExpansion}, IsExpanded: ${isExpanded}, AllExpandedState:`, expandedAuditIds);
+
               const currentVisibleItems = visibleDetailItems[keyForExpansion] || INITIAL_DETAIL_ITEMS_TO_SHOW;
               const totalDetailItems = audit.details?.items?.length || 0;
               return (
@@ -266,8 +282,11 @@ export default function WebsiteAuditPage() {
                     <span className="text-secondary"><Icon.CaretDown size={20} weight="bold" className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} /></span>
                   </div>
                   {audit.displayValue && (<p className="text-sm text-secondary mt-1"><span className="font-medium">{audit.displayValue}</span></p>)}
+                  
+                  {/* CONTENIDO EXPANDIBLE - TEXTO Y FONDO DE DEBUG ELIMINADOS */}
                   {isExpanded && (
-                    <div id={`audit-details-${keyForExpansion}`} className="mt-3 pt-3 border-t border-line">
+                    <div id={`audit-details-${keyForExpansion}`} className="mt-3 pt-3 border-t border-line"> {/* Eliminado bg-yellow-100 p-2 */}
+                      {/* Eliminado: <p className="font-bold text-red-500">[DEBUG] ESTA SECCIÓN ESTÁ EXPANDIDA: {audit.title}</p> */}
                       <div className="text-sm text-secondary mt-2 prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: audit.description }} />
                       {audit.details && audit.details.items && audit.details.items.length > 0 && (
                         <div className="mt-4 pt-3 border-t border-line">
@@ -347,7 +366,6 @@ export default function WebsiteAuditPage() {
 
                 {activeStrategyResult && activeStrategyResult.lighthouseResult ? (
                   <>
-                    {/* CORRECCIÓN AQUÍ: Usar activeStrategyResult para requestedUrl */}
                     {activeStrategyResult.lighthouseResult.requestedUrl && ( 
                         <p className="text-center text-sm text-secondary mb-6">
                             Analizando: <a href={activeStrategyResult.lighthouseResult.requestedUrl} target="_blank" rel="noopener noreferrer" className="text-blue hover:underline">{activeStrategyResult.lighthouseResult.requestedUrl}</a>
