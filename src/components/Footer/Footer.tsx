@@ -138,7 +138,7 @@ const Footer = () => {
                                 {/* Newsletter form - CONECTADO A LA LÓGICA */}
                                 <form onSubmit={handleSubmitNewsletter} className="send-block mt-5 flex items-center h-[46px] rounded-lg overflow-hidden border border-gray-700 focus-within:border-blue-500"> {/* Añadido borde y focus para mejor UI */}
                                     <input
-                                        className="caption1 text-white placeholder-gray-400 bg-transparent h-full w-full pr-4 pl-3 focus:outline-none" // Mejorado estilo
+                                        className="caption11 text-white placeholder-gray-400 bg-transparent h-full w-full pr-4 pl-3 focus:outline-none" // Mejorado estilo
                                         type="email" // Tipo email para validación básica
                                         placeholder="Enter your email"
                                         value={email}
