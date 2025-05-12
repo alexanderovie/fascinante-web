@@ -1,13 +1,7 @@
-
-
-
 // src/app/dashboard/location-audit/page.tsx
 "use client";
 
-// src/app/dashboard/location-audit/page.tsx
-"use client";
-
-import React, { useState } from 'react'; // CORREGIDO: Añadido 'from 'react';'
+import React, { useState } from 'react';
 import { Autocomplete, LoadScriptNext } from '@react-google-maps/api';
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import MenuOne from "@/components/Header/Menu/MenuTwo";
@@ -20,11 +14,10 @@ interface SelectedPlaceData {
   address?: string;
   phone?: string;
   googlePlaceId?: string;
-  website?: string; 
+  website?: string;
 }
 
 const LIBRARIES: ("places")[] = ['places'];
-
 
 export default function LocationAuditPage() {
   const [autocompleteInstance, setAutocompleteInstance] = useState<google.maps.places.Autocomplete | null>(null);
@@ -59,27 +52,22 @@ export default function LocationAuditPage() {
   const handleNextStep = () => {
     if (selectedPlace) {
       console.log("Continuar al siguiente paso con:", selectedPlace);
-      // Lógica futura:
-      // 1. Verificar en Supabase si existe `selectedPlace.googlePlaceId`.
-      // 2. Si sí, cargar datos. Si no, usar `selectedPlace` para pre-llenar.
       alert(`Simulación: Siguiente paso con ${selectedPlace.name}`);
     } else {
       alert("Por favor, busca y selecciona un negocio primero.");
     }
   };
 
-  // Manejo del error de API Key de forma más integrada
-  if (!googleMapsApiKey && process.env.NODE_ENV !== 'production') { // Solo muestra error detallado en desarrollo
+  if (!googleMapsApiKey && process.env.NODE_ENV !== 'production') {
     console.error("Error: NEXT_PUBLIC_GOOGLE_API_KEY no está configurada.");
   }
-
 
   return (
     <>
       <div className="overflow-x-hidden">
         <header id="header"><TopNavTwo /><MenuOne /></header>
         <main className="content py-10 md:py-16">
-          <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8"> {/* Contenedor principal, max-w ajustado */}
+          <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 
             <div className="text-center mb-10 md:mb-12">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-3">
@@ -90,7 +78,7 @@ export default function LocationAuditPage() {
               </p>
             </div>
 
-            {!googleMapsApiKey && ( // Mostrar error si la API key no está en producción
+            {!googleMapsApiKey && (
                  <div className="text-center my-8 p-4 rounded-md bg-critical/10 border border-critical/30 max-w-xl mx-auto">
                     <Icon.WarningCircle size={48} className="text-critical mx-auto mb-3" />
                     <h3 className="text-xl font-semibold text-critical mb-2">Error de Configuración</h3>
@@ -109,12 +97,14 @@ export default function LocationAuditPage() {
                     <p className="text-secondary dark:text-gray-400 mt-2">Cargando herramientas de búsqueda...</p>
                   </div>
                 }
-                onError={() => {
-                  console.error("Error al cargar Google Maps Script");
-                  // Podrías setear un estado de error aquí para mostrar un mensaje al usuario
+                onError={(error) => { // Añadido parámetro error para ver detalles
+                  console.error("Error al cargar Google Maps Script:", error);
                 }}
               >
-                {isLoadingGoogle ? null : ( // Solo renderiza el Autocomplete si el script se cargó
+                {/* --- INICIO DE LA CORRECCIÓN --- */}
+                {isLoadingGoogle ? <React.Fragment /> : ( // O puedes usar <></>
+                // {isLoadingGoogle ? <></> : ( // Esta es la línea que se corrigió
+                // --- FIN DE LA CORRECCIÓN --- */}
                   <div className="max-w-xl mx-auto bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg">
                     <div className="mb-6">
                       <label htmlFor="autocomplete-input" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
@@ -125,8 +115,7 @@ export default function LocationAuditPage() {
                         onPlaceChanged={onPlaceChanged}
                         options={{
                           types: ['establishment'],
-                          fields: ['place_id', 'name', 'formatted_address', 'formatted_phone_number', 'website', 'geometry'], // Campos esenciales
-                          // componentRestrictions: { country: 'US' }, // Ejemplo: Restringir a un país
+                          fields: ['place_id', 'name', 'formatted_address', 'formatted_phone_number', 'website', 'geometry'],
                         }}
                       >
                         <input
@@ -136,7 +125,7 @@ export default function LocationAuditPage() {
                           value={inputValue}
                           onChange={(e) => {
                             setInputValue(e.target.value);
-                            if (selectedPlace) setSelectedPlace(null); // Limpiar selección si el usuario escribe de nuevo
+                            if (selectedPlace) setSelectedPlace(null);
                           }}
                           className="flex-grow w-full bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 text-base px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent"
                         />
@@ -181,7 +170,7 @@ export default function LocationAuditPage() {
 
                         <button
                           onClick={handleNextStep}
-                          disabled={!selectedPlace} // Deshabilitar si no hay lugar seleccionado
+                          disabled={!selectedPlace}
                           className={`button-main text-white text-base font-medium rounded-full px-8 py-3 w-full sm:w-auto transition-colors duration-150 ease-in-out mt-8 flex items-center justify-center gap-2 ${
                             !selectedPlace
                               ? 'bg-grey hover:bg-grey cursor-not-allowed dark:bg-gray-500 dark:hover:bg-gray-500'
