@@ -33,7 +33,7 @@ export default function Home() {
                     <Project />
                     <ServiceTwo data={serviceData} />
                     <TestimonialTwo />
-                    <FormRequestTwo classname="style-two" bgImg="/images/banner/team-celebrating.png" />
+                    <FormRequestTwo classname="style-two" bgImg="/images/banner/team-celebrating.webp" />
                     <BlogOne data={blogData} />
                     <div className="pb-[100px]"></div>
                     <CtaOne />

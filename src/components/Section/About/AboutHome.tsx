@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"; // Aunque no se usa Link directamente, lo dejo si estaba en tu original
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
 const AboutHome = () => {
@@ -24,6 +24,7 @@ const AboutHome = () => {
                 height={4000}
                 alt="Digital marketing strategy assessment dashboard"
                 className="w-full h-full block"
+                priority // <-- ÚNICO CAMBIO: AÑADIR ESTO
               />
             </div>
           </div>
@@ -133,7 +134,7 @@ const AboutHome = () => {
               </a>
               <a
                 className="button-main text-on-surface hover:bg-black hover:text-white hover:border-transparent bg-white text-button rounded-full border-2 border-blue flex items-center gap-2"
-                href="tel:+18008864981" // <-- CAMBIO AQUÍ: se usa "tel:" seguido del número
+                href="tel:+18008864981" 
               >
                 <i className="ph ph-phone text-xl"></i>
                 <span>+1 (800) 886 4981</span>
