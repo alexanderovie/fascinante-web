@@ -93,11 +93,9 @@ export default function WebsiteAuditPage() {
   const [visibleDetailItems, setVisibleDetailItems] = useState<Record<string, number>>({});
   const INITIAL_DETAIL_ITEMS_TO_SHOW = 3;
   
-  // Nuevo estado para la pestaña de estrategia activa, por defecto 'mobile'
   const [activeStrategyTab, setActiveStrategyTab] = useState<'mobile' | 'desktop'>('mobile');
 
   const toggleAuditExpansion = (auditId: string) => { 
-    // Añadir la estrategia activa a la clave para que el estado de expansión sea único por estrategia
     const key = `${auditId}-${activeStrategyTab}`;
     setExpandedAuditIds(prev => ({ ...prev, [key]: !prev[key] }));
   }
@@ -119,7 +117,7 @@ export default function WebsiteAuditPage() {
     setResults(null);
     setExpandedAuditIds({});
     setVisibleDetailItems({});
-    setActiveStrategyTab('mobile'); // Resetear a mobile en nueva búsqueda
+    setActiveStrategyTab('mobile'); 
 
     if (!url) { setError('Por favor, ingresa la URL de un sitio web.'); return; }
     if (!url.startsWith('http://') && !url.startsWith('https://')) { setError('Por favor, ingresa una URL válida (ej. https://example.com)'); return; }
@@ -151,14 +149,12 @@ export default function WebsiteAuditPage() {
   };
 
   const renderSingleStrategyScores = (strategyResult: SinglePageSpeedResult | null | undefined, strategyName: string) => {
-    // ... (sin cambios en la lógica interna, solo se llamará una vez con la estrategia activa)
     if (!strategyResult || !strategyResult.lighthouseResult?.categories) {
       return <p className="w-full text-center text-gray-500 py-4">No hay datos de Lighthouse para {strategyName}.</p>;
     }
     const categoriesData = strategyResult.lighthouseResult.categories;
     return (
       <div className="mb-8">
-        {/* El título de la estrategia (Desktop/Mobile) se manejará por las pestañas */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {['performance', 'accessibility', 'best-practices', 'seo'].map(key => {
             const category = categoriesData[key as keyof LighthouseResult['categories']];
@@ -185,7 +181,6 @@ export default function WebsiteAuditPage() {
   };
   
   const renderCoreWebVitals = (strategyResult: SinglePageSpeedResult | null | undefined, strategyName: string) => {
-    // ... (sin cambios en la lógica interna, solo se llamará una vez con la estrategia activa)
     if (!strategyResult?.loadingExperience?.metrics) {
       return (
         <div className="p-4 border border-gray-200 rounded-lg bg-white shadow">
@@ -201,7 +196,6 @@ export default function WebsiteAuditPage() {
     ];
     return (
       <div className="p-4 border border-gray-200 rounded-lg bg-white shadow">
-        {/* El título de la estrategia se manejará por las pestañas */}
         <div className="space-y-3">
           {vitalsToShow.map(vital => {
             const metricData = metrics[vital.key];
@@ -242,7 +236,6 @@ export default function WebsiteAuditPage() {
   };
 
   const renderDiagnosticsSection = (singleStrategyResult: SinglePageSpeedResult | null | undefined) => {
-    // ... (La lógica interna de esta función no cambia, pero ahora recibe el resultado de la estrategia activa)
     if (!singleStrategyResult || !singleStrategyResult.lighthouseResult || !singleStrategyResult.lighthouseResult.categories?.performance?.auditRefs || !singleStrategyResult.lighthouseResult.audits) {
       return <p className="text-center text-secondary mt-4">No hay datos de diagnóstico disponibles para la estrategia seleccionada.</p>;
     }
@@ -262,7 +255,7 @@ export default function WebsiteAuditPage() {
           <h3 className="text-center text-lg font-semibold text-black mt-0 mb-5">Diagnósticos Adicionales</h3>
           <div className="space-y-4">
             {diagnosticAudits.map((audit) => {
-              const keyForExpansion = `${audit.id}-${activeStrategyTab}`; // Usar activeStrategyTab para la clave
+              const keyForExpansion = `${audit.id}-${activeStrategyTab}`; 
               const isExpanded = !!expandedAuditIds[keyForExpansion];
               const currentVisibleItems = visibleDetailItems[keyForExpansion] || INITIAL_DETAIL_ITEMS_TO_SHOW;
               const totalDetailItems = audit.details?.items?.length || 0;
@@ -307,10 +300,8 @@ export default function WebsiteAuditPage() {
       );
   };
 
-  // Determinar qué conjunto de resultados mostrar basado en la pestaña activa
   const activeStrategyResult = activeStrategyTab === 'mobile' ? results?.mobileResult : results?.desktopResult;
 
-  // --- JSX del Componente ---
   return (
     <>
       <div className="overflow-x-hidden">
@@ -333,7 +324,6 @@ export default function WebsiteAuditPage() {
 
             {results && !error && (
               <div>
-                {/* Pestañas para seleccionar Mobile/Desktop */}
                 <div className="flex justify-center mb-6 border-b border-line">
                   <button 
                     onClick={() => setActiveStrategyTab('mobile')}
@@ -351,15 +341,14 @@ export default function WebsiteAuditPage() {
                   </button>
                 </div>
 
-                {/* Título de la estrategia activa */}
                 <h2 className="text-2xl font-semibold text-black mb-6 text-center">
                   Resultados para {activeStrategyTab.charAt(0).toUpperCase() + activeStrategyTab.slice(1)}
                 </h2>
 
-                {/* Mostrar resultados de la estrategia activa */}
                 {activeStrategyResult && activeStrategyResult.lighthouseResult ? (
                   <>
-                    {results.lighthouseResult && results.lighthouseResult.requestedUrl && ( // Muestra la URL analizada una vez
+                    {/* CORRECCIÓN AQUÍ: Usar activeStrategyResult para requestedUrl */}
+                    {activeStrategyResult.lighthouseResult.requestedUrl && ( 
                         <p className="text-center text-sm text-secondary mb-6">
                             Analizando: <a href={activeStrategyResult.lighthouseResult.requestedUrl} target="_blank" rel="noopener noreferrer" className="text-blue hover:underline">{activeStrategyResult.lighthouseResult.requestedUrl}</a>
                         </p>
