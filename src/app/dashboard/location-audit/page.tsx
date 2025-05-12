@@ -127,8 +127,8 @@ export default function LocationAuditPage() {
                             setInputValue(e.target.value);
                             if (selectedPlace) setSelectedPlace(null);
                           }}
-                          className="flex-grow w-full bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 text-base px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent"
-                        />
+                          className="flex-grow w-full bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 text-base px-4 py-3 captio11 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent"
+                          />
                       </Autocomplete>
                     </div>
 
