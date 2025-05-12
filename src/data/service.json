@@ -1,5 +1,6 @@
 [
     {
+        "id": "comprehensive-digital-strategy",
         "icon": "icon-coin-chair",
         "category": "Digital Strategy",
         "title": "Comprehensive Digital Strategy",
@@ -7,6 +8,7 @@
         "shortDesc": "Develop a winning digital strategy."
     },
     {
+        "id": "advanced-seo-content-marketing",
         "icon": "icon-hand-tick",
         "category": "SEO & Content Marketing",
         "title": "Advanced SEO & Content Marketing",
@@ -14,6 +16,7 @@
         "shortDesc": "Boost visibility with SEO & engaging content."
     },
     {
+        "id": "targeted-paid-advertising-performance-campaigns",
         "icon": "icon-hand-house",
         "category": "Paid Media & Performance Marketing",
         "title": "Targeted Paid Advertising & Performance Campaigns",
@@ -21,6 +24,7 @@
         "shortDesc": "Maximize ROI with paid ads & performance campaigns."
     },
     {
+        "id": "interactive-web-e-commerce-development",
         "icon": "icon-hand-touch",
         "category": "Web Development & E-commerce",
         "title": "Interactive Web & E-commerce Development",
@@ -28,6 +32,7 @@
         "shortDesc": "Design interactive websites & e-commerce platforms."
     },
     {
+        "id": "digital-performance-analysis-cro",
         "icon": "icon-gear-warning",
         "category": "Analytics & Conversion Optimization",
         "title": "Digital Performance Analysis & CRO",
@@ -35,6 +40,7 @@
         "shortDesc": "Analyze performance & increase conversions."
     },
     {
+        "id": "digital-brand-identity-online-reputation",
         "icon": "icon-vali",
         "category": "Brand Identity & Reputation Management",
         "title": "Digital Brand Identity & Online Reputation",
