@@ -3,7 +3,7 @@
 
 import { useState, FormEvent, Fragment } from 'react';
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuOne from "@/components/Header/Menu/MenuTwo";
+import MenuOne from "@/components/Header/Menu/MenuTwo"; // Asumo que es MenuTwo según tu código original
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
@@ -15,49 +15,49 @@ interface PageSpeedCategoryScore {
   displayValue?: string;
 }
 interface AuditDetailItem {
-  url?: string; 
+  url?: string;
   node?: { snippet?: string; selector?: string; nodeLabel?: string; path?: string; };
   source?: { type: 'source-location'; url: string; line: number; column: number; };
-  wastedMs?: number; 
-  totalBytes?: number; 
-  wastedBytes?: number; 
-  [key: string]: any; 
+  wastedMs?: number;
+  totalBytes?: number;
+  wastedBytes?: number;
+  [key: string]: any;
 }
 interface AuditDetails {
   type?: string;
   headings?: Array<{ key: string | null; itemType: string; label: string; valueType?: string; subItemsHeading?: { key: string, itemType: string } }>;
-  items?: Array<AuditDetailItem>; 
+  items?: Array<AuditDetailItem>;
   overallSavingsMs?: number;
   overallSavingsBytes?: number;
 }
 interface AuditResult {
   id: string;
   title: string;
-  description: string; 
+  description: string;
   score: number | null;
-  scoreDisplayMode?: string; 
-  displayValue?: string; 
+  scoreDisplayMode?: string;
+  displayValue?: string;
   details?: AuditDetails;
 }
 interface AuditRef {
   id: string;
   weight: number;
-  group?: string; 
+  group?: string;
   acronym?: string;
   relevantAudits?: string[];
 }
 interface SinglePageSpeedResult {
   lighthouseResult?: LighthouseResult;
-  loadingExperience?: { 
+  loadingExperience?: {
     metrics: {
       [key: string]: {
         percentile: number;
-        category: string; 
+        category: string;
         distributions?: Array<{min: number; max?: number; proportion: number}>;
       }
     } | null;
   } | null;
-  error?: { 
+  error?: {
     code: number;
     message: string;
     errors: Array<{ message: string; domain: string; reason: string }>;
@@ -76,9 +76,9 @@ interface LighthouseResult {
   i18n?: { icuMessagePaths?: any; };
 }
 interface CombinedPageSpeedApiResult {
-  desktopResult: SinglePageSpeedResult | null; 
-  mobileResult: SinglePageSpeedResult | null;  
-  error?: string; 
+  desktopResult: SinglePageSpeedResult | null;
+  mobileResult: SinglePageSpeedResult | null;
+  error?: string;
   details?: string;
 }
 
@@ -88,40 +88,24 @@ export default function WebsiteAuditPage() {
   const [results, setResults] = useState<CombinedPageSpeedApiResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const [expandedAuditIds, setExpandedAuditIds] = useState<Record<string, boolean>>({});
   const [visibleDetailItems, setVisibleDetailItems] = useState<Record<string, number>>({});
   const INITIAL_DETAIL_ITEMS_TO_SHOW = 3;
-  
+
   const [activeStrategyTab, setActiveStrategyTab] = useState<'mobile' | 'desktop'>('mobile');
 
-  const toggleAuditExpansion = (keyToToggle: string) => { 
-    // Se mantienen los console.log de depuración por si acaso, puedes eliminarlos si ya no los necesitas.
-    console.log('[DEBUG] ToggleAuditExpansion - Key:', keyToToggle);
-    setExpandedAuditIds(prev => {
-      const newState = { ...prev, [keyToToggle]: !prev[keyToToggle] };
-      console.log('[DEBUG] ToggleAuditExpansion - Previous State:', prev);
-      console.log('[DEBUG] ToggleAuditExpansion - New State:', newState);
-      return newState;
-    });
+  const toggleAuditExpansion = (keyToToggle: string) => {
+    setExpandedAuditIds(prev => ({ ...prev, [keyToToggle]: !prev[keyToToggle] }));
   }
-  const showMoreDetailItems = (keyForItems: string, totalItems: number) => { 
-    console.log('[DEBUG] ShowMoreDetailItems - Key:', keyForItems, 'Total:', totalItems);
-    setVisibleDetailItems(prev => {
-      const currentVisible = prev[keyForItems] || INITIAL_DETAIL_ITEMS_TO_SHOW;
-      const newCount = Math.min(currentVisible + 5, totalItems);
-      const newState = { ...prev, [keyForItems]: newCount };
-      console.log('[DEBUG] ShowMoreDetailItems - New State:', newState);
-      return newState;
-    });
+  const showMoreDetailItems = (keyForItems: string, totalItems: number) => {
+    setVisibleDetailItems(prev => ({
+      ...prev,
+      [keyForItems]: Math.min((prev[keyForItems] || INITIAL_DETAIL_ITEMS_TO_SHOW) + 5, totalItems)
+    }));
   }
-  const showLessDetailItems = (keyForItems: string) => { 
-    console.log('[DEBUG] ShowLessDetailItems - Key:', keyForItems);
-    setVisibleDetailItems(prev => {
-      const newState = { ...prev, [keyForItems]: INITIAL_DETAIL_ITEMS_TO_SHOW };
-      console.log('[DEBUG] ShowLessDetailItems - New State:', newState);
-      return newState;
-    });
+  const showLessDetailItems = (keyForItems: string) => {
+    setVisibleDetailItems(prev => ({ ...prev, [keyForItems]: INITIAL_DETAIL_ITEMS_TO_SHOW }));
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -130,7 +114,7 @@ export default function WebsiteAuditPage() {
     setResults(null);
     setExpandedAuditIds({});
     setVisibleDetailItems({});
-    setActiveStrategyTab('mobile'); 
+    setActiveStrategyTab('mobile');
 
     if (!url) { setError('Por favor, ingresa la URL de un sitio web.'); return; }
     if (!url.startsWith('http://') && !url.startsWith('https://')) { setError('Por favor, ingresa una URL válida (ej. https://example.com)'); return; }
@@ -143,14 +127,13 @@ export default function WebsiteAuditPage() {
         body: JSON.stringify({ url }),
       });
       const data: CombinedPageSpeedApiResult = await response.json();
-      if (!response.ok || data.error) { 
+      if (!response.ok || data.error) {
         throw new Error(data.error || data.details || `Error al auditar (HTTP ${response.status})`);
       }
       if (data.desktopResult?.error) { console.error("Error de PageSpeed (Desktop):", data.desktopResult.error); }
       if (data.mobileResult?.error) { console.error("Error de PageSpeed (Mobile):", data.mobileResult.error); }
       if (!data.desktopResult?.lighthouseResult && !data.mobileResult?.lighthouseResult) {
         setError('No se encontraron resultados de Lighthouse para esta URL. Puede que no sea pública o auditable.');
-        console.warn("Respuesta de PageSpeed sin lighthouseResult para ambas estrategias:", data);
       } else {
         setResults(data);
       }
@@ -161,6 +144,8 @@ export default function WebsiteAuditPage() {
     }
   };
 
+  // --- Funciones de renderizado (renderSingleStrategyScores, renderCoreWebVitals, renderDiagnosticsSection) sin cambios ---
+  // ... (Pega aquí tus funciones renderSingleStrategyScores, renderCoreWebVitals, y renderDiagnosticsSection tal cual las tenías)
   const renderSingleStrategyScores = (strategyResult: SinglePageSpeedResult | null | undefined, strategyName: string) => {
     if (!strategyResult || !strategyResult.lighthouseResult?.categories) {
       return <p className="w-full text-center text-gray-500 py-4">No hay datos de Lighthouse para {strategyName}.</p>;
@@ -256,8 +241,8 @@ export default function WebsiteAuditPage() {
     const diagnosticAudits = categories.performance.auditRefs
       .filter(ref => (ref.group === 'diagnostics' || (ref.group !== 'load-opportunities' && ref.group !== 'metrics' && ref.group !== 'budgets')) && audits[ref.id] && (audits[ref.id].score !== null && audits[ref.id].score! < 1) )
       .map(ref => audits[ref.id])
-      .filter(audit => audit); 
-    if (diagnosticAudits.length === 0) { 
+      .filter(audit => audit);
+    if (diagnosticAudits.length === 0) {
         return ( <div className="mt-8 pt-5 pb-5 border-t border-line bg-surface rounded-lg">
               <h3 className="text-center text-lg font-semibold text-black mt-0 mb-3">Diagnósticos Adicionales</h3>
               <p className="text-center text-success">¡Buen trabajo! Todas las auditorías de diagnóstico relevantes pasaron.</p>
@@ -268,11 +253,8 @@ export default function WebsiteAuditPage() {
           <h3 className="text-center text-lg font-semibold text-black mt-0 mb-5">Diagnósticos Adicionales</h3>
           <div className="space-y-4">
             {diagnosticAudits.map((audit) => {
-              const keyForExpansion = `${audit.id}-${activeStrategyTab}`; 
+              const keyForExpansion = `${audit.id}-${activeStrategyTab}`;
               const isExpanded = !!expandedAuditIds[keyForExpansion];
-              // CONSOLE LOG PARA DEPURAR isExpanded (se mantiene por si acaso)
-              // console.log(`[DEBUG] RenderDiagnostics - Audit: ${audit.title}, Key: ${keyForExpansion}, IsExpanded: ${isExpanded}, AllExpandedState:`, expandedAuditIds);
-
               const currentVisibleItems = visibleDetailItems[keyForExpansion] || INITIAL_DETAIL_ITEMS_TO_SHOW;
               const totalDetailItems = audit.details?.items?.length || 0;
               return (
@@ -283,10 +265,8 @@ export default function WebsiteAuditPage() {
                   </div>
                   {audit.displayValue && (<p className="text-sm text-secondary mt-1"><span className="font-medium">{audit.displayValue}</span></p>)}
                   
-                  {/* CONTENIDO EXPANDIBLE - TEXTO Y FONDO DE DEBUG ELIMINADOS */}
                   {isExpanded && (
-                    <div id={`audit-details-${keyForExpansion}`} className="mt-3 pt-3 border-t border-line"> {/* Eliminado bg-yellow-100 p-2 */}
-                      {/* Eliminado: <p className="font-bold text-red-500">[DEBUG] ESTA SECCIÓN ESTÁ EXPANDIDA: {audit.title}</p> */}
+                    <div id={`audit-details-${keyForExpansion}`} className="mt-3 pt-3 border-t border-line">
                       <div className="text-sm text-secondary mt-2 prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: audit.description }} />
                       {audit.details && audit.details.items && audit.details.items.length > 0 && (
                         <div className="mt-4 pt-3 border-t border-line">
@@ -325,57 +305,106 @@ export default function WebsiteAuditPage() {
     <>
       <div className="overflow-x-hidden">
         <header id="header"><TopNavTwo /><MenuOne /></header>
-        <main className="content py-10">
-          <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <header className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-black">Auditoría Web Avanzada</h1>
-              <p className="text-md text-secondary mt-2">Resultados de PageSpeed Insights.</p>
-            </header>
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-3 mb-10">
-              <input type="url" value={url} onChange={(e) => { setUrl(e.target.value); setError(null); }} placeholder="https://ejemplo.com" required className="flex-grow w-full sm:w-auto bg-surface text-secondary caption11 px-4 py-3 rounded-lg border border-line focus:ring-2 focus:ring-blue focus:border-transparent"/>
-              <button type="submit" disabled={isLoading} className={`button-main text-white text-button rounded-full px-6 py-3 w-full sm:w-auto transition-colors duration-150 ease-in-out whitespace-nowrap ${isLoading ? 'bg-grey hover:bg-grey cursor-not-allowed' : 'bg-blue hover:bg-dark-blue'}`}>
-                {isLoading ? 'Auditando...' : 'Auditar Sitio'}
-              </button>
-            </form>
+        <main className="content py-10 md:py-16"> {/* Aumentado padding vertical */}
+          <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"> {/* Ligeramente más ancho, como PageSpeed */}
 
-            {isLoading && <p className="text-center text-lg text-secondary my-5">Cargando resultados (esto puede tardar un poco más al obtener datos de desktop y mobile)...</p>}
-            {error && <p className="text-center text-critical bg-critical/10 border border-critical/30 p-3 rounded-md my-5">Error: {error}</p>}
+            {/* --- NUEVA SECCIÓN SUPERIOR --- */}
+            <div className="text-center mb-10 md:mb-12">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">
+                Auditoría Web Avanzada
+              </h1>
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-xl mx-auto">
+                <input
+                  type="url"
+                  value={url}
+                  onChange={(e) => { setUrl(e.target.value); setError(null); }}
+                  placeholder="https://ejemplo.com"
+                  required
+                  // Asegúrate que 'caption11' o 'caption1' esté definido, o usa text-base/text-lg
+                  className="flex-grow w-full sm:w-auto bg-surface text-secondary text-base px-4 py-3 rounded-lg border border-line focus:ring-2 focus:ring-blue focus:border-transparent"
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  // Asegúrate que 'text-button' esté definido, o usa text-base/text-lg
+                  className={`button-main text-white text-base font-medium rounded-full px-8 py-3 w-full sm:w-auto transition-colors duration-150 ease-in-out whitespace-nowrap ${isLoading ? 'bg-grey hover:bg-grey cursor-not-allowed' : 'bg-blue hover:bg-dark-blue'}`}
+                >
+                  {isLoading ? 'Auditando...' : 'Auditar Sitio'}
+                </button>
+              </form>
+            </div>
 
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-12 md:mb-16 p-6 md:p-8 bg-gray-50 dark:bg-gray-800 rounded-lg shadow"> {/* Estilo similar a PageSpeed para esta sección */}
+              <div className="md:w-1/2 flex justify-center md:justify-start">
+                {/* REEMPLAZA ESTO CON TU IMAGEN */}
+                {/* Ejemplo de placeholder: usa una imagen real de tu proyecto */}
+                <img
+                  src="https_pagespeed.web.dev_static_images_psi_hero_poster_2x.png" // Reemplaza con la ruta a tu imagen (e.g., /images/audit-graphic.svg)
+                  alt="Ilustración de auditoría web"
+                  className="w-full max-w-xs sm:max-w-sm md:max-w-md object-contain rounded"
+                />
+              </div>
+              <div className="md:w-1/2 text-center md:text-left">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-black dark:text-white mb-4">
+                  Mejora la velocidad de tus páginas web en todos los dispositivos
+                </h2>
+                <p className="text-secondary dark:text-gray-300 mb-3 text-base sm:text-lg">
+                  Obtén un análisis detallado del rendimiento de tu sitio, identifica cuellos de botella y recibe recomendaciones personalizadas para optimizar la experiencia de tus usuarios.
+                </p>
+                <p className="text-secondary dark:text-gray-300 mb-5 text-base sm:text-lg">
+                  Nuestra herramienta utiliza la tecnología de Google PageSpeed Insights para evaluar tu web en base a métricas clave y mejores prácticas.
+                </p>
+                <div className="space-y-2">
+                  {/* Puedes cambiar estos enlaces a secciones de tu propia web o dejarlos como ejemplo */}
+                  <a href="#resultados-auditoria" className="text-blue dark:text-blue-400 hover:underline block font-medium">Consulta más información sobre los resultados</a>
+                  <a href="/blog/category/optimizacion-web" className="text-blue dark:text-blue-400 hover:underline block font-medium">Novedades y Consejos de Optimización</a>
+                  {/* <a href="#" className="text-blue dark:text-blue-400 hover:underline block font-medium">Documentación</a> */}
+                  <a href="https://web.dev/learn/performance/" target="_blank" rel="noopener noreferrer" className="text-blue dark:text-blue-400 hover:underline block font-medium">Más información sobre el rendimiento web (web.dev)</a>
+                </div>
+              </div>
+            </div>
+            {/* --- FIN NUEVA SECCIÓN SUPERIOR --- */}
+
+
+            {isLoading && <p className="text-center text-lg text-secondary my-8">Cargando resultados (esto puede tardar un poco más al obtener datos de desktop y mobile)...</p>}
+            {error && <p className="text-center text-critical bg-critical/10 border border-critical/30 p-4 rounded-md my-8 text-base">Error: {error}</p>}
+
+            {/* La sección de resultados ahora tendrá un id para el enlace "Consulta más información" */}
             {results && !error && (
-              <div>
-                <div className="flex justify-center mb-6 border-b border-line">
-                  <button 
+              <div id="resultados-auditoria">
+                <div className="flex justify-center mb-6 border-b border-line dark:border-gray-700">
+                  <button
                     onClick={() => setActiveStrategyTab('mobile')}
-                    className={`px-4 sm:px-6 py-3 text-sm font-medium -mb-px border-b-2 transition-colors
-                                ${activeStrategyTab === 'mobile' ? 'border-blue text-blue' : 'border-transparent text-secondary hover:text-black hover:border-gray-300'}`}
+                    className={`px-4 sm:px-6 py-3 text-sm sm:text-base font-medium -mb-px border-b-2 transition-colors
+                                ${activeStrategyTab === 'mobile' ? 'border-blue text-blue dark:text-blue-400 dark:border-blue-400' : 'border-transparent text-secondary hover:text-black dark:text-gray-400 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500'}`}
                   >
                     Mobile
                   </button>
-                  <button 
+                  <button
                     onClick={() => setActiveStrategyTab('desktop')}
-                    className={`px-4 sm:px-6 py-3 text-sm font-medium -mb-px border-b-2 transition-colors
-                                ${activeStrategyTab === 'desktop' ? 'border-blue text-blue' : 'border-transparent text-secondary hover:text-black hover:border-gray-300'}`}
+                    className={`px-4 sm:px-6 py-3 text-sm sm:text-base font-medium -mb-px border-b-2 transition-colors
+                                ${activeStrategyTab === 'desktop' ? 'border-blue text-blue dark:text-blue-400 dark:border-blue-400' : 'border-transparent text-secondary hover:text-black dark:text-gray-400 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500'}`}
                   >
                     Desktop
                   </button>
                 </div>
 
-                <h2 className="text-2xl font-semibold text-black mb-6 text-center">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-black dark:text-white mb-6 sm:mb-8 text-center">
                   Resultados para {activeStrategyTab.charAt(0).toUpperCase() + activeStrategyTab.slice(1)}
                 </h2>
 
                 {activeStrategyResult && activeStrategyResult.lighthouseResult ? (
                   <>
-                    {activeStrategyResult.lighthouseResult.requestedUrl && ( 
-                        <p className="text-center text-sm text-secondary mb-6">
-                            Analizando: <a href={activeStrategyResult.lighthouseResult.requestedUrl} target="_blank" rel="noopener noreferrer" className="text-blue hover:underline">{activeStrategyResult.lighthouseResult.requestedUrl}</a>
+                    {activeStrategyResult.lighthouseResult.requestedUrl && (
+                        <p className="text-center text-sm sm:text-base text-secondary dark:text-gray-400 mb-6 sm:mb-8">
+                            Analizando: <a href={activeStrategyResult.lighthouseResult.requestedUrl} target="_blank" rel="noopener noreferrer" className="text-blue dark:text-blue-400 hover:underline">{activeStrategyResult.lighthouseResult.requestedUrl}</a>
                         </p>
                     )}
                     {renderSingleStrategyScores(activeStrategyResult, activeStrategyTab.charAt(0).toUpperCase() + activeStrategyTab.slice(1))}
-                    
+
                     {activeStrategyResult.loadingExperience && (
-                        <div className="my-10">
-                            <h3 className="text-xl font-semibold text-black mb-4 text-center">Core Web Vitals (Datos de Campo)</h3>
+                        <div className="my-10 sm:my-12">
+                            <h3 className="text-xl sm:text-2xl font-semibold text-black dark:text-white mb-4 sm:mb-6 text-center">Core Web Vitals (Datos de Campo)</h3>
                             {renderCoreWebVitals(activeStrategyResult, activeStrategyTab.charAt(0).toUpperCase() + activeStrategyTab.slice(1))}
                         </div>
                     )}
@@ -383,10 +412,10 @@ export default function WebsiteAuditPage() {
                     {renderDiagnosticsSection(activeStrategyResult)}
                   </>
                 ) : (
-                  <p className="text-center text-secondary my-10">
-                    No hay datos disponibles para la vista {activeStrategyTab}. 
-                    {activeStrategyTab === 'mobile' && results?.mobileResult?.error ? `Error: ${results.mobileResult.error.message}` : ''}
-                    {activeStrategyTab === 'desktop' && results?.desktopResult?.error ? `Error: ${results.desktopResult.error.message}` : ''}
+                  <p className="text-center text-secondary dark:text-gray-400 my-10 sm:my-12 text-base">
+                    No hay datos disponibles para la vista {activeStrategyTab}.
+                    {activeStrategyTab === 'mobile' && results?.mobileResult?.error ? ` Error: ${results.mobileResult.error.message}` : ''}
+                    {activeStrategyTab === 'desktop' && results?.desktopResult?.error ? ` Error: ${results.desktopResult.error.message}` : ''}
                   </p>
                 )}
               </div>
