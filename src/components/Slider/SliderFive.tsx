@@ -72,7 +72,7 @@ const SliderFive = () => {
                                         <div className="body2 mt-3 text-secondary">Our comprehensive audit uncovers hidden issues and <br /> untapped strengths for top search rankings.</div>
                                         {/* CTA Button for SEO Audit - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/website-audit">Start Your Audit</Link>
+                                            <Link className="button-main bg-blue text-white" href="/services/website-audit">Start Your Audit</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@ const SliderFive = () => {
                             <div className="slider-item slider-second">
                                 {/* Image hidden on mobile, shown on sm and above */}
                                 <div className="bg-img hidden sm:block">
-                                    <Image                                        
+                                    <Image
                                         src={'/images/slider/customer-happy.webp'} // Image source (consider updating)
                                         width={4000} // Intrinsic width
                                         height={3000} // Intrinsic height
@@ -115,7 +115,7 @@ const SliderFive = () => {
                                         {/* CTA Button for Discover Opportunities - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
                                             {/* Puedes considerar cambiar el texto del botón si "Explore Options" ya no es relevante */}
-                                            <Link className="button-main bg-blue text-white" href="/website-audit">Explore Options</Link> 
+                                            <Link className="button-main bg-blue text-white" href="/services/website-audit">Explore Options</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@ const SliderFive = () => {
                                         {/* CTA Button for Online Visibility - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
                                             {/* Puedes considerar cambiar el texto del botón si "Get Discovered" ya no es relevante */}
-                                            <Link className="button-main bg-blue text-white" href="/website-audit">Get Discovered</Link>
+                                            <Link className="button-main bg-blue text-white" href="/services/website-audit">Get Discovered</Link>
                                         </div>
                                     </div>
                                 </div>

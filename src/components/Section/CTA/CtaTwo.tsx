@@ -10,7 +10,7 @@ const CtaTwo = () => {
         <>
             <div className="button-block">
                 {/* Envolver el botón con el componente Link de Next.js */}
-                <Link href="/website-audit" passHref legacyBehavior>
+                <Link href="/services/website-audit" passHref legacyBehavior>
                     <a className="button-main bg-blue text-white"> {/* Aplicar clases directamente al <a> si es necesario o al botón interno */}
                         Start Your Audit
                     </a>

@@ -8,163 +8,37 @@
     },
     {
         "icon": "icon-hand-tick",
-        "category": "SEO & Content",
+        "category": "SEO & Content Marketing",
         "title": "Advanced SEO & Content Marketing",
-        "desc": "Boost your online visibility and attract qualified traffic with our data-driven SEO and compelling content strategies.",
-        "shortDesc": "Boost visibility with SEO & content."
+        "desc": "Boost your online visibility, attract qualified traffic, and build authority with our data-driven SEO and compelling content strategies across all digital channels.",
+        "shortDesc": "Boost visibility with SEO & engaging content."
     },
     {
         "icon": "icon-hand-house",
-        "category": "Paid Media",
-        "title": "Targeted Paid Advertising",
-        "desc": "Reach your ideal customers and maximize ROI with expertly managed paid advertising campaigns across key platforms.",
-        "shortDesc": "Maximize ROI with paid ads."
-    },
-    {
-        "icon": "icon-gear-warning",
-        "category": "Analytics & Reporting",
-        "title": "Digital Performance Analysis",
-        "desc": "Understand your digital performance with in-depth analytics and reporting to make informed decisions and optimize your campaigns.",
-        "shortDesc": "Analyze digital performance."
-    },
-    {
-        "icon": "icon-text-search",
-        "category": "Market Research",
-        "title": "In-depth Market Research",
-        "desc": "Gain valuable insights into your market, competitors, and audience to build a strong foundation for your digital strategy.",
-        "shortDesc": "Gain market insights."
-    },
-    {
-        "icon": "icon-education",
-        "category": "Digital Education",
-        "title": "Digital Marketing Training",
-        "desc": "Empower your team with customized workshops and resources to enhance their digital marketing knowledge and skills.",
-        "shortDesc": "Empower your team with training."
-    },
-    {
-        "icon": "icon-coin-hand",
-        "category": "Content Marketing",
-        "title": "Strategic Content Planning",
-        "desc": "Craft a content strategy that resonates with your audience, builds authority, and drives engagement across all digital channels.",
-        "shortDesc": "Craft engaging content strategies."
-    },
-    {
-        "icon": "icon-coin-pig",
-        "category": "Conversion Optimization",
-        "title": "Conversion Rate Optimization (CRO)",
-        "desc": "Optimize your website and landing pages to turn more visitors into leads and customers, increasing your conversion rates.",
-        "shortDesc": "Increase conversion rates."
-    },
-    {
-        "icon": "icon-coin-virus",
-        "category": "Digital Audit",
-        "title": "Digital Presence Audit",
-        "desc": "Receive a thorough assessment of your current digital footprint to identify strengths, weaknesses, and opportunities for growth.",
-        "shortDesc": "Get a digital presence audit."
-    },
-    {
-        "icon": "icon-hand-protect",
-        "category": "Online Reputation",
-        "title": "Online Reputation Management",
-        "desc": "Protect and enhance your brand's image online by actively managing reviews, mentions, and public perception.",
-        "shortDesc": "Manage online reputation."
+        "category": "Paid Media & Performance Marketing",
+        "title": "Targeted Paid Advertising & Performance Campaigns",
+        "desc": "Reach your ideal customers, maximize ROI, and achieve specific, measurable outcomes with expertly managed paid advertising and results-driven performance marketing campaigns.",
+        "shortDesc": "Maximize ROI with paid ads & performance campaigns."
     },
     {
         "icon": "icon-hand-touch",
-        "category": "Web Development",
-        "title": "Interactive Website Design",
-        "desc": "Create engaging and user-friendly websites that provide a seamless experience for your visitors and drive conversions.",
-        "shortDesc": "Design interactive websites."
+        "category": "Web Development & E-commerce",
+        "title": "Interactive Web & E-commerce Development",
+        "desc": "Create engaging, user-friendly websites and powerful, scalable e-commerce platforms designed to optimize the customer journey, enhance functionality, and maximize online sales.",
+        "shortDesc": "Design interactive websites & e-commerce platforms."
     },
     {
-        "icon": "icon-user-lock",
-        "category": "Cybersecurity",
-        "title": "Digital Security Solutions",
-        "desc": "Ensure the safety and integrity of your digital assets and customer data with robust cybersecurity measures.",
-        "shortDesc": "Ensure digital security."
-    },
-    {
-        "icon": "icon-coin-bag",
-        "category": "E-commerce",
-        "title": "E-commerce Platform Development",
-        "desc": "Build a powerful and scalable e-commerce platform designed to optimize the customer journey and maximize online sales.",
-        "shortDesc": "Develop e-commerce platforms."
-    },
-    {
-        "icon": "icon-chart-blue",
-        "category": "Analytics & Reporting",
-        "title": "Advanced Analytics & Insights",
-        "desc": "Leverage advanced analytics to gain deep insights into customer behavior, campaign performance, and market trends.",
-        "shortDesc": "Gain insights with analytics."
-    },
-    {
-        "icon": "icon-coin-chair",
-        "category": "Social Media",
-        "title": "Social Media Engagement Strategy",
-        "desc": "Develop a strategy to build a strong community, increase engagement, and drive brand loyalty across social media platforms.",
-        "shortDesc": "Build social media engagement."
-    },
-    {
-        "icon": "icon-hand-message",
-        "category": "CRM Integration",
-        "title": "CRM & Marketing Automation",
-        "desc": "Streamline your marketing processes, nurture leads, and personalize customer interactions with integrated CRM and automation tools.",
-        "shortDesc": "Automate marketing with CRM."
-    },
-    {
-        "icon": "icon-hand-house",
-        "category": "Local SEO",
-        "title": "Local SEO Optimization",
-        "desc": "Increase your visibility in local search results and attract nearby customers to your physical business location.",
-        "shortDesc": "Optimize for local search."
-    },
-    {
-        "icon": "icon-hand-chart",
-        "category": "Performance Marketing",
-        "title": "Performance Marketing Campaigns",
-        "desc": "Focus on results-driven marketing with campaigns designed to achieve specific, measurable outcomes and maximize your ROI.",
-        "shortDesc": "Run performance campaigns."
-    },
-    {
-        "icon": "icon-pc-code",
-        "category": "Web Development",
-        "title": "Custom Web Application Development",
-        "desc": "Build bespoke web applications tailored to your unique business needs, enhancing functionality and user experience.",
-        "shortDesc": "Develop custom web apps."
-    },
-    {
-        "icon": "icon-code",
-        "category": "Technical SEO",
-        "title": "Technical SEO Implementation",
-        "desc": "Ensure your website's technical foundation is optimized for search engines, improving crawlability and indexability.",
-        "shortDesc": "Implement technical SEO."
-    },
-    {
-        "icon": "icon-lamp-gear",
-        "category": "Digital Innovation",
-        "title": "Digital Innovation & Consulting",
-        "desc": "Explore and integrate emerging technologies and innovative strategies to stay ahead of the competition in the digital space.",
-        "shortDesc": "Consult on digital innovation."
-    },
-    {
-        "icon": "icon-text-pen",
-        "category": "Copywriting",
-        "title": "Professional Copywriting Services",
-        "desc": "Craft compelling and persuasive copy for your website, landing pages, ads, and marketing materials that drives action.",
-        "shortDesc": "Professional copywriting."
-    },
-    {
-        "icon": "icon-chart",
-        "category": "Marketing Strategy",
-        "title": "Full-Funnel Marketing Strategy",
-        "desc": "Develop a comprehensive marketing strategy that covers every stage of the customer journey, from awareness to conversion and loyalty.",
-        "shortDesc": "Develop full-funnel strategy."
+        "icon": "icon-gear-warning",
+        "category": "Analytics & Conversion Optimization",
+        "title": "Digital Performance Analysis & CRO",
+        "desc": "Understand your digital performance with in-depth analytics, gain deep insights into customer behavior, and optimize your website to turn more visitors into leads and customers.",
+        "shortDesc": "Analyze performance & increase conversions."
     },
     {
         "icon": "icon-vali",
-        "category": "Brand Identity",
-        "title": "Digital Brand Identity Development",
-        "desc": "Build a strong, consistent, and memorable brand identity that resonates with your target audience across all digital platforms.",
-        "shortDesc": "Develop digital brand identity."
+        "category": "Brand Identity & Reputation Management",
+        "title": "Digital Brand Identity & Online Reputation",
+        "desc": "Build a strong, consistent brand identity across digital platforms and protect/enhance your brand's image by actively managing online perception.",
+        "shortDesc": "Develop brand identity & manage online reputation."
     }
 ]
