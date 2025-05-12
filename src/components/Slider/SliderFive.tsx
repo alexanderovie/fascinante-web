@@ -38,16 +38,17 @@ const SliderFive = () => {
                         }}
                     >
                         {/* --- Slide 1: Theme "SEO Audit" --- */}
+                        {/* ASUMIENDO QUE ESTE ES EL PRIMER SLIDE VISIBLE Y ES IMPORTANTE PARA EL LCP */}
                         <SwiperSlide>
                             <div className="slider-item slider-first">
                                 {/* Image hidden on mobile, shown on sm and above */}
                                 <div className="bg-img hidden sm:block">
                                     <Image
-                                        src={'/images/slider/client-smiling.webp'} // Image source (consider updating)
+                                        src={'/images/slider/client-smiling.webp'} // Image source
                                         width={4000} // Intrinsic width
                                         height={3000} // Intrinsic height
                                         alt="bgslider" // Alt text
-                                        priority={true} // Prioritize loading
+                                        priority={true} // ¡MANTENER PARA LA PRIMERA IMAGEN SI ES LCP!
                                         className="w-full h-full object-cover" // Tailwind styles
                                     />
                                 </div>
@@ -85,11 +86,12 @@ const SliderFive = () => {
                                 {/* Image hidden on mobile, shown on sm and above */}
                                 <div className="bg-img hidden sm:block">
                                     <Image
-                                        src={'/images/slider/customer-happy.webp'} // Image source (consider updating)
+                                        src={'/images/slider/customer-happy.webp'} // Image source
                                         width={4000} // Intrinsic width
                                         height={3000} // Intrinsic height
                                         alt="bgslider" // Alt text
-                                        priority={true} // Prioritize loading
+                                        // priority={true} // ¡ELIMINAR ESTA LÍNEA!
+                                        loading="lazy" // O explícitamente añadir esto
                                         className="w-full h-full object-cover" // Tailwind styles
                                     />
                                 </div>
@@ -114,7 +116,6 @@ const SliderFive = () => {
                                         <div className="body2 mt-3 text-secondary">We pinpoint fresh strategies to expand your <br /> reach and drive more significant conversions.</div>
                                         {/* CTA Button for Discover Opportunities - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            {/* Puedes considerar cambiar el texto del botón si "Explore Options" ya no es relevante */}
                                             <Link className="button-main bg-blue text-white" href="/services/website-audit">Explore Options</Link>
                                         </div>
                                     </div>
@@ -128,11 +129,12 @@ const SliderFive = () => {
                                 {/* Image hidden on mobile, shown on sm and above */}
                                 <div className="bg-img hidden sm:block">
                                     <Image
-                                        src={'/images/slider/team-working.webp'} // Image source (consider updating)
+                                        src={'/images/slider/team-working.webp'} // Image source
                                         width={4000} // Intrinsic width
                                         height={3000} // Intrinsic height
                                         alt="bgslider" // Alt text
-                                        priority={true} // Prioritize loading
+                                        // priority={true} // ¡ELIMINAR ESTA LÍNEA!
+                                        loading="lazy" // O explícitamente añadir esto
                                         className="w-full h-full object-cover" // Tailwind styles
                                     />
                                 </div>
@@ -157,7 +159,6 @@ const SliderFive = () => {
                                         <div className="body2 mt-3 text-secondary">Ensure your business is seen by the right <br /> customers across all digital platforms.</div>
                                         {/* CTA Button for Online Visibility - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            {/* Puedes considerar cambiar el texto del botón si "Get Discovered" ya no es relevante */}
                                             <Link className="button-main bg-blue text-white" href="/services/website-audit">Get Discovered</Link>
                                         </div>
                                     </div>
