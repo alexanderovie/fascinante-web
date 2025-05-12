@@ -108,7 +108,7 @@ const Footer = () => {
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/blog">Blog</Link></li>
                                         <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/services/website-audit">Auditoria Web</Link></li>
                                         <li className="mt-3"><a className="caption1 has-line-before line-white text-surface hover-underline" href="/contact">Chat en Vivo</a></li>
-                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/services/website-audit">Herramienta Gratuita de Auditoría SEO</Link></li>
+                                        <li className="mt-3"><Link className="caption1 has-line-before line-white text-surface hover-underline" href="/dashboard/location-audit">Herramienta Gratuita de Auditoría SEO</Link></li>
                                     </ul>
                                 </div>
                             </div>
