@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from "next/link"
-import { ServiceType } from "@/type/ServiceType"
+import { ServiceType } from "@/type/ServiceType" // Asegúrate que ServiceType tenga 'id: string;'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
 interface Props {
@@ -10,6 +10,8 @@ interface Props {
 }
 
 const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
+    // Usamos data.id directamente. Este 'id' debe ser el que está en tu service.json
+    // y es el que usará tu página [slug]/page.tsx para buscar el servicio.
 
     return (
         <>
@@ -19,8 +21,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 >
                     <Link
                         className="service-item-main h-full"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`} // Plantilla de ruta dinámica
+                        as={`/services/${data.id}`}   // URL final usando el id del servicio
                     >
                         <div className="heading flex items-center justify-between">
                             <i className={`${data.icon} text-blue md:text-6xl text-5xl`}></i>
@@ -35,8 +37,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 <div className="service-item py-7 px-6 bg-white rounded-lg border border-line box-shadow-sm hover-box-shadow">
                     <Link
                         className="service-item-main flex items-center gap-8 h-full"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`}
+                        as={`/services/${data.id}`}
                     >
                         <div className="icon">
                             <i className={`${data.icon} text-blue md:text-5xl text-4xl`}></i>
@@ -56,8 +58,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 <div className="service-item px-8 py-10 bg-white rounded-lg">
                     <Link
                         className="service-item-main flex flex-col items-center h-full"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`}
+                        as={`/services/${data.id}`}
                     >
                         <i className={`${data.icon} text-gradient md:text-6xl text-5xl`}></i>
                         <div className="heading7 text-center hover:text-gradient duration-300 mt-6">{data.title}</div>
@@ -69,8 +71,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 <div className="service-item p-8 bg-white rounded-lg border border-line hover-box-shadow">
                     <Link
                         className="service-item-main h-full"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`}
+                        as={`/services/${data.id}`}
                     >
                         <i className={`${data.icon} text-black md:text-6xl text-5xl`}></i>
                         <div className="heading7 hover:text-success duration-300 mt-6">{data.title}</div>
@@ -83,8 +85,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 <div className="service-item p-8 bg-white rounded-lg border border-line hover-box-shadow">
                     <Link
                         className="service-item-main h-full"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`}
+                        as={`/services/${data.id}`}
                     >
                         <div className="heading flex items-center justify-between">
                             <i className={`${data.icon} text-blue md:text-6xl text-5xl`}></i>
@@ -103,8 +105,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 <div className="service-item rounded-2xl border border-line hover-box-shadow">
                     <Link
                         className="service-item-main block h-full px-8 pb-7 md:pt-14 pt-10"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`}
+                        as={`/services/${data.id}`}
                     >
                         <div className="icon md:w-[100px] w-20 md:h-[100px] h-20 flex items-center justify-center rounded-2xl">
                             <i className={`${data.icon} text-white md:text-5xl text-4xl`}></i>
@@ -118,8 +120,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 <div className="service-item py-8 px-7 bg-white rounded-lg hover-box-shadow">
                     <Link
                         className="service-item-main flex flex-col justify-between h-full"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`}
+                        as={`/services/${data.id}`}
                     >
                         <div className="heading flex items-center gap-4">
                             <i className={`${data.icon} text-blue md:text-5xl text-4xl`}></i>
@@ -137,8 +139,8 @@ const ServiceItem: React.FC<Props> = ({ data, style, number }) => {
                 <div className="service-item px-4 bg-white rounded-lg">
                     <Link
                         className="service-item-main flex flex-col items-center h-full"
-                        href={"/service/[slug]"}
-                        as={`/service/${data.title.toLowerCase().replace(/ /g, '-')}`}
+                        href={`/services/[slug]`}
+                        as={`/services/${data.id}`}
                     >
                         <i className={`${data.icon} text-blue md:text-6xl text-5xl`}></i>
                         <div className="heading7 text-center hover:text-blue duration-300 mt-6">{data.title}</div>

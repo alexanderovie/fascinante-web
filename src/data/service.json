@@ -4,6 +4,7 @@
         "icon": "icon-coin-chair",
         "category": "Digital Strategy",
         "title": "Comprehensive Digital Strategy",
+        "menuTitle": "Digital Strategy", 
         "desc": "Develop a winning strategy to navigate the digital landscape and achieve your business goals with our expert guidance.",
         "shortDesc": "Develop a winning digital strategy."
     },
@@ -12,6 +13,7 @@
         "icon": "icon-hand-tick",
         "category": "SEO & Content Marketing",
         "title": "Advanced SEO & Content Marketing",
+        "menuTitle": "SEO & Content", 
         "desc": "Boost your online visibility, attract qualified traffic, and build authority with our data-driven SEO and compelling content strategies across all digital channels.",
         "shortDesc": "Boost visibility with SEO & engaging content."
     },
@@ -20,6 +22,7 @@
         "icon": "icon-hand-house",
         "category": "Paid Media & Performance Marketing",
         "title": "Targeted Paid Advertising & Performance Campaigns",
+        "menuTitle": "Paid Advertising", 
         "desc": "Reach your ideal customers, maximize ROI, and achieve specific, measurable outcomes with expertly managed paid advertising and results-driven performance marketing campaigns.",
         "shortDesc": "Maximize ROI with paid ads & performance campaigns."
     },
@@ -28,6 +31,7 @@
         "icon": "icon-hand-touch",
         "category": "Web Development & E-commerce",
         "title": "Interactive Web & E-commerce Development",
+        "menuTitle": "Web Development",
         "desc": "Create engaging, user-friendly websites and powerful, scalable e-commerce platforms designed to optimize the customer journey, enhance functionality, and maximize online sales.",
         "shortDesc": "Design interactive websites & e-commerce platforms."
     },
@@ -36,6 +40,7 @@
         "icon": "icon-gear-warning",
         "category": "Analytics & Conversion Optimization",
         "title": "Digital Performance Analysis & CRO",
+        "menuTitle": "Analytics & CRO",
         "desc": "Understand your digital performance with in-depth analytics, gain deep insights into customer behavior, and optimize your website to turn more visitors into leads and customers.",
         "shortDesc": "Analyze performance & increase conversions."
     },
@@ -44,6 +49,7 @@
         "icon": "icon-vali",
         "category": "Brand Identity & Reputation Management",
         "title": "Digital Brand Identity & Online Reputation",
+        "menuTitle": "Brand Identity", 
         "desc": "Build a strong, consistent brand identity across digital platforms and protect/enhance your brand's image by actively managing online perception.",
         "shortDesc": "Develop brand identity & manage online reputation."
     }
