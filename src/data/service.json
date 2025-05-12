@@ -20,6 +20,18 @@
             "Content Strategy & Planning",
             "KPI Definition & Performance Tracking",
             "Ongoing Optimization & Reporting"
+        ],
+        "faqs": [
+            {
+                "id": "cds_faq_1",
+                "title": "¿Cuánto tiempo lleva desarrollar una estrategia digital completa?",
+                "desc": "El tiempo varía según la complejidad y el alcance del proyecto, pero generalmente un plan estratégico inicial puede tomar de 4 a 8 semanas para una investigación y desarrollo exhaustivos."
+            },
+            {
+                "id": "cds_faq_2",
+                "title": "¿Cómo se mide el éxito de una estrategia digital?",
+                "desc": "El éxito se mide a través de Indicadores Clave de Rendimiento (KPIs) definidos previamente, que pueden incluir aumento de tráfico, mejora en la tasa de conversión, mayor engagement, o retorno de la inversión (ROI)."
+            }
         ]
     },
     {
@@ -43,6 +55,18 @@
             "High-Quality Content Creation & Distribution",
             "Link Building & Outreach",
             "Performance Analytics & Reporting"
+        ],
+        "faqs": [
+            {
+                "id": "seo_faq_1",
+                "title": "¿Con qué frecuencia debo publicar contenido nuevo para SEO?",
+                "desc": "La frecuencia ideal varía, pero la consistencia es clave. Para la mayoría de las empresas, publicar contenido de alta calidad de 1 a 4 veces al mes puede ser efectivo para mantener la relevancia y el engagement."
+            },
+            {
+                "id": "seo_faq_2",
+                "title": "¿Cuánto tiempo se tarda en ver resultados de SEO?",
+                "desc": "El SEO es una estrategia a mediano y largo plazo. Generalmente, se pueden empezar a ver resultados significativos entre los 3 y 6 meses, dependiendo de la competitividad del sector y el estado inicial del sitio web."
+            }
         ]
     },
     {
@@ -66,6 +90,18 @@
             "Conversion Tracking & ROI Optimization",
             "Audience Targeting & Retargeting",
             "Detailed Reporting & Insights"
+        ],
+        "faqs": [
+            {
+                "id": "pa_faq_1",
+                "title": "¿Qué plataformas publicitarias son mejores para mi negocio?",
+                "desc": "La elección depende de tu público objetivo y tus metas. Google Ads es excelente para capturar intención de búsqueda, mientras que las redes sociales como Facebook e Instagram son ideales para segmentación demográfica y de intereses."
+            },
+            {
+                "id": "pa_faq_2",
+                "title": "¿Cuál es el presupuesto mínimo recomendado para empezar con publicidad pagada?",
+                "desc": "No hay un mínimo estricto, pero recomendamos un presupuesto que permita suficiente recopilación de datos para optimizar. Esto puede variar desde unos pocos cientos a varios miles de dólares al mes, según la plataforma y la industria."
+            }
         ]
     },
     {
@@ -89,6 +125,18 @@
             "UX/UI Design & Prototyping",
             "CMS Integration & Customization",
             "API Integrations & Custom Functionality"
+        ],
+        "faqs": [
+            {
+                "id": "wd_faq_1",
+                "title": "¿Ofrecen mantenimiento web después del lanzamiento?",
+                "desc": "Sí, ofrecemos planes de mantenimiento y soporte continuo para asegurar que tu sitio web se mantenga actualizado, seguro y funcionando óptimamente."
+            },
+            {
+                "id": "wd_faq_2",
+                "title": "¿Pueden integrar mi sitio web con otras herramientas que uso, como CRM o sistemas de email marketing?",
+                "desc": "Absolutamente. Nos especializamos en la integración de sitios web con una variedad de herramientas y plataformas de terceros para optimizar tus flujos de trabajo y mejorar la eficiencia."
+            }
         ]
     },
     {
@@ -112,6 +160,18 @@
             "User Experience (UX) Audits",
             "Landing Page Optimization (LPO)",
             "Data Visualization & Actionable Reporting"
+        ],
+        "faqs": [
+            {
+                "id": "cro_faq_1",
+                "title": "¿Qué herramientas utilizan para el análisis de rendimiento y CRO?",
+                "desc": "Utilizamos una combinación de herramientas líderes en la industria como Google Analytics, Google Optimize, Hotjar, Crazy Egg, y otras plataformas de A/B testing y análisis de comportamiento del usuario."
+            },
+            {
+                "id": "cro_faq_2",
+                "title": "¿Cómo se diferencia la Optimización de la Tasa de Conversión (CRO) de las pruebas A/B?",
+                "desc": "Las pruebas A/B son una técnica utilizada dentro del CRO. CRO es un proceso más amplio que implica investigación, formulación de hipótesis, priorización, pruebas (como A/B), y análisis para mejorar las conversiones."
+            }
         ]
     },
     {
@@ -135,6 +195,18 @@
             "Review Management & Generation",
             "Social Media Listening & Sentiment Analysis",
             "Content Strategies for Brand Building"
+        ],
+        "faqs": [
+            {
+                "id": "brand_faq_1",
+                "title": "¿Qué incluye un manual de identidad de marca?",
+                "desc": "Un manual de identidad de marca generalmente incluye el diseño del logotipo y sus variaciones, paleta de colores, tipografías, tono de voz, guías de estilo para imágenes, y ejemplos de aplicación en diferentes materiales."
+            },
+            {
+                "id": "brand_faq_2",
+                "title": "¿Cómo manejan las reseñas online negativas?",
+                "desc": "Abordamos las reseñas negativas de manera profesional y oportuna, buscando entender el problema, ofrecer soluciones cuando sea apropiado, y demostrar públicamente que la empresa se preocupa por la satisfacción del cliente."
+            }
         ]
     }
 ]
