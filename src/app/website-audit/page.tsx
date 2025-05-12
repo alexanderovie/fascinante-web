@@ -332,7 +332,7 @@ export default function WebsiteAuditPage() {
               <p className="text-md text-secondary mt-2">Resultados de PageSpeed Insights.</p>
             </header>
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-3 mb-10">
-              <input type="url" value={url} onChange={(e) => { setUrl(e.target.value); setError(null); }} placeholder="https://ejemplo.com" required className="flex-grow w-full sm:w-auto bg-surface text-secondary caption1 px-4 py-3 rounded-lg border border-line focus:ring-2 focus:ring-blue focus:border-transparent"/>
+              <input type="url" value={url} onChange={(e) => { setUrl(e.target.value); setError(null); }} placeholder="https://ejemplo.com" required className="flex-grow w-full sm:w-auto bg-surface text-secondary caption11 px-4 py-3 rounded-lg border border-line focus:ring-2 focus:ring-blue focus:border-transparent"/>
               <button type="submit" disabled={isLoading} className={`button-main text-white text-button rounded-full px-6 py-3 w-full sm:w-auto transition-colors duration-150 ease-in-out whitespace-nowrap ${isLoading ? 'bg-grey hover:bg-grey cursor-not-allowed' : 'bg-blue hover:bg-dark-blue'}`}>
                 {isLoading ? 'Auditando...' : 'Auditar Sitio'}
               </button>
