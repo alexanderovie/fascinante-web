@@ -116,7 +116,7 @@ const SliderFive = () => {
                                         <div className="body2 mt-3 text-secondary">We pinpoint fresh strategies to expand your <br /> reach and drive more significant conversions.</div>
                                         {/* CTA Button for Discover Opportunities - UPDATED LINK */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/services/website-audit">Explore Options</Link>
+                                            <Link className="button-main bg-blue text-white" href="https://book.fascinantedigital.com//aoviedo27/consulta-gratis">Explore Options</Link>
                                         </div>
                                     </div>
                                 </div>
