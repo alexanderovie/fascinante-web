@@ -403,7 +403,7 @@ export default function WebsiteAuditPage() {
                   onChange={(e) => { setUrl(e.target.value); setError(null); if (results || error) setShowIntro(true); setResults(null); setError(null);}} // Restablecer y mostrar intro si se cambia URL después de resultados/error
                   placeholder="https://ejemplo.com"
                   required
-                  className="flex-grow w-full sm:w-auto bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 text-base px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent"
+                  className="flex-grow w-full caption11 bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent"
                 />
                 <button
                   type="submit"
