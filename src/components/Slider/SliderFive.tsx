@@ -60,19 +60,17 @@ const SliderFive = () => {
                         }}
                         loop={true} // Habilita el bucle infinito del carrusel
                         pagination={{ clickable: true }} // Habilita los puntos de paginación clickeables
-                        speed={600} // Velocidad de la transición entre slides (originalmente 400, puedes ajustarlo)
+                        speed={600} // Velocidad de la transición entre slides
                         // Configuración del Autoplay:
-                        // Inicialmente está configurado como 'false'.
-                        // Se iniciará efectivamente a través del hook useEffect.
                         autoplay={isSwiperReadyForAutoplay ? {
-                            delay: 6000, // Retraso del autoplay en milisegundos (aumentado desde 4000)
-                            disableOnInteraction: false, // Mantenlo en 'false' si quieres que el autoplay continúe después de la interacción del usuario
+                            delay: 6000, // Retraso del autoplay en milisegundos
+                            disableOnInteraction: false, // El autoplay no se detiene con la interacción del usuario
                         } : false}
                         modules={[Pagination, Autoplay, Navigation]} // Módulos a utilizar por Swiper
                         className='h-full relative' // Clases de Tailwind para estilizar Swiper
                     >
                         {/* --- Slide 1: Tema "SEO Audit" --- */}
-                        {/* Este es el primer slide, crítico para el LCP. Su título es H1. */}
+                        {/* El título de este slide ahora es H2 */}
                         <SwiperSlide>
                             <div className="slider-item slider-first">
                                 {/* Imagen oculta en móviles, visible desde 'sm' (small screens) hacia arriba */}
@@ -88,8 +86,8 @@ const SliderFive = () => {
                                 </div>
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
-                                        {/* Encabezado H1 para Auditoría SEO */}
-                                        <h1 className="heading2"> {/* Clase original 'heading2' mantenida para estilos, pero ahora es H1 */}
+                                        {/* Encabezado H2 para Auditoría SEO */}
+                                        <h2 className="heading2"> {/* Ahora es H2, manteniendo la clase para estilos */}
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Uncover Hidden</span>
                                                 <span className="block absolute top-0 left-0 w-full h-full">Uncover Hidden</span>
@@ -102,7 +100,7 @@ const SliderFive = () => {
                                                 <span className=" text-blue block relative overflow-hidden">Your Free Audit</span>
                                                 <span className=" text-blue block absolute top-0 left-0 w-full h-full">Your Free Audit</span>
                                             </div>
-                                        </h1>
+                                        </h2>
                                         {/* Descripción para Auditoría SEO */}
                                         <div className="body2 mt-3 text-secondary">Our comprehensive audit uncovers hidden issues and <br /> untapped strengths for top search rankings.</div>
                                         {/* Botón CTA para Auditoría SEO */}
@@ -132,7 +130,7 @@ const SliderFive = () => {
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
                                         {/* Encabezado H2 para Descubrir Oportunidades */}
-                                        <h2 className="heading2"> {/* Clase original 'heading2' mantenida para estilos, pero ahora es H2 */}
+                                        <h2 className="heading2"> {/* Mantenido como H2 */}
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Discover Your</span>
                                                 <span className="block absolute top-0 left-0 w-full h-full">Discover Your</span>
@@ -175,7 +173,7 @@ const SliderFive = () => {
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
                                         {/* Encabezado H2 para Visibilidad Online */}
-                                        <h2 className="heading2"> {/* Clase original 'heading2' mantenida para estilos, pero ahora es H2 */}
+                                        <h2 className="heading2"> {/* Mantenido como H2 */}
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Boost Your Online</span>
                                                 <span className="block absolute top-0 left-0 w-full h-full">Boost Your Online</span>
