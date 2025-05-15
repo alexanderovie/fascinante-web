@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   // metadataBase es crucial para que Next.js construya URLs absolutas para OpenGraph, sitemaps, canonicals, etc.
   metadataBase: new URL(siteUrl),
   title: "Fascinante Digital - Web Design & Digital Marketing",
-  description: "Professional web design, digital marketing, and SEO solutions to boost your online presence and drive business growth.",
+  description: "Professional web design, digital marketing, SEO, and branding solutions to boost your online presence and drive business growth.",
   // Es importante que cada página defina su propia URL canónica a través de 'alternates.canonical'.
   // Ejemplo para la página de inicio (en app/page.tsx): alternates: { canonical: '/' }
   // Ejemplo para otra página (en app/about/page.tsx): alternates: { canonical: '/about' }
