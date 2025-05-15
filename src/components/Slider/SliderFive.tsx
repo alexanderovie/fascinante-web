@@ -1,95 +1,95 @@
 // src/components/Slider/SliderFive.tsx (o la ruta correcta de tu componente)
 'use client'
 
-import React, { useState, useEffect, useRef } from "react"; // Import React hooks
-import Image from "next/image" // Import Next.js Image component for image optimization
-import Link from "next/link" // Import Next.js Link component for navigation
-import * as Icon from "@phosphor-icons/react/dist/ssr"; // Import icons from Phosphor-icons library
-import SwiperCore from 'swiper'; // Import SwiperCore for direct manipulation
-import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper and SwiperSlide components
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'; // Import necessary Swiper modules
-import 'swiper/css/bundle'; // Import Swiper CSS styles
+import React, { useState, useEffect, useRef } from "react"; // Importa los hooks de React necesarios
+import Image from "next/image" // Importa el componente Image de Next.js para optimización de imágenes
+import Link from "next/link" // Importa el componente Link de Next.js para navegación
+import * as Icon from "@phosphor-icons/react/dist/ssr"; // Importa iconos de la librería Phosphor-icons
+import SwiperCore from 'swiper'; // Importa SwiperCore para manipulación directa de Swiper
+import { Swiper, SwiperSlide } from 'swiper/react'; // Importa los componentes Swiper y SwiperSlide
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'; // Importa los módulos necesarios de Swiper
+import 'swiper/css/bundle'; // Importa los estilos CSS de Swiper
 
-// Initialize Swiper modules
+// Inicializa los módulos de Swiper que se van a utilizar
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-// Functional component for the main Slider/Carousel
+// Componente funcional para el carrusel/slider principal
 const SliderFive = () => {
-    // State to manage if the Swiper is ready to start autoplay
+    // Estado para gestionar si Swiper está listo para iniciar el autoplay
     const [isSwiperReadyForAutoplay, setIsSwiperReadyForAutoplay] = useState(false);
-    // Ref to store the Swiper instance
+    // Ref para almacenar la instancia de Swiper y poder interactuar con ella
     const swiperRef = useRef<SwiperCore | null>(null);
 
     useEffect(() => {
-        // This effect runs once after the component mounts.
-        // We introduce a small delay to ensure the initial paint and LCP elements are likely settled
-        // before starting the autoplay feature of the slider.
+        // Este efecto se ejecuta una vez después de que el componente se monta.
+        // Introducimos un pequeño retraso para asegurar que la pintura inicial y los elementos LCP
+        // probablemente estén establecidos antes de iniciar la función de autoplay del slider.
         const initialDelayTimer = setTimeout(() => {
-            setIsSwiperReadyForAutoplay(true);
-            // If swiper instance exists, explicitly start autoplay
+            setIsSwiperReadyForAutoplay(true); // Indica que Swiper ya puede iniciar el autoplay
+            // Si la instancia de Swiper existe y tiene la funcionalidad de autoplay, la inicia explícitamente.
             if (swiperRef.current && swiperRef.current.autoplay) {
                 swiperRef.current.autoplay.start();
             }
-        }, 500); // 500ms delay before enabling autoplay. Adjust if needed.
+        }, 500); // Retraso de 500ms antes de habilitar el autoplay. Ajusta este valor si es necesario.
 
-        // Cleanup function to clear the timer if the component unmounts
+        // Función de limpieza para limpiar el temporizador si el componente se desmonta
         return () => clearTimeout(initialDelayTimer);
-    }, []); // Empty dependency array means this effect runs only once on mount
+    }, []); // El array de dependencias vacío significa que este efecto se ejecuta solo una vez (al montar)
 
     return (
         <>
-            {/* Main container for the slider block */}
+            {/* Contenedor principal para el bloque del slider */}
             <div className="slider-block style-one">
-                {/* Previous navigation arrow */}
+                {/* Flecha de navegación previa */}
                 <div className="prev-arrow flex items-center justify-center cursor-pointer">
                     <Icon.CaretLeft className="text-white heading6" weight="bold" />
                 </div>
 
-                {/* Main Swiper container */}
+                {/* Contenedor principal de Swiper */}
                 <div className="slider-main">
                     <Swiper
-                        // Callback to get the Swiper instance
+                        // Callback para obtener la instancia de Swiper cuando se inicializa
                         onSwiper={(swiper) => {
-                            swiperRef.current = swiper;
+                            swiperRef.current = swiper; // Almacena la instancia en la ref
                         }}
-                        spaceBetween={0} // Space between slides
-                        slidesPerView={1} // Number of slides visible at once
-                        navigation={{ // Navigation arrows configuration
-                            prevEl: '.prev-arrow', // Selector for the previous arrow
-                            nextEl: '.next-arrow', // Selector for the next arrow
+                        spaceBetween={0} // Espacio entre slides
+                        slidesPerView={1} // Número de slides visibles a la vez
+                        navigation={{ // Configuración de las flechas de navegación
+                            prevEl: '.prev-arrow', // Selector para la flecha previa
+                            nextEl: '.next-arrow', // Selector para la flecha siguiente
                         }}
-                        loop={true} // Enable infinite loop
-                        pagination={{ clickable: true }} // Enable clickable pagination dots
-                        speed={600} // Transition speed (you had 400, can be adjusted)
-                        // Autoplay configuration:
-                        // It's initially set to false or an object with 'enabled: false'.
-                        // It will be effectively started via the useEffect hook.
+                        loop={true} // Habilita el bucle infinito del carrusel
+                        pagination={{ clickable: true }} // Habilita los puntos de paginación clickeables
+                        speed={600} // Velocidad de la transición entre slides (originalmente 400, puedes ajustarlo)
+                        // Configuración del Autoplay:
+                        // Inicialmente está configurado como 'false'.
+                        // Se iniciará efectivamente a través del hook useEffect.
                         autoplay={isSwiperReadyForAutoplay ? {
-                            delay: 6000, // Autoplay delay in milliseconds (increased from 4000)
-                            disableOnInteraction: false, // Keep true if you want autoplay to stop on user interaction
+                            delay: 6000, // Retraso del autoplay en milisegundos (aumentado desde 4000)
+                            disableOnInteraction: false, // Mantenlo en 'false' si quieres que el autoplay continúe después de la interacción del usuario
                         } : false}
-                        modules={[Pagination, Autoplay, Navigation]} // Modules to use
-                        className='h-full relative' // Tailwind classes for Swiper styling
+                        modules={[Pagination, Autoplay, Navigation]} // Módulos a utilizar por Swiper
+                        className='h-full relative' // Clases de Tailwind para estilizar Swiper
                     >
-                        {/* --- Slide 1: Theme "SEO Audit" --- */}
-                        {/* This is the first slide, critical for LCP */}
+                        {/* --- Slide 1: Tema "SEO Audit" --- */}
+                        {/* Este es el primer slide, crítico para el LCP */}
                         <SwiperSlide>
                             <div className="slider-item slider-first">
-                                {/* Image hidden on mobile, shown on sm and above */}
+                                {/* Imagen oculta en móviles, visible desde 'sm' (small screens) hacia arriba */}
                                 <div className="bg-img hidden sm:block">
                                     <Image
-                                        src={'/images/slider/client-smiling.webp'} // Image source
-                                        width={4000} // Intrinsic width
-                                        height={3000} // Intrinsic height
-                                        alt="Woman smiling, representing a happy client after an SEO audit." // More descriptive alt text
-                                        priority={true} // CRITICAL for LCP: Load this image with high priority
-                                        className="w-full h-full object-cover" // Tailwind styles
+                                        src={'/images/slider/client-smiling.webp'} // Fuente de la imagen
+                                        width={4000} // Ancho intrínseco de la imagen
+                                        height={3000} // Alto intrínseco de la imagen
+                                        alt="Woman smiling, representing a happy client after an SEO audit." // Texto alternativo descriptivo (en inglés para el copy)
+                                        priority={true} // CRÍTICO para LCP: Carga esta imagen con alta prioridad
+                                        className="w-full h-full object-cover" // Estilos de Tailwind
                                     />
                                 </div>
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
-                                        {/* Headline for SEO Audit - Consider making this an H1 if it's the main page hero */}
-                                        <div className="heading2"> {/* Or an H1 tag */}
+                                        {/* Encabezado para Auditoría SEO - Considera convertir esto en un H1 si es el héroe principal de la página */}
+                                        <div className="heading2"> {/* O una etiqueta H1 */}
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Uncover Hidden</span>
                                                 <span className="block absolute top-0 left-0 w-full h-full">Uncover Hidden</span>
@@ -103,9 +103,9 @@ const SliderFive = () => {
                                                 <span className=" text-blue block absolute top-0 left-0 w-full h-full">Your Free Audit</span>
                                             </div>
                                         </div>
-                                        {/* Description for SEO Audit */}
+                                        {/* Descripción para Auditoría SEO */}
                                         <div className="body2 mt-3 text-secondary">Our comprehensive audit uncovers hidden issues and <br /> untapped strengths for top search rankings.</div>
-                                        {/* CTA Button for SEO Audit */}
+                                        {/* Botón CTA para Auditoría SEO */}
                                         <div className="button-block md:mt-10 mt-6">
                                             <Link className="button-main bg-blue text-white" href="/services/website-audit">Start Your Audit</Link>
                                         </div>
@@ -114,23 +114,23 @@ const SliderFive = () => {
                             </div>
                         </SwiperSlide>
 
-                        {/* --- Slide 2: Theme "Discover Opportunities" --- */}
+                        {/* --- Slide 2: Tema "Discover Opportunities" --- */}
                         <SwiperSlide>
                             <div className="slider-item slider-second">
-                                {/* Image hidden on mobile, shown on sm and above */}
+                                {/* Imagen oculta en móviles, visible desde 'sm' hacia arriba */}
                                 <div className="bg-img hidden sm:block">
                                     <Image
-                                        src={'/images/slider/customer-happy.webp'} // Image source
-                                        width={4000} // Intrinsic width
-                                        height={3000} // Intrinsic height
-                                        alt="Happy customer discovering growth opportunities online." // More descriptive alt text
-                                        loading="lazy" // Lazy load subsequent images
-                                        className="w-full h-full object-cover" // Tailwind styles
+                                        src={'/images/slider/customer-happy.webp'} // Fuente de la imagen
+                                        width={4000} // Ancho intrínseco
+                                        height={3000} // Alto intrínseco
+                                        alt="Happy customer discovering growth opportunities online." // Texto alternativo descriptivo (en inglés)
+                                        loading="lazy" // Carga diferida (lazy load) para imágenes subsecuentes
+                                        className="w-full h-full object-cover" // Estilos de Tailwind
                                     />
                                 </div>
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
-                                        {/* Headline for Discover Opportunities */}
+                                        {/* Encabezado para Descubrir Oportunidades */}
                                         <div className="heading2">
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Discover Your</span>
@@ -145,9 +145,9 @@ const SliderFive = () => {
                                                 <span className=" text-blue block absolute top-0 left-0 w-full h-full">Opportunities Online</span>
                                             </div>
                                         </div>
-                                        {/* Description for Discover Opportunities */}
+                                        {/* Descripción para Descubrir Oportunidades */}
                                         <div className="body2 mt-3 text-secondary">We pinpoint fresh strategies to expand your <br /> reach and drive more significant conversions.</div>
-                                        {/* CTA Button for Discover Opportunities */}
+                                        {/* Botón CTA para Descubrir Oportunidades */}
                                         <div className="button-block md:mt-10 mt-6">
                                             <Link className="button-main bg-blue text-white" href="/services/website-audit">Explore Options</Link>
                                         </div>
@@ -156,23 +156,23 @@ const SliderFive = () => {
                             </div>
                         </SwiperSlide>
 
-                        {/* --- Slide 3: Theme "Online Visibility" --- */}
+                        {/* --- Slide 3: Tema "Online Visibility" --- */}
                         <SwiperSlide>
                             <div className="slider-item slider-third">
-                                {/* Image hidden on mobile, shown on sm and above */}
+                                {/* Imagen oculta en móviles, visible desde 'sm' hacia arriba */}
                                 <div className="bg-img hidden sm:block">
                                     <Image
-                                        src={'/images/slider/team-working.webp'} // Image source
-                                        width={4000} // Intrinsic width
-                                        height={3000} // Intrinsic height
-                                        alt="Digital marketing team working together to boost online visibility." // More descriptive alt text
-                                        loading="lazy" // Lazy load subsequent images
-                                        className="w-full h-full object-cover" // Tailwind styles
+                                        src={'/images/slider/team-working.webp'} // Fuente de la imagen
+                                        width={4000} // Ancho intrínseco
+                                        height={3000} // Alto intrínseco
+                                        alt="Digital marketing team working together to boost online visibility." // Texto alternativo descriptivo (en inglés)
+                                        loading="lazy" // Carga diferida para imágenes subsecuentes
+                                        className="w-full h-full object-cover" // Estilos de Tailwind
                                     />
                                 </div>
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
-                                        {/* Headline for Online Visibility */}
+                                        {/* Encabezado para Visibilidad Online */}
                                         <div className="heading2">
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Boost Your Online</span>
@@ -187,9 +187,9 @@ const SliderFive = () => {
                                                 <span className=" text-blue block absolute top-0 left-0 w-full h-full">Noticed by More</span>
                                             </div>
                                         </div>
-                                        {/* Description for Online Visibility */}
+                                        {/* Descripción para Visibilidad Online */}
                                         <div className="body2 mt-3 text-secondary">Ensure your business is seen by the right <br /> customers across all digital platforms.</div>
-                                        {/* CTA Button for Online Visibility */}
+                                        {/* Botón CTA para Visibilidad Online */}
                                         <div className="button-block md:mt-10 mt-6">
                                             <Link className="button-main bg-blue text-white" href="/services/website-audit">Get Discovered</Link>
                                         </div>
@@ -200,7 +200,7 @@ const SliderFive = () => {
                     </Swiper>
                 </div>
 
-                {/* Next navigation arrow */}
+                {/* Flecha de navegación siguiente */}
                 <div className="next-arrow flex items-center justify-center cursor-pointer">
                     <Icon.CaretRight className="text-white heading6" weight="bold" />
                 </div>
@@ -209,5 +209,5 @@ const SliderFive = () => {
     )
 }
 
-// Export the component
+// Exporta el componente para que pueda ser usado en otras partes de la aplicación
 export default SliderFive;
