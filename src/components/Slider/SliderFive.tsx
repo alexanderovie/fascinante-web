@@ -72,7 +72,7 @@ const SliderFive = () => {
                         className='h-full relative' // Clases de Tailwind para estilizar Swiper
                     >
                         {/* --- Slide 1: Tema "SEO Audit" --- */}
-                        {/* Este es el primer slide, crítico para el LCP */}
+                        {/* Este es el primer slide, crítico para el LCP. Su título es H1. */}
                         <SwiperSlide>
                             <div className="slider-item slider-first">
                                 {/* Imagen oculta en móviles, visible desde 'sm' (small screens) hacia arriba */}
@@ -88,8 +88,8 @@ const SliderFive = () => {
                                 </div>
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
-                                        {/* Encabezado para Auditoría SEO - Considera convertir esto en un H1 si es el héroe principal de la página */}
-                                        <div className="heading2"> {/* O una etiqueta H1 */}
+                                        {/* Encabezado H1 para Auditoría SEO */}
+                                        <h1 className="heading2"> {/* Clase original 'heading2' mantenida para estilos, pero ahora es H1 */}
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Uncover Hidden</span>
                                                 <span className="block absolute top-0 left-0 w-full h-full">Uncover Hidden</span>
@@ -102,7 +102,7 @@ const SliderFive = () => {
                                                 <span className=" text-blue block relative overflow-hidden">Your Free Audit</span>
                                                 <span className=" text-blue block absolute top-0 left-0 w-full h-full">Your Free Audit</span>
                                             </div>
-                                        </div>
+                                        </h1>
                                         {/* Descripción para Auditoría SEO */}
                                         <div className="body2 mt-3 text-secondary">Our comprehensive audit uncovers hidden issues and <br /> untapped strengths for top search rankings.</div>
                                         {/* Botón CTA para Auditoría SEO */}
@@ -115,6 +115,7 @@ const SliderFive = () => {
                         </SwiperSlide>
 
                         {/* --- Slide 2: Tema "Discover Opportunities" --- */}
+                        {/* El título de este slide es H2 */}
                         <SwiperSlide>
                             <div className="slider-item slider-second">
                                 {/* Imagen oculta en móviles, visible desde 'sm' hacia arriba */}
@@ -130,8 +131,8 @@ const SliderFive = () => {
                                 </div>
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
-                                        {/* Encabezado para Descubrir Oportunidades */}
-                                        <div className="heading2">
+                                        {/* Encabezado H2 para Descubrir Oportunidades */}
+                                        <h2 className="heading2"> {/* Clase original 'heading2' mantenida para estilos, pero ahora es H2 */}
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Discover Your</span>
                                                 <span className="block absolute top-0 left-0 w-full h-full">Discover Your</span>
@@ -144,7 +145,7 @@ const SliderFive = () => {
                                                 <span className=" text-blue block relative overflow-hidden">Opportunities Online</span>
                                                 <span className=" text-blue block absolute top-0 left-0 w-full h-full">Opportunities Online</span>
                                             </div>
-                                        </div>
+                                        </h2>
                                         {/* Descripción para Descubrir Oportunidades */}
                                         <div className="body2 mt-3 text-secondary">We pinpoint fresh strategies to expand your <br /> reach and drive more significant conversions.</div>
                                         {/* Botón CTA para Descubrir Oportunidades */}
@@ -157,6 +158,7 @@ const SliderFive = () => {
                         </SwiperSlide>
 
                         {/* --- Slide 3: Tema "Online Visibility" --- */}
+                        {/* El título de este slide es H2 */}
                         <SwiperSlide>
                             <div className="slider-item slider-third">
                                 {/* Imagen oculta en móviles, visible desde 'sm' hacia arriba */}
@@ -172,8 +174,8 @@ const SliderFive = () => {
                                 </div>
                                 <div className="container">
                                     <div className="text-content flex flex-col justify-between">
-                                        {/* Encabezado para Visibilidad Online */}
-                                        <div className="heading2">
+                                        {/* Encabezado H2 para Visibilidad Online */}
+                                        <h2 className="heading2"> {/* Clase original 'heading2' mantenida para estilos, pero ahora es H2 */}
                                             <div className="relative overflow-hidden">
                                                 <span className="block relative overflow-hidden">Boost Your Online</span>
                                                 <span className="block absolute top-0 left-0 w-full h-full">Boost Your Online</span>
@@ -186,7 +188,7 @@ const SliderFive = () => {
                                                 <span className=" text-blue block relative overflow-hidden">Noticed by More</span>
                                                 <span className=" text-blue block absolute top-0 left-0 w-full h-full">Noticed by More</span>
                                             </div>
-                                        </div>
+                                        </h2>
                                         {/* Descripción para Visibilidad Online */}
                                         <div className="body2 mt-3 text-secondary">Ensure your business is seen by the right <br /> customers across all digital platforms.</div>
                                         {/* Botón CTA para Visibilidad Online */}
