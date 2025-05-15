@@ -26,7 +26,7 @@ export default function NotFound() {
               404
             </h1>
             <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white">
-              Página No Encontrada
+              Página No Encoontrada
             </h2>
             <p className="mt-6 text-md sm:text-lg text-gray-600 dark:text-gray-300 max-w-md">
               Lo sentimos, la página que estás buscando no existe, ha sido movida o no está disponible temporalmente.
