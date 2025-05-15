@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         alt: "Fascinante Digital Logo",
       },
       {
-        url: "/images/og-image.jpg", // URL relativa, Next.js la hará absoluta
+        url: "/images/banner/fascinante-digital-seo-audit-banner.jpg", // URL relativa, Next.js la hará absoluta
         width: 1200,
         height: 630,
         alt: "Fascinante Digital - Expert Web Design, SEO, and Digital Marketing",
