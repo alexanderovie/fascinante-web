@@ -75,8 +75,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fascinante Digital - Web Design, SEO, and Digital Marketing",
     description: "Boost your business with expert web design, digital marketing, and SEO services.",
-    images: [`${siteUrl}/images/og-image.jpg`], // URL absoluta para Twitter
-    creator: "@fascinantedigital", // Asegúrate que sea el handle correcto
+    images: [`${siteUrl}/images/banner/fascinante-digital-seo-audit-banner.jpg`], // URL absoluta para Twitter
+    creator: "@fascinantedigital",
   },
   appleWebApp: {
     title: "Fascinante Digital",
