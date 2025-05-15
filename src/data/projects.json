@@ -1,0 +1,42 @@
+[
+  {
+    "id": "seo-strategy",
+    "imageSrc": "/images/component/growth chart abstract.jpg",
+    "imageAlt": "Case Study: SEO Strategy & Organic Growth",
+    "title": "SEO Strategy & Organic Growth",
+    "subtitle": "Boosting Online Visibility",
+    "link": "/case-studies/seo-strategy-organic-growth"
+  },
+  {
+    "id": "social-media-campaign",
+    "imageSrc": "/images/component/project-social-media.png",
+    "imageAlt": "Case Study: Social Media Engagement Campaign",
+    "title": "Social Media Engagement Campaign",
+    "subtitle": "Building Community & Brand Loyalty",
+    "link": "/case-studies/social-media-engagement"
+  },
+  {
+    "id": "ecommerce-optimization",
+    "imageSrc": "/images/component/project-ecommerce.png",
+    "imageAlt": "Case Study: E-commerce Conversion Optimization",
+    "title": "E-commerce Conversion Optimization",
+    "subtitle": "Maximizing Sales & ROI",
+    "link": "/case-studies/ecommerce-conversion-optimization"
+  },
+  {
+    "id": "ppc-advertising",
+    "imageSrc": "/images/component/project-ppc.png",
+    "imageAlt": "Case Study: Targeted PPC Advertising",
+    "title": "Targeted PPC Advertising",
+    "subtitle": "Driving Qualified Leads",
+    "link": "/case-studies/targeted-ppc-advertising"
+  },
+  {
+    "id": "responsive-web-design",
+    "imageSrc": "/images/component/project-web-design.png",
+    "imageAlt": "Case Study: Responsive Web Design & Development",
+    "title": "Responsive Web Design & Development",
+    "subtitle": "Crafting Engaging User Experiences",
+    "link": "/case-studies/responsive-web-design"
+  }
+]

@@ -6,13 +6,35 @@
             cursor: pointer;
             transition: all ease 0.3s;
 
+            // NEW: Default bottom gradient for text contrast
+            // This pseudo-element adds a gradient from the bottom up,
+            // making the lower part of the image darker by default
+            // to ensure white text is readable.
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 60%; // You can adjust the height of the gradient (e.g., 50%, 70%)
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+                // Gradient goes from semi-transparent black at the bottom to fully transparent.
+                // Adjust rgba(0, 0, 0, 0.65) to make it darker or lighter.
+                z-index: 1; // Positioned above the image but below the text and arrow.
+                pointer-events: none; // Allows clicks to pass through to elements underneath.
+                transition: opacity 0.3s ease; // For potential transitions (e.g., if you want to hide it on hover).
+            }
+
             .bg-img {
-                position: relative;
+                position: relative; // Remains relative for its own ::before pseudo-element.
 
                 img {
+                    display: block; // Good practice to prevent extra space below images.
                     transition: all ease 0.4s;
                 }
 
+                // This ::before is the full overlay that appears ON HOVER.
+                // It will sit on top of the default gradient (.item::after) when active.
                 &::before {
                     position: absolute;
                     content: "";
@@ -21,9 +43,11 @@
                     bottom: 0;
                     width: 100%;
                     height: 100%;
-                    background-color: var(--black);
-                    opacity: 0;
-                    z-index: 1;
+                    background-color: var(--black); // Assumes --black is defined (e.g., #000 or a dark gray)
+                    opacity: 0; // Invisible by default.
+                    z-index: 1; // Same level as the default gradient, or could be higher if needed, but text is z-index: 2.
+                                // As a child's pseudo-element, its z-index is relative to .bg-img.
+                                // It will effectively cover .item::after when opaque due to source order or if .bg-img has its own stacking context.
                     transition: all ease 0.4s;
                 }
             }
@@ -32,22 +56,24 @@
                 position: absolute;
                 left: 28px;
                 bottom: 28px;
-                z-index: 2;
+                z-index: 2; // Ensures text is above the image, default gradient, and hover overlay.
 
                 .heading5 {
                     position: relative;
 
+                    // Animated underline for the title
                     &::before {
                         position: absolute;
                         content: "";
-                        background-color: #fff;
+                        background-color: #fff; // White underline
                         left: 0;
-                        bottom: 0;
+                        bottom: 0; // Positioned at the bottom of the heading
                         height: 2px;
-                        width: 0;
+                        width: 0; // Starts with no width (invisible)
                         transition: all ease 0.4s;
                     }
 
+                    // On hover of the heading itself, expand the underline
                     &:hover {
                         &::before {
                             width: 100%;
@@ -58,50 +84,67 @@
 
             .arrow {
                 position: absolute;
-                right: -60px;
+                right: -60px; // Starts off-screen to the right
                 bottom: 38px;
                 transition: all ease 0.3s;
-                z-index: 2;
+                z-index: 2; // Ensures arrow is above image, gradients, and overlays.
 
+                // Hover effect for the arrow itself
                 &:hover {
-                    background-color: var(--blue);
+                    background-color: var(--blue); // Assumes --blue is defined. Your JSX uses hover:text-white for icon.
+                                                 // If the arrow's bg is white in JSX, this CSS rule might need !important or JSX change.
 
+                    // This targets an <i> tag, but you're using a Phosphor Icon (SVG).
+                    // The color of the SVG icon is controlled by 'currentColor', so
+                    // 'hover:text-white' on the Link in JSX will handle the icon color.
                     i {
                         color: var(--white);
                     }
                 }
 
+                // If you were using an <i> tag for an icon font
                 i {
                     display: block;
                 }
             }
 
+            // Hover effects for the entire .item
             &:hover {
                 .bg-img {
                     img {
-                        transform: scale(1.05);
+                        transform: scale(1.05); // Zoom the image slightly
                     }
 
                     &::before {
-                        opacity: 0.6;
+                        opacity: 0.6; // Make the full dark overlay visible
                     }
                 }
 
+                // Optional: If you want the default bottom gradient to disappear when the full overlay appears
+                // &::after {
+                //   opacity: 0;
+                // }
+
                 .arrow {
-                    right: 28px;
+                    right: 28px; // Slide the arrow into view
                 }
             }
         }
 
         .swiper {
-            padding-bottom: 64px;
+            padding-bottom: 64px; // Space for pagination
 
             .swiper-pagination {
-                bottom: 0 !important;
+                bottom: 0 !important; // Ensure pagination is at the very bottom
             }
         }
 
+        // Responsive adjustments
         @media (max-width: 1023.99px) {
+            // Note: Your original SCSS had ".col-12 .item".
+            // If .item is not always inside .col-12, you might want to simplify this selector
+            // or ensure .col-12 is indeed the parent.
+            // For this example, I'm keeping it as you provided.
             .col-12 {
                 .item {
                     .text {
@@ -110,7 +153,7 @@
 
                     .arrow {
                         bottom: 20px;
-                        right: 28px;
+                        right: 28px; // Arrow is visible by default on smaller screens
                     }
                 }
             }
@@ -129,15 +172,17 @@
                     }
 
                     .arrow {
-                        right: 18px;
+                        right: 18px; // Arrow remains visible
                         bottom: 20px;
 
+                        // Styles for an <i> tag icon, adjust if needed for SVG sizing
                         i {
                             font-size: 18px;
                             padding: 10px;
                         }
                     }
 
+                    // On hover, the arrow position doesn't change as it's already visible
                     &:hover {
                         .arrow {
                             right: 18px;
