@@ -14,7 +14,7 @@ const CtaTwo = () => {
                 onClick={handleOpenBooking} 
                 className="button-main bg-blue text-white"
             >
-                Start Your Audit
+                Booking
             </button>
         </div>
     );
