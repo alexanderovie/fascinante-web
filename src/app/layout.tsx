@@ -8,7 +8,7 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = "https://fascinantedigital.com";
+const siteUrl = "https://www.fascinantedigital.com"; // Añade www.
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
