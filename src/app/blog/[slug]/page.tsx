@@ -102,7 +102,7 @@ export default async function PostPage({ params }: PostPageProps) {
             // Si quieres una jerarquía: title="Blog" y luego el título del post debajo o como subtítulo.
             // Esto depende de cómo esté diseñado tu BreadcrumbItem.
             // Por ahora, usamos el título del post como el título principal del Breadcrumb.
-            img={post.coverImage || "/images/banner/default-blog-banner.webp"} // Imagen de portada del post o una por defecto
+            img={"/images/banner/default-blog-banner.webp"} // <--- CAMBIO AQUÍ: Ruta a tu imagen fija
             desc={post.excerpt || "Detalles del artículo."} // Puedes usar el excerpt o una descripción genérica
             // Si tu BreadcrumbItem puede mostrar una jerarquía, podrías hacer algo como:
             // items={[{ href: "/blog", name: "Blog" }, { name: post.title }]}

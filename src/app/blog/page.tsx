@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getSortedPostsData, PostData } from '../../lib/posts'; // Ajusta la ruta si es necesario
 
 // --- Importa los componentes de Layout ---
-import TopNavOne from "@/components/Header/TopNav/TopNavOne";   // Como en tu ejemplo BlogListStyleTwo
+import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";   // Como en tu ejemplo BlogListStyleTwo
 import MenuTwo from "@/components/Header/Menu/MenuTwo";       // Como en tu ejemplo BlogListStyleTwo
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
 import CtaOne from "@/components/Section/CTA/CtaOne";         // Opcional, si quieres un CTA en esta página
@@ -17,7 +17,7 @@ export default function BlogIndexPage() {
     <>
       <div className="overflow-x-hidden">
         <header id="header">
-          <TopNavOne />
+          <TopNavTwo />
           <MenuTwo />
         </header>
 

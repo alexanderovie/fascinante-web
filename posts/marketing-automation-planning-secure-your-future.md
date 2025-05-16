@@ -6,7 +6,7 @@ category: marketing automation
 excerpt: >-
   In a deep conversation, we explore how automation can free up resources and
   ensure sustained growth for your agency and your clients.
-coverImage: /images/blog/930x593.png
+coverImage: /images/banner/default-blog-banner.webp
 slug: marketing-automation-planning-secure-your-future
 subTitle: ''
 projectClient: ''
