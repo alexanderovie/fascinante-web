@@ -25,7 +25,7 @@ export default function BlogIndexPage() {
           <BreadcrumbItem 
             link="Blog" // O el texto que quieras para el enlace de la miga de pan (ej. "Inicio")
             title="Nuestro Blog Fascinante" 
-            img="/images/banner/about1.png" // Usa una imagen de banner adecuada para la sección del blog
+            img="/images/banner/Banner-Blog-Fascinante.webp" // Usa una imagen de banner adecuada para la sección del blog
             desc="Descubre nuestros últimos artículos, noticias y consejos sobre temas fascinantes." 
           />
 
