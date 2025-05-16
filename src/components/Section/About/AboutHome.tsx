@@ -127,13 +127,13 @@ const AboutHome = () => {
             </div>
             <div className="button-block flex items-center gap-5 md:mt-10 mt-6 pb-2">
               <a
-                className="button-main text-white bg-blue hover-button-black text-button rounded-full"
+                className="button-main text-white bg-blue hover-button-black text-button"
                 href="contact-two.html"
               >
                 Get started
               </a>
               <a
-                className="button-main text-on-surface hover:bg-black hover:text-white hover:border-transparent bg-white text-button rounded-full border-2 border-blue flex items-center gap-2"
+                className="button-main text-on-surface hover:bg-black hover:text-white hover:border-transparent bg-white text-button border-2 border-blue flex items-center gap-2"
                 href="tel:+18008864981" 
               >
                 <i className="ph ph-phone text-xl"></i>
