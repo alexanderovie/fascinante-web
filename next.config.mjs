@@ -1,25 +1,15 @@
 // next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/:path*",
-        destination: "https://cal.com/fascinante-digital/15min/:path*",
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          { key: "X-Forwarded-Host", value: "booking.fascinantedigital.com" },
-          { key: "X-Forwarded-Proto", value: "https" },
-        ],
-      },
-    ];
-  },
+  // reactStrictMode: true, // Esta es una opción común y a menudo activada por defecto. Puedes mantenerla si la tienes.
+  
+  // Aquí puedes añadir otras configuraciones específicas que necesites,
+  // como dominios para imágenes, etc., pero si no tienes ninguna,
+  // un objeto vacío también es válido.
+
+  // POR AHORA, VAMOS A QUITAR COMPLETAMENTE LOS BLOQUES problemáticos:
+  // async rewrites() { ... } // Eliminado o comentado
+  // async headers() { ... }  // Eliminado o comentado (o hacerlo más específico después)
 };
 
 export default nextConfig;

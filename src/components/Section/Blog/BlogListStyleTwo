@@ -1,0 +1,55 @@
+'use client'
+
+import TopNavTwo from "../../Header/TopNav/TopNavTwo"; // Manteniendo tu ruta relativa
+import MenuTwo from "../../Header/Menu/MenuTwo";         // Manteniendo tu ruta relativa
+import BreadcrumbItem from "../../../components/Breadcrumb/BreadcrumbItem"; // Manteniendo tu ruta relativa
+import LayoutGrid from "../../../components/Blog/LayoutGrid";         // Manteniendo tu ruta relativa
+import CtaOne from "../../../components/Section/CTA/CtaOne";             // Manteniendo tu ruta relativa
+import Footer from "../../../components/Footer/Footer";                 // Manteniendo tu ruta relativa
+import { Suspense } from "react";
+import { PostSummary } from "../../../type/posts"; // Usando alias para tipos es más robusto. Asegúrate que src/types/posts.ts existe
+
+interface BlogListStyleTwoProps {
+  posts: PostSummary[];
+  recentPosts: PostSummary[];
+  allCategories: string[];
+  allTags: string[];
+}
+
+export default function BlogListStyleTwo({
+  posts,
+  recentPosts,
+  allCategories,
+  allTags
+}: BlogListStyleTwoProps) {
+    return (
+        <>
+            <div className="overflow-x-hidden">
+                <header id="header">
+                    <TopNavTwo />
+                    <MenuTwo />
+                </header>
+                <main className="content">
+                    <BreadcrumbItem
+                        link="Blog"
+                        img="/images/banner/about1.webp"
+                        title="Our Blog & Insights"
+                        desc="Explore articles and expert tips on Web Design, Digital Marketing, SEO, and more from Fascinante Digital."
+                    />
+                    <Suspense fallback={<div className="container text-center py-10">Cargando artículos...</div>}>
+                        <LayoutGrid
+                            posts={posts}
+                            recentPosts={recentPosts}
+                            allCategories={allCategories}
+                            allTags={allTags}
+                        />
+                    </Suspense>
+                    <CtaOne />
+                </main>
+                <footer id="footer">
+                    <Footer />
+                </footer>
+            </div>
+        </>
+    );
+}

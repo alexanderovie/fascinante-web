@@ -6,20 +6,35 @@ import AboutHome from "@/components/Section/About/AboutHome";
 import Counter from "@/components/Section/Counter/Counter";
 // import Partner from "@/components/Section/Partner/Partner";
 import Project from "@/components/Section/Project/Project";
-import SliderFive from "@/components/Slider/SliderFive"; // Asegúrate que la ruta sea correcta
+import SliderFive from "@/components/Slider/SliderFive";
+
+// --- INICIO DE CAMBIOS PARA EL BLOG ---
+import { getSortedPostsData, PostData } from "@/lib/posts"; // 1. Importar desde tu nueva librería de posts
+// import blogData from '@/data/blog.json'; // 2. ELIMINAR esta línea
+// --- FIN DE CAMBIOS PARA EL BLOG ---
+
+import BlogOne from "@/components/Blog/BlogOne"; // Este componente ahora recibirá datos de Markdown
+
+// --- ATENCIÓN: PRÓXIMO POSIBLE ERROR ---
+// La siguiente línea también causará un error si 'src/data/service.json' fue eliminado.
+// Deberás restaurar 'service.json', eliminar la sección de servicios, o proveer 'serviceData' de otra forma.
 import serviceData from '@/data/service.json';
 import ServiceTwo from "@/components/Section/Service/ServiceTwo";
+// --- FIN ATENCIÓN ---
+
 import TestimonialTwo from "@/components/Section/Testimonial/TestimonialTwo";
-import blogData from '@/data/blog.json';
-import BlogOne from "@/components/Section/Blog/BlogOne";
 import CtaOne from "@/components/Section/CTA/CtaOne";
 import Footer from "@/components/Footer/Footer";
 import FormRequestTwo from "@/components/Section/FormRequest/FormRequestTwo";
 
 export default function Home() {
-    // Este es el texto para el H1 principal de tu página.
-    // Puedes cambiarlo según tu estrategia SEO y de contenido.
     const mainPageHeadline = "Uncover Hidden SEO Insights with Your Free Audit";
+
+    // --- INICIO DE CAMBIOS PARA EL BLOG ---
+    // 3. Obtener los datos de los posts. Puedes mostrar todos o solo algunos recientes.
+    const allPosts: PostData[] = getSortedPostsData();
+    const recentPosts = allPosts.slice(0, 3); // Por ejemplo, mostrar los 3 más recientes
+    // --- FIN DE CAMBIOS PARA EL BLOG ---
 
     return (
         <>
@@ -29,34 +44,34 @@ export default function Home() {
                     <MenuTwo />
                 </header>
                 <main className="content">
-                    {/* Aquí puedes colocar el H1 principal.
-                        Podrías querer estilizarlo o incluso hacerlo "sr-only" (solo para lectores de pantalla)
-                        si el diseño visual ya presenta este texto de forma prominente en el Slider.
-                        Por ahora, lo dejamos visible para claridad. */}
                     <h1 className="sr-only">
                         {mainPageHeadline}
                     </h1>
-                    {/* O si quieres que sea visible y centrado antes del slider:
-                    <div className="container py-4 sm:py-6 md:py-8 text-center">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white">
-                            {mainPageHeadline}
-                        </h1>
-                    </div>
-                    */}
-
-                    {/* El componente SliderFive ya no necesita generar el H1 */}
                     <SliderFive />
-                    
-                    {/* Partner Section (Desactivado temporalmente) */}
                     {/* <Partner classname='bg-dark-blue' /> */}
-                    
                     <AboutHome />
                     <Counter classname='lg:py-10 py-7 border-t border-line' />
                     <Project />
+
+                    {/* ATENCIÓN: Si service.json fue eliminado, esta línea causará un error.
+                      Opciones:
+                      1. Restaura 'src/data/service.json' si aún lo necesitas.
+                      2. Comenta o elimina esta sección temporalmente:
+                         // <ServiceTwo data={serviceData} />
+                      3. Provee los datos para 'ServiceTwo' de otra manera (ej. hardcodeados o desde otra fuente).
+                    */}
                     <ServiceTwo data={serviceData} />
+
                     <TestimonialTwo />
                     <FormRequestTwo classname="style-two" bgImg="/images/banner/team-celebrating.webp" />
-                    <BlogOne data={blogData} />
+
+                    {/* --- INICIO DE CAMBIOS PARA EL BLOG --- */}
+                    {/* 4. Pasar los nuevos datos (recentPosts) al componente BlogOne */}
+                    {/* Es posible que necesites ajustar BlogOne si su estructura interna */}
+                    {/* dependía mucho del formato específico de blog.json */}
+                    <BlogOne data={recentPosts} /> 
+                    {/* --- FIN DE CAMBIOS PARA EL BLOG --- */}
+                    
                     <div className="pb-[100px]"></div>
                     <CtaOne />
                 </main>
