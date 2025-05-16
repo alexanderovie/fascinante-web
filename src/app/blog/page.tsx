@@ -2,52 +2,67 @@
 import Link from 'next/link';
 import { getSortedPostsData, PostData } from '../../lib/posts'; // Ajusta la ruta si es necesario
 
+// --- Importa los componentes de Layout ---
+import TopNavOne from "@/components/Header/TopNav/TopNavOne";   // Como en tu ejemplo BlogListStyleTwo
+import MenuTwo from "@/components/Header/Menu/MenuTwo";       // Como en tu ejemplo BlogListStyleTwo
+import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
+import CtaOne from "@/components/Section/CTA/CtaOne";         // Opcional, si quieres un CTA en esta página
+import Footer from "@/components/Footer/Footer";
+import BlogItem from '@/components/Blog/BlogItem';             // ¡Tu componente para mostrar cada post!
+
 export default function BlogIndexPage() {
   const allPostsData: PostData[] = getSortedPostsData();
 
   return (
-    <section style={{ padding: '2rem' }}>
-      <h1>Blog Fascinante</h1>
-      <p>Bienvenido a nuestro espacio de conocimiento y actualidad.</p>
-      
-      {allPostsData.length === 0 && (
-        <p>Aún no hay artículos publicados. ¡Vuelve pronto!</p>
-      )}
+    <>
+      <div className="overflow-x-hidden">
+        <header id="header">
+          <TopNavOne />
+          <MenuTwo />
+        </header>
 
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {allPostsData.map(({ slug, date, title, excerpt }) => ( // Asumiendo que 'excerpt' está en tu frontmatter y PostData
-          <li key={slug} style={{ marginBottom: '2rem', borderBottom: '1px solid #eee', paddingBottom: '1rem' }}>
-            <article>
-              <h2>
-                <Link href={`/blog/${slug}`} style={{ textDecoration: 'none', color: '#0070f3' }}>
-                  {title}
-                </Link>
-              </h2>
-              <small style={{ color: '#555', display: 'block', marginBottom: '0.5rem' }}>
-                Publicado el: {new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </small>
-              {excerpt && <p style={{ color: '#333' }}>{excerpt}</p>} {/* Muestra el extracto si existe */}
-              <Link href={`/blog/${slug}`} style={{ color: '#0070f3' }}>
-                Leer más →
-              </Link>
-            </article>
-          </li>
-        ))}
-      </ul>
-    </section>
+        <main className="content">
+          <BreadcrumbItem 
+            link="Blog" // O el texto que quieras para el enlace de la miga de pan (ej. "Inicio")
+            title="Nuestro Blog Fascinante" 
+            img="/images/banner/about1.png" // Usa una imagen de banner adecuada para la sección del blog
+            desc="Descubre nuestros últimos artículos, noticias y consejos sobre temas fascinantes." 
+          />
+
+          <section className="blog-list-section py-12 md:py-16 lg:py-20"> {/* Añade padding */}
+            <div className="container"> {/* Usa tu clase .container para centrar y limitar el ancho */}
+              
+              {allPostsData.length === 0 ? (
+                <p className="text-center text-xl text-gray-600 dark:text-gray-400">
+                  Aún no hay artículos publicados. ¡Vuelve pronto!
+                </p>
+              ) : (
+                // Aquí puedes usar una cuadrícula para mostrar los BlogItem
+                // Ejemplo con Tailwind CSS Grid:
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {allPostsData.map((post) => (
+                    <BlogItem key={post.slug} post={post} />
+                  ))}
+                </div>
+                // Si no usas Tailwind, necesitarás una clase CSS para la cuadrícula:
+                // <div className="blog-items-grid">
+                //   {allPostsData.map((post) => (
+                //     <BlogItem key={post.slug} post={post} />
+                //   ))}
+                // </div>
+              )}
+
+              {/* Aquí podrías añadir paginación si tienes muchos posts */}
+            </div>
+          </section>
+          
+          <CtaOne /> {/* Opcional, si quieres un Call to Action */}
+        </main>
+
+        <footer id="footer">
+          <Footer />
+        </footer>
+      </div>
+    </>
   );
 }
-
-// Nota: Para que 'excerpt' esté disponible aquí, asegúrate de que:
-// 1. Esté en el frontmatter de tus archivos .md
-// 2. La interfaz `PostData` en `src/lib/posts.ts` incluya `excerpt?: string;` explícitamente
-//    o que lo estés accediendo a través de `...matterResult.data` y lo trates como `any`.
-//    Modificar PostData así sería más seguro:
-//    export interface PostData {
-//      slug: string;
-//      title: string;
-//      date: string;
-//      excerpt?: string; // Añadido para claridad
-//      coverImage?: string; // Si también quieres mostrar una imagen de portada
-//      [key: string]: any;
-//    }
