@@ -1,14 +1,14 @@
-// src/app/contact/page.tsx (o el nombre de tu archivo de página de contacto)
+// src/app/contact/page.tsx
 'use client'
 
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuTwo from "@/components/Header/Menu/MenuTwo"; // Corregido para usar MenuTwo consistentemente
+import MenuTwo from "@/components/Header/Menu/MenuTwo"; 
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
 import CtaOne from "@/components/Section/CTA/CtaOne";
 import Footer from "@/components/Footer/Footer";
-import * as Icon from "@phosphor-icons/react/dist/ssr"; // Tus iconos Phosphor
+import * as Icon from "@phosphor-icons/react/dist/ssr";
 
-export default function ContactPage() { // Renombrado para claridad, puedes usar ContactStyleOne si prefieres
+export default function ContactPage() {
   return (
     <>
       <div className="overflow-x-hidden">
@@ -19,25 +19,23 @@ export default function ContactPage() { // Renombrado para claridad, puedes usar
         <main className="content">
           <BreadcrumbItem
             link="Contact"
-            img="/images/banner/about1.webp" // Asegúrate que esta imagen exista y sea adecuada
+            img="/images/banner/about1.webp" 
             title="Get In Touch"
             desc="Connect with Fascinante Digital for expert Web Design, Digital Marketing, and Local Listing services."
           />
-          {/* --- TU LAYOUT ORIGINAL PARA LA SECCIÓN DEL FORMULARIO --- */}
           <div className="form-contact style-one lg:py-[100px] sm:py-16 py-10">
             <div className="container flex items-center justify-center">
               <div className="xm:w-5/6 w-full flex max-xl:flex-col xl:items-center gap-y-8">
                 
-                {/* Columna Izquierda: Información de Contacto (Mantenida como la tenías, con pequeños ajustes de clases de texto si aplica) */}
                 <div className="w-full xl:w-2/5">
-                  <div className="infor bg-blue rounded-xl p-8 sm:p-10 text-white"> {/* Usando tu var(--blue) y var(--white) */}
-                    <div className="heading5 mb-1">Let's Connect</div> {/* Usando tu clase .heading5 */}
-                    {/* La clase .body3 no está en tu globals.css, usaré .body2 que sí está */}
+                  <div className="infor bg-blue rounded-xl p-8 sm:p-10 text-white">
+                    {/* CORRECCIÓN PROBABLE PARA LÍNEA 34 o 37 */}
+                    <div className="heading5 mb-1">Let&apos;s Connect</div>
+                    {/* CORRECCIÓN PROBABLE PARA LÍNEA 34 o 37 */}
                     <div className="body2 mt-2 opacity-90">
-                      Reach out to us! We're here to help you elevate your digital presence.
+                      Reach out to us! We&apos;re here to help you elevate your digital presence.
                     </div>
                     <div className="list-social flex flex-wrap items-center gap-3 md:mt-8 mt-6">
-                      {/* Tus iconos <i> se mantienen. Asegúrate que src/styles/icons/style.css esté importado globalmente */}
                       <a className="item rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-surface hover:opacity-80 transition-opacity" href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i className="icon-facebook text-black dark:text-blue"></i></a>
                       <a className="item rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-surface hover:opacity-80 transition-opacity" href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i className="icon-in text-black dark:text-blue"></i></a>
                       <a className="item rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-surface hover:opacity-80 transition-opacity" href="https://www.twitter.com/" target="_blank" aria-label="Twitter"><i className="icon-twitter text-sm text-black dark:text-blue ml-1"></i></a>
@@ -65,14 +63,13 @@ export default function ContactPage() { // Renombrado para claridad, puedes usar
                   </div>
                 </div>
 
-                {/* Columna Derecha: Formulario (con estilos aplicados a los campos internos) */}
                 <div className="w-full xl:w-3/5 xl:pl-20">
-                  <form className="form-block flex flex-col justify-between gap-y-6 sm:gap-y-7"> {/* Ajustado gap-5 a gap-y-6 o 7 */}
+                  <form className="form-block flex flex-col justify-between gap-y-6 sm:gap-y-7">
                     <div className="heading text-left">
                       <div className="heading5 text-black dark:text-white">Send Us a Message</div>
-                      {/* Usando .body2 para la descripción del formulario */}
+                      {/* CORRECCIÓN PROBABLE PARA LÍNEA 75 */}
                       <div className="body2 text-secondary dark:text-gray-300 mt-1 sm:mt-2">
-                        Fill out the form below and we'll get back to you shortly.
+                        Fill out the form below and we&apos;ll get back to you shortly.
                       </div>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-5">
@@ -140,7 +137,7 @@ export default function ContactPage() { // Renombrado para claridad, puedes usar
                     <div className="button-block pt-2">
                       <button 
                         type="submit" 
-                        className="button-main bg-blue text-white hover:bg-dark-blue dark:hover:bg-blue-700" // Estilo de SliderFive (sin rounded-full, sin text-button)
+                        className="button-main bg-blue text-white hover:bg-dark-blue dark:hover:bg-blue-700"
                       >
                         Send Message
                       </button>
