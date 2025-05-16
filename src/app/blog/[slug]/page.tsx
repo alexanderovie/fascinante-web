@@ -7,7 +7,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 
 // --- Componentes de Layout del estilo de BlogListStyleTwo ---
 import Link from "next/link"; // Necesario para Breadcrumb y otros enlaces
-import TopNavOne from "@/components/Header/TopNav/TopNavOne";
+import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import MenuTwo from "@/components/Header/Menu/MenuTwo";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"; // Lo usaremos para el post actual
 import CtaOne from "@/components/Section/CTA/CtaOne";
@@ -90,7 +90,7 @@ export default async function PostPage({ params }: PostPageProps) {
     <>
       <div className="overflow-x-hidden">
         <header id="header">
-          <TopNavOne />
+          <TopNavTwo />
           <MenuTwo />
         </header>
         <main className="content">
@@ -102,7 +102,7 @@ export default async function PostPage({ params }: PostPageProps) {
             // Si quieres una jerarquía: title="Blog" y luego el título del post debajo o como subtítulo.
             // Esto depende de cómo esté diseñado tu BreadcrumbItem.
             // Por ahora, usamos el título del post como el título principal del Breadcrumb.
-            img={post.coverImage || "/images/banner/default-blog-banner.png"} // Imagen de portada del post o una por defecto
+            img={post.coverImage || "/images/banner/default-blog-banner.webp"} // Imagen de portada del post o una por defecto
             desc={post.excerpt || "Detalles del artículo."} // Puedes usar el excerpt o una descripción genérica
             // Si tu BreadcrumbItem puede mostrar una jerarquía, podrías hacer algo como:
             // items={[{ href: "/blog", name: "Blog" }, { name: post.title }]}
