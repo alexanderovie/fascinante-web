@@ -403,7 +403,7 @@ export default function WebsiteAuditPage() {
             {/* --- SECCIÓN INTRODUCTORIA CONDICIONAL (SIN CAMBIOS) --- */}
             {showIntro && !isLoading && !results && !error && (
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-12 md:mb-16 p-6 md:p-8 bg-gray-50 dark:bg-gray-800 rounded-lg shadow">
-                <div classNam e="md:w-1/2 flex justify-center md:justify-start">
+                <div className="md:w-1/2 flex justify-center md:justify-start">
                   <img
                     src="https_pagespeed.web.dev_static_images_psi_hero_poster_2x.png" // REEMPLAZA ESTA IMAGEN
                     alt="Ilustración de auditoría web"
