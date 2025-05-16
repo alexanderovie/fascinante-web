@@ -5,7 +5,7 @@ lastModified: '2025-05-16'
 author: 'Fascinante Digital'
 status: 'published'
 
-slug: 'cro-tips-maximize-your-digital-returns'
+slug: 'cro-tips-maximiza-your-digital-returns'
 
 category: 'Conversion Optimization'
 tags:
