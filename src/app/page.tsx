@@ -4,7 +4,7 @@ import MenuTwo from "@/components/Header/Menu/Menu";
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import AboutHome from "@/components/Section/About/AboutHome";
 import Counter from "@/components/Section/Counter/Counter";
-// import Partner from "@/components/Section/Partner/Partner";
+import Partner from "@/components/Section/Partner/Partner";
 import Project from "@/components/Section/Project/Project";
 import SliderFive from "@/components/Slider/SliderFive";
 
@@ -48,7 +48,7 @@ export default function Home() {
                         {mainPageHeadline}
                     </h1>
                     <SliderFive />
-                    {/* <Partner classname='bg-dark-blue' /> */}
+                    <Partner classname='bg-dark-blue' />
                     <AboutHome />
                     <Counter classname='lg:py-10 py-7 border-t border-line' />
                     <Project />
