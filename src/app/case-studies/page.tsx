@@ -1,7 +1,7 @@
 'use client'
 
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/Menu";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import CaseStudyOne from "@/components/CaseStudy/CaseStudyOne"
 import caseStudyData from '@/data/case-study.json' // Assuming this data contains your case studies

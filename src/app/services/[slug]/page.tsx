@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 import { ServiceType } from '@/type/ServiceType'; // Asegúrate que ServiceType incluya 'faqs?: FaqDefinition[]'
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/Menu";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
 import CtaOne from "@/components/Section/CTA/CtaOne";
 import Footer from "@/components/Footer/Footer";

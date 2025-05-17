@@ -1,6 +1,6 @@
 // src/app/not-found.tsx
 
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/Menu";
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import Footer from "@/components/Footer/Footer";
 import Link from 'next/link';

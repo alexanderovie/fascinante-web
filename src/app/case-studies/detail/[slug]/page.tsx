@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo"; // Assuming TopNavTwo is used here
-import MenuOne from "@/components/Header/Menu/MenuTwo"; // Assuming MenuTwo is used
+import MenuOne from "@/components/Header/Menu/Menu"; // Assuming MenuTwo is used
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
 // Import the adapted case study data
 import caseStudyData from '@/data/case-study.json'; // Ensure this path is correct and uses the expanded JSON

@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Autocomplete, LoadScriptNext } from '@react-google-maps/api';
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuOne from "@/components/Header/Menu/MenuTwo";
+import MenuOne from "@/components/Header/Menu/Menu";
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 

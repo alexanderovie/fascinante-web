@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuOne from "@/components/Header/Menu/MenuTwo"
+import MenuOne from "@/components/Header/Menu/Menu"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import CtaOne from "@/components/Section/CTA/CtaOne"
 import Footer from "@/components/Footer/Footer"

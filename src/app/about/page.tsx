@@ -1,7 +1,7 @@
 'use client'
 
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuOne from "@/components/Header/Menu/MenuTwo";
+import MenuOne from "@/components/Header/Menu/Menu";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import AboutTwo from "@/components/Section/About/AboutHome" // Assuming this component's content is relevant or will be adapted
 import CounterTwo from "@/components/Section/Counter/Counter" // Assuming this component is relevant or will be adapted

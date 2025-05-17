@@ -2,7 +2,7 @@
 'use client'
 
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuOne from "@/components/Header/Menu/MenuTwo";
+import MenuOne from "@/components/Header/Menu/Menu";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
 import ServiceFive from "@/components/Section/Service/ServiceFive";
 import serviceData from '@/data/service.json';

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from 'next/link'
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo"
-import MenuOne from "@/components/Header/Menu/MenuTwo"
+import MenuOne from "@/components/Header/Menu/Menu"
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import ServiceFilter from "@/components/Section/Service/ServiceFilter" // This component is imported but not used in the provided code.
 import serviceData from '@/data/service.json' // This data is imported but not used in the provided code.

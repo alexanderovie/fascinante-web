@@ -8,7 +8,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 // --- Componentes de Layout del estilo de BlogListStyleTwo ---
 import Link from "next/link"; // Necesario para Breadcrumb y otros enlaces
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/Menu";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"; // Lo usaremos para el post actual
 import CtaOne from "@/components/Section/CTA/CtaOne";
 import Footer from "@/components/Footer/Footer";

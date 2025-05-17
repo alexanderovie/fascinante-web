@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/Menu";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import faqData from '@/data/faqs.json'
 import CtaOne from "@/components/Section/CTA/CtaOne"

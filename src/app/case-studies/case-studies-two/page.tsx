@@ -1,5 +1,5 @@
 import TopNavOne from "@/components/Header/TopNav/TopNavOne"
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/Menu";
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem"
 import CaseStudyTwo from "@/components/CaseStudy/CaseStudyTwo"
 import caseStudyData from '@/data/case-study.json'

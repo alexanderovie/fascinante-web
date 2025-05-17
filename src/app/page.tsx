@@ -1,6 +1,6 @@
 // app/page.tsx
 
-import MenuTwo from "@/components/Header/Menu/MenuTwo";
+import MenuTwo from "@/components/Header/Menu/Menu";
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import AboutHome from "@/components/Section/About/AboutHome";
 import Counter from "@/components/Section/Counter/Counter";

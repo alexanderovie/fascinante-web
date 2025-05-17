@@ -4,7 +4,7 @@ import { getSortedPostsData, PostData } from '../../lib/posts'; // Ajusta la rut
 
 // --- Importa los componentes de Layout ---
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";   // Como en tu ejemplo BlogListStyleTwo
-import MenuTwo from "@/components/Header/Menu/MenuTwo";       // Como en tu ejemplo BlogListStyleTwo
+import MenuTwo from "@/components/Header/Menu/Menu";       // Como en tu ejemplo BlogListStyleTwo
 import BreadcrumbItem from "@/components/Breadcrumb/BreadcrumbItem";
 import CtaOne from "@/components/Section/CTA/CtaOne";         // Opcional, si quieres un CTA en esta página
 import Footer from "@/components/Footer/Footer";

@@ -3,7 +3,7 @@
 
 import { useState, FormEvent, Fragment } from 'react'; // Fragment no se usa actualmente, podrías quitarlo si no lo necesitas más adelante
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
-import MenuOne from "@/components/Header/Menu/MenuTwo"; // Asumo que MenuOne es en realidad MenuTwo, como en otros archivos
+import MenuOne from "@/components/Header/Menu/Menu"; // Asumo que MenuOne es en realidad MenuTwo, como en otros archivos
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
