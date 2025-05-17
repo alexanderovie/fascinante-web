@@ -19,7 +19,7 @@ const AboutHome = () => {
           <div className="w-full lg:w-1/2">
             <div className="bg-img w-full overflow-hidden rounded-3xl">
               <Image
-                src="/images/component/Website-Design.webp"
+                src="/images/component/team-meeting.webp"
                 width={4000}
                 height={4000}
                 alt="Digital marketing strategy assessment dashboard"
