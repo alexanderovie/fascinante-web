@@ -2,10 +2,9 @@
 
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css/bundle';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css/bundle'
+import { partnerLogos } from '@/data/partnerLogos'
 
 interface Props {
     classname: string
@@ -18,13 +17,9 @@ const Partner: React.FC<Props> = ({ classname }) => {
                 <div className="container">
                     <div className="list-brand">
                         <Swiper
-                            spaceBetween={12}
+                            spaceBetween={16}
                             slidesPerView={2}
-                            loop={true}
-                            modules={[Autoplay]}
-                            autoplay={{
-                                delay: 4000,
-                            }}
+                            loop={false}
                             breakpoints={{
                                 500: {
                                     slidesPerView: 3,
@@ -44,72 +39,19 @@ const Partner: React.FC<Props> = ({ classname }) => {
                                 },
                             }}
                         >
-                            <SwiperSlide>
-                                <div className="brand-item relative flex items-center justify-center h-[34px]">
-                                    <Image
-                                        src={'/images/partner/203x44.png'}
-                                        width={300}
-                                        height={300}
-                                        alt='Leading Brand Partner Logo 1'
-                                        className='h-full w-auto duration-500 relative object-cover'
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="brand-item relative flex items-center justify-center h-[34px]">
-                                    <Image
-                                        src={'/images/partner/203x44.png'}
-                                        width={300}
-                                        height={300}
-                                        alt='Top Industry Collaborator Logo 2'
-                                        className='h-full w-auto duration-500 relative object-cover'
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="brand-item relative flex items-center justify-center h-[34px]">
-                                    <Image
-                                        src={'/images/partner/203x44.png'}
-                                        width={300}
-                                        height={300}
-                                        alt='Digital Marketing Alliance Logo 3'
-                                        className='h-full w-auto duration-500 relative object-cover'
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="brand-item relative flex items-center justify-center h-[34px]">
-                                    <Image
-                                        src={'/images/partner/203x44.png'}
-                                        width={300}
-                                        height={300}
-                                        alt='Strategic Client Partner Logo 4'
-                                        className='h-full w-auto duration-500 relative object-cover'
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="brand-item relative flex items-center justify-center h-[34px]">
-                                    <Image
-                                        src={'/images/partner/203x44.png'}
-                                        width={300}
-                                        height={300}
-                                        alt='Innovator in Digital Solutions Logo 5'
-                                        className='h-full w-auto duration-500 relative object-cover'
-                                    />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="brand-item relative flex items-center justify-center h-[34px]">
-                                    <Image
-                                        src={'/images/partner/203x44.png'}
-                                        width={300}
-                                        height={300}
-                                        alt='Trusted Business Partner Logo 6'
-                                        className='h-full w-auto duration-500 relative object-cover'
-                                    />
-                                </div>
-                            </SwiperSlide>
+                            {partnerLogos.map((logo, index) => (
+                                <SwiperSlide key={index}>
+                                    <div className="brand-item relative flex items-center justify-center h-[34px]">
+                                        <Image
+                                            src={logo.src}
+                                            width={300}
+                                            height={100}
+                                            alt={logo.alt}
+                                            className="h-full w-auto duration-500 relative object-cover"
+                                        />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                     </div>
                 </div>
