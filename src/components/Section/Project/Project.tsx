@@ -20,7 +20,7 @@ const Project = () => {
     return (
         <div className="our-project-block lg:mt-[100px] sm:mt-16 mt-10">
             <div className="container">
-                <div className="heading3 text-center">Our Featured Projects</div>
+                <div className="heading3 text-center">Our Featured Prrojects</div>
                 <div className="body2 text-secondary mt-3 text-center">Explore how Fascinante Digital has transformed businesses with innovative digital strategies.</div>
             </div>
             <div className="list-project md:mt-10 mt-7">
