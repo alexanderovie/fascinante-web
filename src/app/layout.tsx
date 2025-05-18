@@ -2,13 +2,14 @@
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/styles/style.scss";
+import "@/styles/style.scss"; // Asegúrate que la ruta a tus estilos es correcta
 import { Toaster } from "sonner";
 import Script from "next/script";
+import ExitIntentPopup from '@/components/Popups/ExitIntentPopup'; // <-- 1. IMPORTA TU COMPONENTE
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = "https://www.fascinantedigital.com"; // Añade www.
+const siteUrl = "https://www.fascinantedigital.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -71,14 +72,13 @@ export const metadata: Metadata = {
     title: "Fascinante Digital - Web Design, SEO, and Digital Marketing",
     description: "Boost your business with expert web design, digital marketing, and SEO services.",
     images: [`${siteUrl}/images/banner/fascinante-digital-seo-audit-banner.jpg`],
-    creator: "@fascinantedigital",
+    creator: "@fascinantedigital", // Asegúrate que este es tu usuario de Twitter correcto
   },
   appleWebApp: {
     title: "Fascinante Digital",
     statusBarStyle: "black-translucent",
   },
   other: {
-    // "fb:app_id": "2110354466055010", // <-- 1. ELIMINA ESTA LÍNEA
     "facebook-domain-verification": "TU_CODIGO_DE_VERIFICACION_AQUI", // ¡IMPORTANTE! Reemplaza con tu código real
   },
 };
@@ -92,8 +92,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Los metadatos del objeto 'metadata' se inyectarán aquí automáticamente por Next.js */}
-
-        {/* 2. AÑADE LA ETIQUETA CORRECTA AQUÍ 👇 */}
         <meta property="fb:app_id" content="2110354466055010" />
 
         <Script
@@ -106,7 +104,7 @@ export default function RootLayout({
               "name": "Fascinante Digital",
               "url": siteUrl,
               "logo": `${siteUrl}/icons/icon-512x512.png`,
-              "telephone": "+1 800-886-4981",
+              "telephone": "+1 800-886-4981", // Considera si este es el teléfono que quieres público
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "2054 Vista Pkwy #400",
@@ -116,7 +114,7 @@ export default function RootLayout({
                 "addressCountry": "US"
               },
               "sameAs": [
-                "https://www.facebook.com/fascinantedigital",
+                "https://www.facebook.com/fascinantedigital", // Verifica estas URLs
                 "https://www.instagram.com/fascinantedigital",
                 "https://twitter.com/fascinantedigital"
               ]
@@ -159,6 +157,7 @@ export default function RootLayout({
       <body className={inter.className}>
           {children}
           <Toaster richColors position="top-right" />
+          <ExitIntentPopup /> {/* <-- 2. COLOCA TU COMPONENTE AQUÍ */}
       </body>
     </html>
   );
