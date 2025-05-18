@@ -19,46 +19,103 @@ const ExitIntentPopup = ({
     offerTitle = "¡Un momento!",
     offerText = "Antes de irte, tenemos algo especial que podría interesarte.",
     ctaText = "Descubrir Oferta",
-    onClose // <--- AÑADIDO A LA DESESTRUCTURACIÓN
+    onClose
 }: ExitIntentPopupProps) => {
     const [isVisible, setIsVisible] = useState(false);
-    const [hasBeenShown, setHasBeenShown] = useState(true);
+    const [hasBeenShown, setHasBeenShown] = useState(true); // Asume mostrado para evitar flash inicial
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        // Determinar si es móvil en el cliente
+        // (navigator.userAgent no está disponible en el servidor)
+        const mobileCheck = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        setIsMobile(mobileCheck);
+
         const cookieValue = Cookies.get(POPUP_COOKIE_NAME);
         if (!cookieValue) {
-            setHasBeenShown(false);
+            setHasBeenShown(false); // Solo permite que se muestre si la cookie no existe
         }
     }, []);
 
-    const handleMouseOut = useCallback((event: MouseEvent) => {
-        if (hasBeenShown || isVisible) return;
-        const isLeavingViewport = event.clientY < 50 && event.relatedTarget === null;
-        if (isLeavingViewport) {
+    const triggerPopup = useCallback(() => {
+        if (!isVisible && !hasBeenShown) { // Solo activa si no es visible y no se ha mostrado (según cookie)
             setIsVisible(true);
-            Cookies.set(POPUP_COOKIE_NAME, 'true', { expires: 1 });
-            setHasBeenShown(true);
+            Cookies.set(POPUP_COOKIE_NAME, 'true', { expires: 1 }); // Marcar como mostrado (ej. expira en 1 día)
+            // No necesitamos setHasBeenShown(true) aquí porque la cookie lo manejará en la próxima carga.
+            // Y `isVisible` ya previene múltiples activaciones en la misma sesión de vista.
         }
-    }, [hasBeenShown, isVisible]);
+    }, [isVisible, hasBeenShown]);
 
+
+    // Lógica para ESCRITORIO (mouseout)
     useEffect(() => {
-        if (hasBeenShown) return;
+        if (isMobile || hasBeenShown || isVisible) return; // No activar en móvil o si ya se mostró/es visible
+
+        const handleMouseOut = (event: MouseEvent) => {
+            // relatedTarget es null cuando el mouse sale del viewport del documento
+            if (event.clientY < 50 && event.relatedTarget === null) {
+                console.log('Desktop exit intent triggered');
+                triggerPopup();
+            }
+        };
+
         window.addEventListener('mouseout', handleMouseOut);
         return () => {
             window.removeEventListener('mouseout', handleMouseOut);
         };
-    }, [handleMouseOut, hasBeenShown]);
+    }, [isMobile, hasBeenShown, isVisible, triggerPopup]);
+
+
+    // Lógica para MÓVILES (scroll up)
+    useEffect(() => {
+        if (!isMobile || hasBeenShown || isVisible) return; // No activar en escritorio o si ya se mostró/es visible
+
+        let lastScrollY = window.scrollY;
+        let scrollTimeout: NodeJS.Timeout | null = null;
+        let hasScrolledEnough = false; // Para asegurar que el usuario haya interactuado un poco
+
+        const handleMobileScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > 300) { // El usuario ha scrolleado al menos 300px
+                hasScrolledEnough = true;
+            }
+
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+
+            scrollTimeout = setTimeout(() => {
+                if (!hasScrolledEnough) { // No activar si no ha scrolleado lo suficiente
+                    lastScrollY = currentScrollY;
+                    return;
+                }
+
+                const scrollUpDistance = lastScrollY - currentScrollY;
+
+                // Si scrollea hacia arriba una distancia considerable (ej. > 150px)
+                // Y no está ya en la parte superior de la página (para evitar falsos positivos al cargar)
+                if (scrollUpDistance > 150 && currentScrollY > 50) {
+                    console.log('Mobile scroll up trigger');
+                    triggerPopup();
+                }
+                lastScrollY = currentScrollY;
+            }, 150); // Debounce para la detección
+        };
+
+        window.addEventListener('scroll', handleMobileScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleMobileScroll);
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+        };
+    }, [isMobile, hasBeenShown, isVisible, triggerPopup]);
+
 
     const closePopup = () => {
         setIsVisible(false);
-        if (onClose) { // Ahora onClose es accesible
+        if (onClose) {
             onClose();
         }
     };
 
-    // ... (el resto del código del componente no cambia) ...
-    // Clases para el botón CTA, usando los nombres de color de tu tailwind.config.ts
-    // y replicando el estilo de .button-main de tu global.scss
     const ctaButtonClasses = `
         w-full sm:w-auto 
         text-base font-bold capitalize 
