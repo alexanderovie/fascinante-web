@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
 const POPUP_COOKIE_NAME = 'exitIntentPopupShown';
+const POPUP_SESSION_SHOWN_KEY = 'exitIntentPopupSessionShown'; // Para sessionStorage
 
 interface ExitIntentPopupProps {
     onClose?: () => void;
@@ -22,39 +23,43 @@ const ExitIntentPopup = ({
     onClose
 }: ExitIntentPopupProps) => {
     const [isVisible, setIsVisible] = useState(false);
-    const [hasBeenShown, setHasBeenShown] = useState(true); // Asume mostrado para evitar flash inicial
+    // hasBeenShown se refiere a si se ha mostrado en esta sesión O según la cookie (largo plazo)
+    const [hasBeenShownThisSessionOrByCookie, setHasBeenShownThisSessionOrByCookie] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        // Determinar si es móvil en el cliente
-        // (navigator.userAgent no está disponible en el servidor)
         const mobileCheck = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         setIsMobile(mobileCheck);
 
         const cookieValue = Cookies.get(POPUP_COOKIE_NAME);
-        if (!cookieValue) {
-            setHasBeenShown(false); // Solo permite que se muestre si la cookie no existe
+        const sessionValue = sessionStorage.getItem(POPUP_SESSION_SHOWN_KEY);
+
+        if (!cookieValue && !sessionValue) {
+            setHasBeenShownThisSessionOrByCookie(false);
+        } else {
+            setHasBeenShownThisSessionOrByCookie(true); // Si cualquiera de los dos existe, ya se mostró
         }
     }, []);
 
     const triggerPopup = useCallback(() => {
-        if (!isVisible && !hasBeenShown) { // Solo activa si no es visible y no se ha mostrado (según cookie)
+        // Solo activa si no es visible Y no se ha mostrado en esta sesión o por cookie
+        if (!isVisible && !hasBeenShownThisSessionOrByCookie) {
             setIsVisible(true);
-            Cookies.set(POPUP_COOKIE_NAME, 'true', { expires: 1 }); // Marcar como mostrado (ej. expira en 1 día)
-            // No necesitamos setHasBeenShown(true) aquí porque la cookie lo manejará en la próxima carga.
-            // Y `isVisible` ya previene múltiples activaciones en la misma sesión de vista.
+            Cookies.set(POPUP_COOKIE_NAME, 'true', { expires: 1 }); // Para futuras visitas (largo plazo)
+            sessionStorage.setItem(POPUP_SESSION_SHOWN_KEY, 'true'); // Para la sesión actual del navegador
+            setHasBeenShownThisSessionOrByCookie(true); // Actualiza el estado de React inmediatamente
         }
-    }, [isVisible, hasBeenShown]);
+    }, [isVisible, hasBeenShownThisSessionOrByCookie]);
 
 
     // Lógica para ESCRITORIO (mouseout)
     useEffect(() => {
-        if (isMobile || hasBeenShown || isVisible) return; // No activar en móvil o si ya se mostró/es visible
+        // Usar hasBeenShownThisSessionOrByCookie para la condición
+        if (isMobile || hasBeenShownThisSessionOrByCookie || isVisible) return;
 
         const handleMouseOut = (event: MouseEvent) => {
-            // relatedTarget es null cuando el mouse sale del viewport del documento
             if (event.clientY < 50 && event.relatedTarget === null) {
-                console.log('Desktop exit intent triggered');
+                // console.log('Desktop exit intent triggered');
                 triggerPopup();
             }
         };
@@ -63,42 +68,36 @@ const ExitIntentPopup = ({
         return () => {
             window.removeEventListener('mouseout', handleMouseOut);
         };
-    }, [isMobile, hasBeenShown, isVisible, triggerPopup]);
+    }, [isMobile, hasBeenShownThisSessionOrByCookie, isVisible, triggerPopup]);
 
 
     // Lógica para MÓVILES (scroll up)
     useEffect(() => {
-        if (!isMobile || hasBeenShown || isVisible) return; // No activar en escritorio o si ya se mostró/es visible
+        // Usar hasBeenShownThisSessionOrByCookie para la condición
+        if (!isMobile || hasBeenShownThisSessionOrByCookie || isVisible) return;
 
         let lastScrollY = window.scrollY;
         let scrollTimeout: NodeJS.Timeout | null = null;
-        let hasScrolledEnough = false; // Para asegurar que el usuario haya interactuado un poco
+        let hasScrolledEnough = false;
 
         const handleMobileScroll = () => {
             const currentScrollY = window.scrollY;
-
-            if (currentScrollY > 300) { // El usuario ha scrolleado al menos 300px
+            if (currentScrollY > 300) {
                 hasScrolledEnough = true;
             }
-
             if (scrollTimeout) clearTimeout(scrollTimeout);
-
             scrollTimeout = setTimeout(() => {
-                if (!hasScrolledEnough) { // No activar si no ha scrolleado lo suficiente
+                if (!hasScrolledEnough) {
                     lastScrollY = currentScrollY;
                     return;
                 }
-
                 const scrollUpDistance = lastScrollY - currentScrollY;
-
-                // Si scrollea hacia arriba una distancia considerable (ej. > 150px)
-                // Y no está ya en la parte superior de la página (para evitar falsos positivos al cargar)
                 if (scrollUpDistance > 150 && currentScrollY > 50) {
-                    console.log('Mobile scroll up trigger');
+                    // console.log('Mobile scroll up trigger');
                     triggerPopup();
                 }
                 lastScrollY = currentScrollY;
-            }, 150); // Debounce para la detección
+            }, 150);
         };
 
         window.addEventListener('scroll', handleMobileScroll, { passive: true });
@@ -106,11 +105,16 @@ const ExitIntentPopup = ({
             window.removeEventListener('scroll', handleMobileScroll);
             if (scrollTimeout) clearTimeout(scrollTimeout);
         };
-    }, [isMobile, hasBeenShown, isVisible, triggerPopup]);
+    }, [isMobile, hasBeenShownThisSessionOrByCookie, isVisible, triggerPopup]);
 
 
     const closePopup = () => {
         setIsVisible(false);
+        // Opcional: Si quieres que al cerrar, se pueda volver a mostrar en la MISMA sesión de página
+        // (después de otro intento de salida), entonces NO deberías tener la lógica de sessionStorage
+        // y el setHasBeenShownThisSessionOrByCookie(true) en triggerPopup sería suficiente
+        // para que la cookie maneje el largo plazo. Pero lo común es no mostrarlo de nuevo
+        // en la misma sesión de página una vez cerrado.
         if (onClose) {
             onClose();
         }
