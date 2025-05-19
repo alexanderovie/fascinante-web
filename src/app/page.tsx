@@ -5,7 +5,8 @@ import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import AboutHome from "@/components/Section/About/AboutHome";
 import Counter from "@/components/Section/Counter/Counter";
 import Partner from "@/components/Section/Partner/Partner";
-import Project from "@/components/Section/Project/Project";
+import CaseStudyCarousel from "@/components/CaseStudy/CaseStudyCarousel"
+import caseStudyData from '@/data/case-study.json' // Assuming this data contains your case studies
 import SliderFive from "@/components/Slider/SliderFive";
 
 import { getSortedPostsData, PostData } from "@/lib/posts";
@@ -41,7 +42,8 @@ export default function Home() {
                     <Partner classname='bg-dark-blue' />
                     <AboutHome />
                     <Counter classname='lg:py-10 py-7 border-t border-line' />
-                    <Project />
+                                        <CaseStudyCarousel data={caseStudyData} />
+
                     <ServiceTwo data={serviceData} />
                     <TestimonialTwo />
                     {/* La llamada a FormRequestTwo no cambia */}
