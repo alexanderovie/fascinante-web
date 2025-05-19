@@ -9,11 +9,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css/bundle';
 import { CaseStudyType } from '@/type/CaseStudyType';
-import caseStudyData from '@/data/case-study.json';
 
-const CaseStudyCarousel = () => {
+interface Props {
+    data: CaseStudyType[];
+}
+
+const CaseStudyCarousel: React.FC<Props> = ({ data }) => {
     // Selecciona 4 casos aleatorios
-    const randomCases = caseStudyData.sort(() => 0.5 - Math.random()).slice(0, 4);
+    const randomCases = data.sort(() => 0.5 - Math.random()).slice(0, 4);
 
     return (
         <div className="our-project-block lg:mt-[100px] sm:mt-16 mt-10">
