@@ -2,86 +2,82 @@
 
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import Image from 'next/image';
-import { CaseStudyType } from '@/type/CaseStudyType';
+import Image from "next/image";
+import Link from "next/link";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
-import { Swiper as SwiperType } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css/bundle';
+import { CaseStudyType } from '@/type/CaseStudyType';
+import caseStudyData from '@/data/case-study.json';
 
-// Función para seleccionar 4 casos aleatorios
-const getRandomCases = (data: Array<CaseStudyType>, count: number) => {
-    const shuffled = data.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-};
-
-interface Props {
-    data: Array<CaseStudyType>;
-}
-
-const CaseStudyCarousel: React.FC<Props> = ({ data }) => {
+const CaseStudyCarousel = () => {
     // Selecciona 4 casos aleatorios
-    const randomCases = getRandomCases(data, 4);
-    const swiperRef = useRef<SwiperType | null>(null);
+    const randomCases = caseStudyData.sort(() => 0.5 - Math.random()).slice(0, 4);
 
     return (
-        <div className="case-study-carousel lg:py-[100px] sm:py-16 py-10">
-            <div className="container relative">
-                <div className="heading3 text-center mb-10">Our Featured Case Studies</div>
-
-                {/* Flecha izquierda */}
-                <div className="prev-arrow flex items-center justify-center cursor-pointer absolute left-0 top-1/2 -translate-y-1/2 z-10">
-                    <Icon.CaretLeft className="text-black heading6" weight="bold" />
+        <div className="our-project-block lg:mt-[100px] sm:mt-16 mt-10">
+            <div className="container">
+                <div className="heading3 text-center">Our Featured Case Studies</div>
+                <div className="body2 text-secondary mt-3 text-center">
+                    Discover how Fascinante Digital has transformed businesses with impactful digital strategies.
                 </div>
-
+            </div>
+            <div className="list-project md:mt-10 mt-7">
                 <Swiper
-                    onSwiper={(swiper) => (swiperRef.current = swiper)}
-                    spaceBetween={30}
-                    slidesPerView={3}
+                    spaceBetween={0}
+                    slidesPerView={1}
                     loop={true}
-                    centeredSlides={true}
                     pagination={{ clickable: true }}
-                    navigation={{
-                        prevEl: '.prev-arrow',
-                        nextEl: '.next-arrow',
-                    }}
+                    speed={400}
+                    modules={[Pagination, Autoplay]}
+                    className='h-full relative'
                     autoplay={{
-                        delay: 5000,
+                        delay: 4000,
                         disableOnInteraction: false,
                     }}
-                    modules={[Autoplay, Pagination, Navigation]}
-                    className="h-full relative"
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 10,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                        },
+                        1280: {
+                            slidesPerView: 4,
+                            spaceBetween: 10,
+                        }
+                    }}
                 >
-                    {randomCases.map((item) => (
-                        <SwiperSlide key={item.id} className="transition-transform duration-500 transform hover:scale-105">
-                            <div className="relative bg-white shadow-lg rounded-lg overflow-hidden">
-                                <Image
-                                    src={item.img}
-                                    alt={item.title}
-                                    width={400}
-                                    height={300}
-                                    className="w-full h-48 object-cover"
-                                />
-                                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                                    <div className="text-center text-white px-4">
-                                        <div className="text-xs mb-2">{item.subTitle.toUpperCase()}</div>
-                                        <h3 className="text-lg font-bold">{item.title}</h3>
-                                        <p className="text-sm mt-2">{item.shortDesc}</p>
-                                    </div>
+                    {randomCases.map((caseStudy) => (
+                        <SwiperSlide key={caseStudy.id}>
+                            <div className="item">
+                                <div className="bg-img overflow-hidden">
+                                    <Image
+                                        width={472}
+                                        height={354}
+                                        className="w-full h-full"
+                                        src={caseStudy.img}
+                                        alt={caseStudy.title}
+                                    />
                                 </div>
+                                <Link className="text" href={`/case-studies/${caseStudy.id}`}>
+                                    <div className="heading5 text-white">{caseStudy.title}</div>
+                                    <div className="body3 text-white mt-1">{caseStudy.subTitle}</div>
+                                </Link>
+                                <Link
+                                    className="arrow w-[52px] h-[52px] flex items-center justify-center bg-white rounded-full hover:text-white"
+                                    href={`/case-studies/${caseStudy.id}`}
+                                    aria-label={`Read more about ${caseStudy.title}`}
+                                >
+                                    <Icon.ArrowRight className="text-3xl" />
+                                </Link>
                             </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
-
-                {/* Flecha derecha */}
-                <div className="next-arrow flex items-center justify-center cursor-pointer absolute right-0 top-1/2 -translate-y-1/2 z-10">
-                    <Icon.CaretRight className="text-black heading6" weight="bold" />
-                </div>
             </div>
         </div>
     );
