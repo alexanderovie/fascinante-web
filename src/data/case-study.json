@@ -6,7 +6,7 @@
         "title": "E-commerce Platform Transformation",
         "desc": "Revitalized an online store with a modern, responsive design and improved user experience, resulting in increased sales and engagement.",
         "shortDesc": "A successful e-commerce website redesign case study.",
-        "img": "/images/banner/client-handshake-professional-smile.webp",
+        "img": "/images/banner/fascinante-digital_transformacion-ecommerce_colaboracion-oficina.webp",
         "projectInfo": {
             "client": "Fashion Forward Boutique",
             "completedDate": "15/09/2024",
@@ -30,16 +30,16 @@
         ],
         "finalOutcomeHeading": "Tangible Results and Future Growth",
         "finalOutcomeDesc": "The new e-commerce platform led to a significant increase in online sales and customer satisfaction. The improved mobile experience drastically reduced bounce rates. The client is now well-positioned for future growth and expansion into new markets.",
-        "finalOutcomeImage": "/images/component/assessment.png"
+        "finalOutcomeImage": "/images/banner/fascinante-digital_transformacion-ecommerce_resultados-equipo-cliente.webp"
     },
     {
         "id": 2,
         "category": "digital-marketing",
         "subTitle": "SEO Strategy Implementation",
-        "title": "Boosting Organic Traffic by 150%",
+        "title": "Boosting Organic Traffic by 150",
         "desc": "Implemented a comprehensive SEO strategy including keyword research, on-page optimization, and link building, significantly increasing organic search visibility.",
         "shortDesc": "A case study on achieving massive organic traffic growth through SEO.",
-        "img": "/images/banner/digital-marketing-boosting-organic-traffic-principal.webp",
+        "img": "/images/banner/fascinante-digital_seo-traffic-boost_team-analysis.webp",
          "projectInfo": {
             "client": "Local Tech Startup",
             "completedDate": "20/10/2024",
@@ -63,7 +63,7 @@
         ],
         "finalOutcomeHeading": "Sustainable Online Visibility",
         "finalOutcomeDesc": "The implemented SEO strategy resulted in a sustained increase in organic traffic, positioning the client as an authority in their niche. Higher search rankings led to more qualified leads and increased brand visibility. The client now has a strong foundation for continued online growth.",
-        "finalOutcomeImage": "/images/component/digital-marketing-boosting-organic-traffic-resultado.webp"
+        "finalOutcomeImage": "/images/banner/fascinante-digital_seo-traffic-boost_client-team-success.webp"
     },
     {
         "id": 3,
@@ -72,7 +72,7 @@
         "title": "Enhanced Local Search Visibility",
         "desc": "Managed and optimized local business listings across key directories, improving local search rankings and driving more foot traffic.",
         "shortDesc": "Case study on improving local search visibility for a service business.",
-        "img": "/images/banner/local-listing-enhanced-local-search-visibility-principal.webp",
+        "img": "/images/component/local-listing-enhanced-local-search-visibility-principal.webp",
          "projectInfo": {
             "client": "Community Cafe",
             "completedDate": "01/11/2024",
