@@ -15,8 +15,8 @@ interface Props {
 }
 
 const CaseStudyCarousel: React.FC<Props> = ({ data }) => {
-    // Selecciona 4 casos aleatorios
-    const randomCases = data.sort(() => 0.5 - Math.random()).slice(0, 4);
+    // Selecciona 5 casos aleatorios
+    const randomCases = [...data].sort(() => 0.5 - Math.random()).slice(0, 5);
 
     return (
         <div className="our-project-block lg:mt-[100px] sm:mt-16 mt-10">
@@ -66,7 +66,7 @@ const CaseStudyCarousel: React.FC<Props> = ({ data }) => {
                                         alt={caseStudy.title}
                                     />
                                 </div>
-                                <Link className="text" href={`/case-studies/${caseStudy.id}`}>
+                                <Link className="text" href={`/case-studies/detail/${caseStudy.title.toLowerCase().replace(/ /g, '-')}`}>
                                     <div className="heading5 text-white">{caseStudy.title}</div>
                                     <div className="body3 text-white mt-1">{caseStudy.subTitle}</div>
                                 </Link>
