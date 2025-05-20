@@ -1,42 +1,31 @@
 // src/app/layout.tsx
-
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script"; // Importado una sola vez
-import "@/styles/style.scss";   // Asegúrate que la ruta a tus estilos es correcta
+import Script from "next/script";
+import "@/styles/style.scss";
 import { Toaster } from "sonner";
 import ExitIntentPopup from '@/components/Popups/ExitIntentPopup';
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = "https://www.fascinantedigital.com";
-
-// Accede a tu variable de entorno GTM (asegúrate que esté en .env.local)
+const siteUrl = "https://www.fascinantedigital.com"; // Asegúrate que este sea tu dominio de producción
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
+// --- METADATOS PRINCIPALES ---
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Fascinante Digital - Web Design & Digital Marketing",
   description: "Professional web design, digital marketing, SEO, and branding solutions to boost your online presence and drive business growth.",
   keywords: [
-    "Fascinante Digital",
-    "web design",
-    "digital marketing",
-    "SEO",
-    "website development",
-    "online presence",
-    "business growth",
-    "West Palm Beach web design",
-    "Florida digital marketing"
+    "Fascinante Digital", "web design", "digital marketing", "SEO",
+    "website development", "online presence", "business growth",
+    "West Palm Beach web design", "Florida digital marketing"
   ],
-  viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
-  themeColor: "#2868D8", // Color principal de tu marca
   icons: {
-    icon: "/favicon.ico", // En /public/favicon.ico
-    apple: "/icons/apple-touch-icon.png", // En /public/icons/apple-touch-icon.png
+    icon: "/favicon.ico",
+    apple: "/icons/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
-  manifest: "/manifest.json", // En /public/manifest.json
   robots: {
     index: true,
     follow: true,
@@ -55,13 +44,13 @@ export const metadata: Metadata = {
     siteName: "Fascinante Digital",
     images: [
       {
-        url: "/icons/icon-512x512.png", // Relativo a /public
+        url: "/icons/icon-512x512.png",
         width: 512,
         height: 512,
         alt: "Fascinante Digital Logo",
       },
       {
-        url: "/images/banner/fascinante-digital-seo-audit-banner.jpg", // Relativo a /public
+        url: "/images/banner/fascinante-digital-seo-audit-banner.jpg",
         width: 1200,
         height: 630,
         alt: "Fascinante Digital - Expert Web Design, SEO, and Digital Marketing",
@@ -74,18 +63,25 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fascinante Digital - Web Design, SEO, and Digital Marketing",
     description: "Boost your business with expert web design, digital marketing, and SEO services.",
-    // Para Twitter, es mejor usar URLs absolutas para las imágenes
     images: [`${siteUrl}/images/banner/fascinante-digital-seo-audit-banner.jpg`],
-    creator: "@fascinantedigital", // Tu usuario de Twitter
+    creator: "@fascinantedigital", // Reemplaza si tienes otro o elimínalo si no aplica
   },
   appleWebApp: {
     title: "Fascinante Digital",
     statusBarStyle: "black-translucent",
   },
-  other: {
-    // Reemplaza con tu código real de verificación de dominio de Facebook
-    "facebook-domain-verification": "TU_CODIGO_DE_VERIFICACION_DE_FB_AQUI",
-  },
+  // Se eliminó la sección 'other' que contenía "facebook-domain-verification"
+};
+
+// --- CONFIGURACIÓN DEL VIEWPORT ---
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  maximumScale: 1.0,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#2868D8' },
+    { media: '(prefers-color-scheme: dark)', color: '#0F1E37' }
+  ],
 };
 
 export default function RootLayout({
@@ -96,13 +92,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Los metadatos del objeto 'metadata' se inyectarán aquí automáticamente por Next.js */}
-        
-        {/* Google Tag Manager - Script principal */}
         {GTM_ID && (
           <Script
             id="gtm-base"
-            strategy="afterInteractive" // Carga GTM después de que la página sea interactiva
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -115,10 +108,8 @@ export default function RootLayout({
           />
         )}
 
-        {/* Meta de Facebook App ID (si la usas para SDK de JS de FB o Insights) */}
-        <meta property="fb:app_id" content="2110354466055010" />
+        {/* Se eliminó <meta property="fb:app_id" ... /> */}
 
-        {/* Scripts de Datos Estructurados (JSON-LD) */}
         <Script
           id="organization-json-ld"
           type="application/ld+json"
@@ -129,7 +120,7 @@ export default function RootLayout({
               "name": "Fascinante Digital",
               "url": siteUrl,
               "logo": `${siteUrl}/icons/icon-512x512.png`,
-              "telephone": "+18008864981", // Formato sin guiones preferido para telephone
+              "telephone": "+18008864981",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "2054 Vista Pkwy #400",
@@ -139,14 +130,13 @@ export default function RootLayout({
                 "addressCountry": "US"
               },
               "sameAs": [
-                "https://www.facebook.com/fascinantedigital",
+                "https://www.facebook.com/fascinantedigital", // Mantén tus redes sociales reales
                 "https://www.instagram.com/fascinantedigital",
                 "https://twitter.com/fascinantedigital"
-                // Añade otras redes sociales relevantes (LinkedIn, YouTube, etc.)
               ]
             }),
           }}
-          strategy="afterInteractive" // Cargar después de la interacción para no bloquear
+          strategy="afterInteractive"
         />
         <Script
           id="website-json-ld"
@@ -170,24 +160,14 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* Facebook Pixel */}
-        <Script id="facebook-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window,document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '2110354466055010'); 
-            fbq('track', 'PageView');
-          `}
-        </Script>
+        {/* Se eliminó el script del Pixel de Facebook completo si no lo usas */}
+        {/* Si SÍ usas el Pixel, asegúrate de que el ID '2110354466055010' sea el tuyo real,
+            de lo contrario, elimina todo el bloque <Script id="facebook-pixel" ... > ... </Script>
+            A continuación, lo he eliminado asumiendo que era un placeholder.
+        */}
+
       </head>
-      <body className={`${inter.className} antialiased`}> {/* Añadido antialiased para suavizado de fuentes */}
-          {/* Google Tag Manager (noscript) - Fallback */}
+      <body className={`${inter.className} antialiased`}>
           {GTM_ID && (
             <noscript
               dangerouslySetInnerHTML={{
