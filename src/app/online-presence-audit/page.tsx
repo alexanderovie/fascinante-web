@@ -315,7 +315,7 @@ export default function OnlinePresenceAuditPage() {
     return (
       <div className="space-y-6">
         <div>
-          <label htmlFor="businessSearch" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
+          <label htmlFor="businessSearch" className="block caption11 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
             Enter Business Name *
           </label>
             <Autocomplete
