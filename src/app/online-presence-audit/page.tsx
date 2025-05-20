@@ -1,14 +1,15 @@
 // src/app/online-presence-audit/page.tsx
 'use client';
 
-import { useState, FormEvent, useEffect, useRef, useCallback } from 'react';
+import { useState, FormEvent, useEffect, useRef, useCallback, Fragment } from 'react';
 import TopNavTwo from "@/components/Header/TopNav/TopNavTwo";
 import MenuOne from "@/components/Header/Menu/Menu"; // O MenuTwo si es el correcto
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
+import { Combobox, Transition } from '@headlessui/react';
 
-// --- Interfaces (sin cambios) ---
+// --- Interfaces ---
 interface BusinessNAP {
   name?: string;
   address?: string;
@@ -32,21 +33,22 @@ interface BusinessFormData {
   phone?: string;
   website?: string;
   googlePlaceId?: string;
-  businessCategoryId?: number | string;
+  businessCategoryId?: number | string; // Puede ser string del input, luego se parsea
   description?: string;
   latitude?: number;
   longitude?: number;
 }
 
 interface BrightLocalCategory {
-  id: number;
+  id: number; // Este es el ID que espera el servicio externo
   name: string;
 }
 
+// Para el estado de la respuesta del API de creación de perfil
 interface SubmissionStatus {
     success: boolean;
     message: string;
-    locationId?: string | number;
+    locationId?: string | number; // El ID devuelto por el servicio externo
 }
 
 const LIBRARIES_PLACES: ("places")[] = ["places"];
@@ -54,14 +56,16 @@ const LIBRARIES_PLACES: ("places")[] = ["places"];
 export default function OnlinePresenceAuditPage() {
   const [formData, setFormData] = useState<Partial<BusinessFormData>>({
     searchQuery: '',
-    countryCode: 'USA',
+    countryCode: 'USA', // Default a 3 letras para la carga inicial de categorías
   });
   const [selectedNAP, setSelectedNAP] = useState<BusinessNAP | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const [autocompleteInstance, setAutocompleteInstance] = useState<google.maps.places.Autocomplete | null>(null);
+  
   const [businessCategories, setBusinessCategories] = useState<BrightLocalCategory[]>([]);
   const [isLoadingCategories, setIsLoadingCategories] = useState(false);
+  const [categoryQuery, setCategoryQuery] = useState(''); // Estado para el texto de búsqueda de categoría
 
   const [isSubmittingProfile, setIsSubmittingProfile] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus | null>(null);
@@ -96,6 +100,7 @@ export default function OnlinePresenceAuditPage() {
     if (typeof countryToFetch === 'string' && countryToFetch.length === 3) {
       setIsLoadingCategories(true);
       setBusinessCategories([]);
+      setCategoryQuery(''); // Limpiar query al cambiar de país
       fetch(`/api/get-business-categories?country_code=${countryToFetch}`)
         .then(res => {
             if (!res.ok) {
@@ -109,38 +114,49 @@ export default function OnlinePresenceAuditPage() {
           if (Array.isArray(data)) {
             setBusinessCategories(data);
             const currentCategoryIdNum = typeof currentCategoryId === 'string' ? parseInt(currentCategoryId) : currentCategoryId;
-            if (currentCategoryIdNum !== undefined && !data.find(cat => cat.id === currentCategoryIdNum)) {
+            const selectedCategoryExists = data.some(cat => cat.id === currentCategoryIdNum);
+            
+            if (currentCategoryIdNum !== undefined && !selectedCategoryExists) {
                 setFormData(prev => ({ ...prev, businessCategoryId: undefined }));
+                setCategoryQuery('');
+            } else if (selectedCategoryExists) {
+                const selectedCat = data.find(cat => cat.id === currentCategoryIdNum);
+                if (selectedCat) setCategoryQuery(selectedCat.name);
             }
           } else {
             console.error("Error data structure from /api/get-business-categories:", data);
             setBusinessCategories([]);
+            setCategoryQuery('');
           }
         })
         .catch(err => {
           console.error("Failed to fetch categories (useEffect catch):", err);
           setBusinessCategories([]);
+          setCategoryQuery('');
         })
         .finally(() => setIsLoadingCategories(false));
     } else {
       setBusinessCategories([]);
+      setCategoryQuery('');
     }
   }, [formData.countryCode, formData.businessCategoryId]);
 
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleCategorySelected = (selectedCategory: BrightLocalCategory | null) => {
+    setFormData(prev => ({
+        ...prev,
+        businessCategoryId: selectedCategory ? selectedCategory.id : undefined,
+    }));
+    setCategoryQuery(selectedCategory ? selectedCategory.name : ''); 
+    setError(null);
+    setSubmissionStatus(null);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => {
         const newState: Partial<BusinessFormData> = { ...prev };
-        if (name === 'businessCategoryId') {
-            newState[name] = value ? parseInt(value) : undefined;
-        } else {
-            (newState as any)[name] = value; // Simplificado, asume string para otros inputs
-        }
-        if (name === 'countryCode') {
-            newState.googleCountryCode = undefined;
-            newState.businessCategoryId = undefined;
-        }
+        (newState as any)[name] = value;
         return newState;
     });
     setError(null);
@@ -238,7 +254,6 @@ export default function OnlinePresenceAuditPage() {
   };
 
   const handleCreateLocationProfile = async () => {
-    // ... (lógica sin cambios)
     const {
         selectedBusinessName, searchQuery, businessCategoryId, description,
         countryCode, locationReference, streetAddressLine1, streetAddressLine2,
@@ -293,29 +308,40 @@ export default function OnlinePresenceAuditPage() {
     }
   };
 
+  const filteredCategories =
+    categoryQuery === ''
+      ? businessCategories
+      : businessCategories.filter((category) =>
+          category.name
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(categoryQuery.toLowerCase().replace(/\s+/g, ''))
+        );
+
   const renderStepOne = () => {
     if (loadError) {
-      return <p className="text-center text-sm text-critical dark:text-critical-light p-4 bg-red-50 dark:bg-red-800/20 rounded-md">
-                <Icon.WarningCircle size={24} className="inline mr-2" />
-                Could not load Google Places. Please check your API key or try refreshing.
-             </p>;
+      return (
+        <p className="text-center text-sm text-critical dark:text-critical-light p-4 bg-red-50 dark:bg-red-800/20 rounded-md">
+          <Icon.WarningCircle size={24} className="inline mr-2" />
+          Could not load Google Places. Please check your API key or try refreshing.
+        </p>
+      );
     }
     if (!isLoaded) {
        return (
          <div className="w-full bg-surface dark:bg-gray-700 px-4 py-3 rounded-lg border border-line dark:border-gray-600 flex items-center">
             <Icon.CircleNotch className="animate-spin text-secondary dark:text-gray-400 mr-3 h-5 w-5" />
-            <span className="text-secondary dark:text-gray-400 text-sm">Loading search capabilities...</span> {/* Cambiado caption11 a text-sm */}
+            <span className="text-secondary dark:text-gray-400 text-sm">Loading search capabilities...</span>
           </div>
        );
     }
 
-    // Clase base para inputs para asegurar consistencia y font-size
-    const inputBaseClass = "w-full text-base bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors";
+    const formElementBaseClass = "w-full caption11 text-base bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors";
 
     return (
       <div className="space-y-6">
         <div>
-          <label htmlFor="businessSearch" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
+          <label htmlFor="businessSearch" className="block caption11 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
             Enter Business Name *
           </label>
             <Autocomplete
@@ -330,7 +356,7 @@ export default function OnlinePresenceAuditPage() {
                 id="businessSearch" type="text" value={formData.searchQuery || ''}
                 onChange={handleSearchInputChange}
                 placeholder="e.g., John's Pizzeria, Springfield" required
-                className={inputBaseClass} // Usar clase base
+                className={formElementBaseClass}
               />
             </Autocomplete>
           <p className="mt-1.5 text-xs caption11 text-gray-500 dark:text-gray-400">
@@ -356,34 +382,95 @@ export default function OnlinePresenceAuditPage() {
           </div>
         )}
 
-         <div>
-            <label htmlFor="businessCategoryId" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
-                Business Category *
-            </label>
-            <div className="select-block w-full relative">
-                <select
-                    id="businessCategoryId" name="businessCategoryId"
-                    value={formData.businessCategoryId || ''} onChange={handleInputChange}
-                    required
-                    disabled={isLoadingCategories || !formData.countryCode || formData.countryCode.length !== 3 || businessCategories.length === 0}
-                    className={`${inputBaseClass} appearance-none disabled:opacity-50 disabled:cursor-not-allowed`} // Usar clase base
+        <div>
+          <label htmlFor="businessCategoryComboboxInput" className="block caption11 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
+            Business Category *
+          </label>
+          <Combobox 
+            value={businessCategories.find(cat => cat.id === (typeof formData.businessCategoryId === 'string' ? parseInt(formData.businessCategoryId) : formData.businessCategoryId)) || null}
+            onChange={handleCategorySelected}
+            disabled={isLoadingCategories || !formData.countryCode || formData.countryCode.length !== 3 || businessCategories.length === 0}
+            name="businessCategoryId"
+          >
+            <div className="relative">
+                <Combobox.Input
+                  id="businessCategoryComboboxInput"
+                  className={`${formElementBaseClass} pr-10 disabled:opacity-50 disabled:cursor-not-allowed`}
+                  displayValue={(category: BrightLocalCategory | null) => category?.name || ''}
+                  onChange={(event) => {
+                    setCategoryQuery(event.target.value);
+                    if (event.target.value === '') { handleCategorySelected(null); }
+                  }}
+                  placeholder={
+                    isLoadingCategories ? "Loading categories..." :
+                    !formData.countryCode || formData.countryCode.length !== 3 ? "Valid 3-letter country code needed" :
+                    businessCategories.length === 0 ? `No categories for ${formData.countryCode || 'country'}` :
+                    "Type or select a category"
+                  }
+                  autoComplete="off"
+                />
+                <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-3 disabled:opacity-50"
+                                 disabled={isLoadingCategories || !formData.countryCode || formData.countryCode.length !== 3 || businessCategories.length === 0}
                 >
-                    <option value="" disabled>
-                        {isLoadingCategories ? "Loading categories..." :
-                         !formData.countryCode || formData.countryCode.length !== 3 ? "Valid 3-letter country code needed" :
-                         businessCategories.length === 0 ? `No categories for ${formData.countryCode || 'selected country'}` :
-                         "Select a category"}
-                    </option>
-                    {businessCategories.map(category => (
-                        <option key={category.id} value={category.id}>
-                            {category.name}
-                        </option>
-                    ))}
-                </select>
-                <Icon.CaretDown weight="bold" className="icon absolute right-4 top-1/2 -translate-y-1/2 text-secondary dark:text-gray-400 text-lg pointer-events-none" />
+                  <Icon.CaretUpDown size={20} className="text-gray-400" aria-hidden="true" />
+                </Combobox.Button>
+              <Transition
+                as={Fragment}
+                leave="transition ease-in duration-100"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Combobox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black dark:ring-gray-700 ring-opacity-5 focus:outline-none sm:text-sm">
+                   {isLoadingCategories ? (
+                    <div className="relative cursor-default select-none py-2 px-4 text-gray-700 dark:text-gray-300">Loading...</div>
+                  ) : filteredCategories.length === 0 && categoryQuery !== '' ? (
+                    <div className="relative cursor-default select-none py-2 px-4 text-gray-700 dark:text-gray-300">
+                      Nothing found for &quot;{categoryQuery}&quot;.
+                    </div>
+                  ) : filteredCategories.length === 0 && categoryQuery === '' && businessCategories.length > 0 ? (
+                     <div className="relative cursor-default select-none py-2 px-4 text-gray-500 dark:text-gray-400">
+                      Type to search from {businessCategories.length} categories.
+                    </div>
+                  ) : (
+                    filteredCategories.map((category) => (
+                      <Combobox.Option
+                        key={category.id}
+                        className={({ active }) =>
+                          `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                            active ? 'bg-blue text-white dark:bg-blue-600' : 'text-gray-900 dark:text-gray-100'
+                          }`
+                        }
+                        value={category}
+                      >
+                        {({ selected, active }) => (
+                          <>
+                            <span
+                              className={`block truncate ${
+                                selected ? 'font-medium' : 'font-normal'
+                              }`}
+                            >
+                              {category.name}
+                            </span>
+                            {selected ? (
+                              <span
+                                className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                  active ? 'text-white' : 'text-blue dark:text-blue-400'
+                                }`}
+                              >
+                                <Icon.Check size={20} weight="bold" aria-hidden="true" />
+                              </span>
+                            ) : null}
+                          </>
+                        )}
+                      </Combobox.Option>
+                    ))
+                  )}
+                </Combobox.Options>
+              </Transition>
             </div>
-            {!isLoadingCategories && formData.countryCode && formData.countryCode.length === 3 && businessCategories.length === 0 && (
-                <p className="mt-1.5 text-xs text-yellow-600 dark:text-yellow-400">No categories found for country: {formData.countryCode}. Profile creation might be suboptimal.</p>
+          </Combobox>
+           {!isLoadingCategories && formData.countryCode && formData.countryCode.length === 3 && businessCategories.length === 0 && (
+                <p className="mt-1.5 text-xs text-yellow-600 dark:text-yellow-400">No categories found for country: {formData.countryCode}. Location setup might be suboptimal.</p>
             )}
             {formData.countryCode && formData.countryCode.length !== 3 && (
                  <p className="mt-1.5 text-xs text-red-600 dark:text-red-400">A 3-letter country code (e.g., USA) is needed to load categories. Current: {formData.countryCode || "Not set"}</p>
@@ -391,15 +478,12 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         <div>
-            <label htmlFor="description" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
+            <label htmlFor="description" className="block caption11 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
                 Business Description *
             </label>
-            <textarea
-                id="description" name="description" rows={3}
-                value={formData.description || ''} onChange={handleInputChange}
-                required
-                placeholder="Briefly describe your business (max 500 characters)"
-                className={`${inputBaseClass} h-auto`} // Usar clase base, h-auto para que respete rows
+            <textarea id="description" name="description" rows={3} value={formData.description || ''} onChange={handleInputChange}
+                required placeholder="Briefly describe your business (max 500 characters)"
+                className={`${formElementBaseClass} h-auto`}
                 maxLength={500}
             ></textarea>
         </div>
