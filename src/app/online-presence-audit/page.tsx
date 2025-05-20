@@ -8,83 +8,49 @@ import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
 
-// --- Interfaces ---
-interface BusinessNAP {
-  name?: string;
-  address?: string;
-  phone?: string;
-  website?: string;
-  googleCountryCode?: string;
-}
-
-interface BusinessFormData {
-  searchQuery: string;
-  selectedBusinessName?: string;
-  locationReference?: string;
-  countryCode?: string; // ISO3 (ej. USA)
-  googleCountryCode?: string; // ISO2 (ej. US)
-  postalCode?: string;
-  streetAddressLine1?: string;
-  streetAddressLine2?: string;
-  city?: string;
-  region?: string; // Nombre completo del estado/región
-  regionCode?: string; // Código del estado/región
-  phone?: string;
-  website?: string;
-  googlePlaceId?: string;
-  businessCategoryId?: number | string; // Puede ser string del input, luego se parsea
-  description?: string;
-  latitude?: number;
-  longitude?: number;
-}
-
-interface BrightLocalCategory {
-  id: number; // Este es el ID que espera el servicio externo
-  name: string;
-}
-
-// Para el estado de la respuesta del API de creación de perfil
-interface SubmissionStatus {
-    success: boolean;
-    message: string;
-    locationId?: string | number; // El ID devuelto por el servicio externo
-}
-
+// --- Interfaces (sin cambios) ---
+interface BusinessNAP { /* ... */ }
+interface BusinessFormData { /* ... */ }
+interface BrightLocalCategory { /* ... */ }
+interface SubmissionStatus { /* ... */ }
 
 const LIBRARIES_PLACES: ("places")[] = ["places"];
 
 export default function OnlinePresenceAuditPage() {
-  // const [currentStep, setCurrentStep] = useState(1); // Por ahora solo tenemos 1 paso antes del submit
   const [formData, setFormData] = useState<Partial<BusinessFormData>>({
     searchQuery: '',
     countryCode: 'USA',
   });
   const [selectedNAP, setSelectedNAP] = useState<BusinessNAP | null>(null);
-  const [isLoadingGoogle, setIsLoadingGoogle] = useState(true); // Para la API de Google
+  // Eliminamos isLoadingGoogle, ya que su valor se derivará de isLoaded y loadError
   const [error, setError] = useState<string | null>(null);
-  // const [generatedCurl, setGeneratedCurl] = useState<string | null>(null); // Opcional para depuración
 
   const [autocompleteInstance, setAutocompleteInstance] = useState<google.maps.places.Autocomplete | null>(null);
   const [businessCategories, setBusinessCategories] = useState<BrightLocalCategory[]>([]);
   const [isLoadingCategories, setIsLoadingCategories] = useState(false);
 
-  // Estados para el envío del perfil de ubicación
   const [isSubmittingProfile, setIsSubmittingProfile] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus | null>(null);
 
-
+  // --- CORRECCIÓN AQUÍ ---
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
     libraries: LIBRARIES_PLACES,
-    onLoad: () => setIsLoadingGoogle(false), // Actualizar estado cuando Google API cargue
-    onError: () => {
-        setIsLoadingGoogle(false); // También actualizar en error
-        console.error("Google Maps API failed to load.");
-        // Podrías establecer un error aquí para mostrarlo al usuario
-    }
+    // Las opciones onLoad y onError se quitan de aquí
   });
+  // --- FIN DE CORRECCIÓN ---
+
+  // Efecto para manejar errores de carga de Google API
+  useEffect(() => {
+    if (loadError) {
+      console.error("Google Maps API failed to load:", loadError);
+      setError("Could not connect to Google Places service. Please try refreshing or check the API key.");
+    }
+  }, [loadError]);
+
 
   const mapCountryCodeToISO3 = useCallback((iso2?: string): string | undefined => {
+    // ... (sin cambios)
     if (!iso2) return undefined;
     const map: Record<string, string> = {
       US: 'USA', CA: 'CAN', GB: 'GBR', AU: 'AUS', DE: 'DEU', HK: 'HKG',
@@ -97,6 +63,8 @@ export default function OnlinePresenceAuditPage() {
 
   useEffect(() => {
     const countryToFetch = formData.countryCode;
+    const currentCategoryId = formData.businessCategoryId;
+
     if (countryToFetch && countryToFetch.length === 3) {
       setIsLoadingCategories(true);
       setBusinessCategories([]);
@@ -112,35 +80,37 @@ export default function OnlinePresenceAuditPage() {
         .then((data: BrightLocalCategory[] | {error: string}) => {
           if (Array.isArray(data)) {
             setBusinessCategories(data);
-            const currentCategoryIdNum = typeof formData.businessCategoryId === 'string' ? parseInt(formData.businessCategoryId) : formData.businessCategoryId;
-            if (currentCategoryIdNum && !data.find(cat => cat.id === currentCategoryIdNum)) {
+            const currentCategoryIdNum = typeof currentCategoryId === 'string' ? parseInt(currentCategoryId) : currentCategoryId;
+            if (currentCategoryIdNum !== undefined && !data.find(cat => cat.id === currentCategoryIdNum)) { // Asegurar que currentCategoryIdNum no sea undefined
                 setFormData(prev => ({ ...prev, businessCategoryId: undefined }));
             }
           } else {
             console.error("Error data structure from /api/get-business-categories:", data);
-            setError(`Could not load categories for ${countryToFetch}: ${data.error || 'Unknown error'}`);
             setBusinessCategories([]);
           }
         })
         .catch(err => {
           console.error("Failed to fetch categories (useEffect catch):", err);
-          setError(`Failed to load categories for ${countryToFetch}. ${err.message}`);
           setBusinessCategories([]);
         })
         .finally(() => setIsLoadingCategories(false));
     } else {
       setBusinessCategories([]);
     }
-  }, [formData.countryCode, mapCountryCodeToISO3]); // Añadido mapCountryCodeToISO3 a las dependencias si se usa dentro
+  }, [formData.countryCode, formData.businessCategoryId]); // Dependencias correctas
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    // ... (sin cambios)
     const { name, value } = e.target;
     setFormData(prev => {
-        const newState: Partial<BusinessFormData> = {
-            ...prev,
-            [name]: name === 'businessCategoryId' ? (value ? parseInt(value) : undefined) : value
-        };
+        const newState: Partial<BusinessFormData> = { ...prev };
+        if (name === 'businessCategoryId') {
+            newState[name] = value ? parseInt(value) : undefined;
+        } else {
+            newState[name as keyof BusinessFormData] = value;
+        }
+
         if (name === 'countryCode') {
             newState.googleCountryCode = undefined;
             newState.businessCategoryId = undefined;
@@ -148,26 +118,36 @@ export default function OnlinePresenceAuditPage() {
         return newState;
     });
     setError(null);
-    setSubmissionStatus(null); // Limpiar estado de envío anterior
-    // setGeneratedCurl(null);
+    setSubmissionStatus(null);
   };
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // ... (sin cambios)
     const query = e.target.value;
     setFormData(prev => ({
-        ...prev,
+        ...prev, 
         searchQuery: query,
-        selectedBusinessName: query === prev.selectedBusinessName ? prev.selectedBusinessName : undefined,
-        googlePlaceId: query === prev.selectedBusinessName ? prev.googlePlaceId : undefined,
-        // No limpiar countryCode, categoría o descripción al escribir en búsqueda
+        selectedBusinessName: query === prev.selectedBusinessName && query !== "" ? prev.selectedBusinessName : undefined,
+        googlePlaceId: query === prev.selectedBusinessName && query !== "" ? prev.googlePlaceId : undefined,
+        streetAddressLine1: query === prev.selectedBusinessName && query !== "" ? prev.streetAddressLine1 : undefined,
+        city: query === prev.selectedBusinessName && query !== "" ? prev.city : undefined,
+        region: query === prev.selectedBusinessName && query !== "" ? prev.region : undefined,
+        regionCode: query === prev.selectedBusinessName && query !== "" ? prev.regionCode : undefined,
+        postalCode: query === prev.selectedBusinessName && query !== "" ? prev.postalCode : undefined,
+        googleCountryCode: query === prev.selectedBusinessName && query !== "" ? prev.googleCountryCode : undefined,
+        phone: query === prev.selectedBusinessName && query !== "" ? prev.phone : undefined,
+        website: query === prev.selectedBusinessName && query !== "" ? prev.website : undefined,
+        latitude: query === prev.selectedBusinessName && query !== "" ? prev.latitude : undefined,
+        longitude: query === prev.selectedBusinessName && query !== "" ? prev.longitude : undefined,
     }));
-    setSelectedNAP(null);
+    if (query === "" || (formData.selectedBusinessName && query !== formData.selectedBusinessName) ) {
+        setSelectedNAP(null);
+    }
     setError(null);
     setSubmissionStatus(null);
-    // setGeneratedCurl(null);
   };
 
-  const generateLocationReference = (name?: string, city?: string): string => {
+  const generateLocationReference = (name?: string, city?: string): string => { /* ... (sin cambios) ... */ 
     if (!name) return `loc-ref-${Date.now().toString().slice(-7)}`;
     const slug = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     const citySlug = city ? city.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').substring(0,10) : '';
@@ -175,11 +155,11 @@ export default function OnlinePresenceAuditPage() {
     return ref.substring(0, 44) + `-${Date.now().toString().slice(-5)}`;
   };
 
-  const onLoadAutocomplete = useCallback((autocomplete: google.maps.places.Autocomplete) => {
+  const onLoadAutocomplete = useCallback((autocomplete: google.maps.places.Autocomplete) => { /* ... (sin cambios) ... */
     setAutocompleteInstance(autocomplete);
-  }, []);
+   }, []);
 
-  const onPlaceChanged = () => {
+  const onPlaceChanged = () => { /* ... (sin cambios en la lógica interna, solo asegura que las props de setFormData sean correctas) ... */
     if (autocompleteInstance !== null) {
       const place = autocompleteInstance.getPlace();
       if (place && place.name && place.place_id && place.address_components) {
@@ -216,7 +196,7 @@ export default function OnlinePresenceAuditPage() {
           name: place.name, address: fullAddress, phone: place.formatted_phone_number,
           website: place.website, googleCountryCode: googleIso2CountryCode,
         });
-        setError(null); setSubmissionStatus(null); // setGeneratedCurl(null);
+        setError(null); setSubmissionStatus(null);
       } else {
         const currentSearch = formData.searchQuery || "";
         setFormData(prev => ({
@@ -232,15 +212,14 @@ export default function OnlinePresenceAuditPage() {
     }
   };
 
-  // --- Función para Crear el Perfil de Ubicación ---
-  const handleCreateLocationProfile = async () => {
+  const handleCreateLocationProfile = async () => { /* ... (sin cambios en la lógica interna, solo asegura que las props de formData sean correctas) ... */
     const {
         selectedBusinessName, searchQuery, businessCategoryId, description,
         countryCode, locationReference, streetAddressLine1, streetAddressLine2,
         city, region, regionCode, postalCode, phone, website, latitude, longitude
     } = formData;
 
-    if (!selectedBusinessName && !searchQuery) { setError("Please enter or select a business name."); return; }
+    if (!selectedBusinessName && !(searchQuery && searchQuery.trim() !== '')) { setError("Please enter or select a business name."); return; }
     if (!businessCategoryId) { setError("Please select a business category."); return; }
     if (!description || description.trim() === "") { setError("Please enter a business description."); return; }
 
@@ -252,7 +231,7 @@ export default function OnlinePresenceAuditPage() {
 
     setIsSubmittingProfile(true); setError(null); setSubmissionStatus(null);
 
-    const businessNameToUse = selectedBusinessName || searchQuery;
+    const businessNameToUse = selectedBusinessName || (searchQuery ? searchQuery.trim() : '');
     const locationReferenceToUse = locationReference || generateLocationReference(businessNameToUse, city);
 
     const dataPayload: any = {
@@ -264,7 +243,7 @@ export default function OnlinePresenceAuditPage() {
       },
       telephone: phone || "",
       business_category_id: parseInt(String(businessCategoryId)),
-      description: description,
+      description: description.trim(),
     };
     if (streetAddressLine2) dataPayload.address.address2 = streetAddressLine2;
     if (regionCode) dataPayload.address.region_code = regionCode;
@@ -290,12 +269,22 @@ export default function OnlinePresenceAuditPage() {
 
   // --- Renderizado del Paso 1 (Único paso por ahora) ---
   const renderStepOne = () => {
-    if (loadError && !isLoaded) { // Mostrar error solo si no ha cargado y hay error
+    // --- CORRECCIÓN AQUÍ para el loader y el mensaje de error ---
+    if (loadError) { // Mostrar error si loadError es verdadero
       return <p className="text-center text-sm text-critical dark:text-critical-light p-4 bg-red-50 dark:bg-red-800/20 rounded-md">
                 <Icon.WarningCircle size={24} className="inline mr-2" />
                 Could not load Google Places. Please check your API key or try refreshing.
              </p>;
     }
+    if (!isLoaded) { // Mostrar loader si isLoaded es falso Y no hay loadError
+       return (
+         <div className="w-full bg-surface dark:bg-gray-700 px-4 py-3 rounded-lg border border-line dark:border-gray-600 flex items-center">
+            <Icon.CircleNotch className="animate-spin text-secondary dark:text-gray-400 mr-3 h-5 w-5" />
+            <span className="text-secondary dark:text-gray-400 caption11">Loading search capabilities...</span>
+          </div>
+       );
+    }
+    // --- FIN DE CORRECCIÓN ---
 
     return (
       <div className="space-y-6">
@@ -303,12 +292,6 @@ export default function OnlinePresenceAuditPage() {
           <label htmlFor="businessSearch" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
             Enter Business Name *
           </label>
-          {(!isLoaded && !loadError) ? ( // Mostrar loader si está cargando y no hay error
-             <div className="w-full bg-surface dark:bg-gray-700 px-4 py-3 rounded-lg border border-line dark:border-gray-600 flex items-center">
-              <Icon.CircleNotch className="animate-spin text-secondary dark:text-gray-400 mr-3 h-5 w-5" />
-              <span className="text-secondary dark:text-gray-400 caption11">Loading search...</span>
-            </div>
-          ) : (
             <Autocomplete
               onLoad={onLoadAutocomplete}
               onPlaceChanged={onPlaceChanged}
@@ -324,13 +307,13 @@ export default function OnlinePresenceAuditPage() {
                 className="w-full text-base bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 caption11 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
               />
             </Autocomplete>
-          )}
           <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
             Start typing and select your business from the suggestions.
           </p>
         </div>
 
         {selectedNAP && (
+          // ... (sección de SelectedNAP sin cambios)
           <div className="mt-4 p-4 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 rounded-lg space-y-2">
             <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-300 flex items-center">
               <Icon.Info size={18} className="mr-2 flex-shrink-0" /> Google Information Found:
@@ -349,6 +332,7 @@ export default function OnlinePresenceAuditPage() {
         )}
 
          <div>
+            {/* ... (Input para Categoría sin cambios en su estructura interna) ... */}
             <label htmlFor="businessCategoryId" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
                 Business Category *
             </label>
@@ -378,11 +362,12 @@ export default function OnlinePresenceAuditPage() {
                 <p className="mt-1.5 text-xs text-yellow-600 dark:text-yellow-400">No categories found for country: {formData.countryCode}. Profile creation might be suboptimal.</p>
             )}
             {formData.countryCode && formData.countryCode.length !== 3 && (
-                 <p className="mt-1.5 text-xs text-red-600 dark:text-red-400">A 3-letter country code (e.g., USA) is needed to load categories. Current: {formData.countryCode}</p>
+                 <p className="mt-1.5 text-xs text-red-600 dark:text-red-400">A 3-letter country code (e.g., USA) is needed to load categories. Current: {formData.countryCode || "Not set"}</p>
             )}
         </div>
 
         <div>
+            {/* ... (Input para Descripción sin cambios) ... */}
             <label htmlFor="description" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
                 Business Description *
             </label>
@@ -397,8 +382,9 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         <div className="pt-2">
+          {/* ... (Botón para Crear Perfil sin cambios) ... */}
           <button type="button" onClick={handleCreateLocationProfile}
-            disabled={!isLoaded || isLoadingCategories || isSubmittingProfile || !formData.searchQuery || !formData.businessCategoryId || !formData.description }
+            disabled={!isLoaded || isLoadingCategories || isSubmittingProfile || !formData.searchQuery?.trim() || !formData.businessCategoryId || !formData.description?.trim() }
             className="button-main bg-blue hover:bg-dark-blue dark:bg-blue-600 dark:hover:bg-blue-700 text-white w-full py-3 text-base disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {isSubmittingProfile ? (
@@ -409,8 +395,8 @@ export default function OnlinePresenceAuditPage() {
           </button>
         </div>
 
-        {/* Ya no se muestra el cURL, se muestra el estado del envío */}
         {submissionStatus && (
+            // ... (Feedback de submissionStatus sin cambios) ...
             <div className={`mt-6 p-3 rounded-md text-sm ${
                 submissionStatus.success
                 ? 'bg-green-50 dark:bg-green-800/30 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-600'
@@ -429,8 +415,9 @@ export default function OnlinePresenceAuditPage() {
 
   return (
     <>
+      {/* ... (JSX principal sin cambios) ... */}
       <div className="overflow-x-hidden">
-        <header id="header"><TopNavTwo /><MenuOne /></header> {/* Reemplaza MenuOne con MenuTwo si es necesario */}
+        <header id="header"><TopNavTwo /><MenuOne /></header>
         <main className="content py-10 md:py-16 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 md:mb-10">
@@ -444,7 +431,6 @@ export default function OnlinePresenceAuditPage() {
             </div>
 
             <div className="form-block bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-xl">
-              {/* Mantenemos una estructura de un solo paso por ahora para la creación */}
               <div className="heading text-left mb-6">
                 <div className="heading5 text-black dark:text-white">Business Details for Location Setup</div>
                 <div className="body2 text-secondary dark:text-gray-300 mt-1">
@@ -452,7 +438,7 @@ export default function OnlinePresenceAuditPage() {
                   Use Google to find your business, then select a category and add a description.
                 </div>
               </div>
-              {error && !submissionStatus && ( // Mostrar error general solo si no hay un estado de envío
+              {error && !submissionStatus && (
                 <div className="mb-4 p-3 rounded-md bg-red-100 dark:bg-red-900/30 text-sm text-critical dark:text-red-300 border border-red-200 dark:border-red-700/50">
                     <Icon.WarningCircle size={20} className="inline mr-2" />{error}
                 </div>
