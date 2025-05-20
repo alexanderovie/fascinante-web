@@ -105,7 +105,7 @@ const SliderFive = () => {
                                         <div className="body2 mt-3 text-secondary">Our comprehensive audit uncovers hidden issues and <br /> untapped strengths for top search rankings.</div>
                                         {/* Botón CTA para Auditoría SEO */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/services/website-audit">Start Your Audit</Link>
+                                            <Link className="button-main bg-blue text-white" href="/online-presence-audit">Start Your Audit</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@ const SliderFive = () => {
                                         <div className="body2 mt-3 text-secondary">We pinpoint fresh strategies to expand your <br /> reach and drive more significant conversions.</div>
                                         {/* Botón CTA para Descubrir Oportunidades */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/services/website-audit">Explore Options</Link>
+                                            <Link className="button-main bg-blue text-white" href="/online-presence-audit">Explore Options</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@ const SliderFive = () => {
                                         <div className="body2 mt-3 text-secondary">Ensure your business is seen by the right <br /> customers across all digital platforms.</div>
                                         {/* Botón CTA para Visibilidad Online */}
                                         <div className="button-block md:mt-10 mt-6">
-                                            <Link className="button-main bg-blue text-white" href="/services/website-audit">Get Discovered</Link>
+                                            <Link className="button-main bg-blue text-white" href="/online-presence-audit">Get Discovered</Link>
                                         </div>
                                     </div>
                                 </div>
