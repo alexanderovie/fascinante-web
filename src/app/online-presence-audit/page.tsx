@@ -7,7 +7,7 @@ import MenuOne from "@/components/Header/Menu/Menu"; // O MenuTwo si es el corre
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
-import { Combobox, Dialog, Transition } from '@headlessui/react'; // Dialog añadido
+import { Combobox, Dialog, Transition } from '@headlessui/react';
 
 // --- Interfaces ---
 interface BusinessNAP {
@@ -69,11 +69,12 @@ export default function OnlinePresenceAuditPage() {
   const [isSubmittingProfile, setIsSubmittingProfile] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus | null>(null);
 
-  // --- Estados para el Modal de Confirmación ---
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [dataPayloadForConfirmation, setDataPayloadForConfirmation] = useState<any | null>(null);
   const [curlForConfirmation, setCurlForConfirmation] = useState<string | null>(null);
 
+  // Log para ver el estado del modal en cada render
+  // console.log("OnlinePresenceAuditPage RENDER. isConfirmModalOpen:", isConfirmModalOpen);
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
@@ -259,8 +260,8 @@ export default function OnlinePresenceAuditPage() {
   };
 
   const prepareForLocationSetup = () => {
-    console.log("%cFUNC: prepareForLocationSetup CALLED", "color: orange; font-weight: bold;");
-    console.log("FORM DATA for preparation:", JSON.stringify(formData, null, 2));
+    console.log("%cFUNC: prepareForLocationSetup CALLED", "color: orange; font-weight: bold;"); // LOG
+    console.log("FORM DATA for preparation:", JSON.stringify(formData, null, 2)); // LOG
     
     const {
         selectedBusinessName, searchQuery, businessCategoryId, description,
@@ -268,15 +269,26 @@ export default function OnlinePresenceAuditPage() {
         city, region, regionCode, postalCode, phone, website, latitude, longitude
     } = formData;
 
-    if (!selectedBusinessName && !(searchQuery && searchQuery.trim() !== '')) { setError("Please enter or select a business name."); return; }
-    if (!businessCategoryId) { setError("Please select a business category."); return; }
-    if (!description || description.trim() === "") { setError("Please enter a business description."); return; }
+    if (!selectedBusinessName && !(searchQuery && searchQuery.trim() !== '')) {
+        console.error("VALIDATION FAIL (prepare): Business name missing."); // LOG
+        setError("Please enter or select a business name."); return;
+    }
+    if (!businessCategoryId) {
+        console.error("VALIDATION FAIL (prepare): Category ID missing."); // LOG
+        setError("Please select a business category."); return;
+    }
+    if (!description || description.trim() === "") {
+        console.error("VALIDATION FAIL (prepare): Description missing."); // LOG
+        setError("Please enter a business description."); return;
+    }
     const blCountryCode = countryCode;
     if (!blCountryCode || blCountryCode.length !== 3) {
+      console.error(`VALIDATION FAIL (prepare): Invalid country code. Current: '${blCountryCode || 'Not set'}'`); // LOG
       setError(`A valid 3-letter country code (e.g., USA) is required. Current: '${blCountryCode || 'Not set'}'`);
       return;
     }
     
+    console.log("All validations passed in prepareForLocationSetup."); // LOG
     setError(null);
 
     const businessNameToUse = selectedBusinessName || (searchQuery ? searchQuery.trim() : '');
@@ -308,11 +320,13 @@ export default function OnlinePresenceAuditPage() {
   --data '${JSON.stringify(payload, null, 2)}'`;
     setCurlForConfirmation(curlCommand);
 
+    console.log("%cAttempting to open confirmation modal...", "color: purple; font-weight: bold;"); // LOG
     setIsConfirmModalOpen(true);
   };
 
   const confirmAndSubmitProfile = async () => {
     if (!dataPayloadForConfirmation) {
+        console.error("CONFIRM SUBMIT FAIL: dataPayloadForConfirmation is missing."); // LOG
         setError("Data payload is missing for submission.");
         setIsConfirmModalOpen(false);
         return;
@@ -325,25 +339,34 @@ export default function OnlinePresenceAuditPage() {
     console.log("%cCONFIRMED: Submitting profile with payload:", "color: blue; font-weight: bold;", JSON.stringify(dataPayloadForConfirmation, null, 2));
 
     try {
+      console.log("Attempting fetch to /api/create-location-profile"); // LOG
       const response = await fetch('/api/create-location-profile', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataPayloadForConfirmation),
       });
+      console.log("API response status:", response.status); // LOG
       const result = await response.json();
-      if (!response.ok) { throw new Error(result.error || `Failed to create location profile (HTTP ${response.status})`); }
+      console.log("API response data:", result); // LOG
+
+      if (!response.ok) {
+        console.error("API call failed with status:", response.status, "Result:", result); // LOG
+        throw new Error(result.error || `Failed to create location profile (HTTP ${response.status})`);
+      }
       setSubmissionStatus({ success: true, message: result.message || 'Location Profile initiated successfully!', locationId: result.location_id });
-      console.log("Profile creation successful:", result);
+      console.log("Profile creation successful:", result); // LOG
     } catch (err: any) {
-      console.error("Error creating location profile (confirmAndSubmit):", err);
+      console.error("Error in confirmAndSubmitProfile's try-catch:", err); // LOG
       setError(err.message || 'An unexpected error occurred.');
       setSubmissionStatus({ success: false, message: err.message || 'An unexpected error occurred.' });
     } finally {
+      console.log("Setting isSubmittingProfile to false in confirmAndSubmitProfile"); // LOG
       setIsSubmittingProfile(false);
       setDataPayloadForConfirmation(null); 
     }
   };
 
   const closeModal = () => {
+    console.log("Closing modal."); // LOG
     setIsConfirmModalOpen(false);
     setDataPayloadForConfirmation(null);
     setCurlForConfirmation(null);
@@ -373,10 +396,11 @@ export default function OnlinePresenceAuditPage() {
         );
 
   const renderStepOne = () => {
+    // Descomenta estos logs si necesitas depurar por qué el botón principal está deshabilitado
     // console.log("--- Button Disabled Check (renderStepOne) ---");
     // console.log("isLoaded (Google API):", isLoaded);                     
     // console.log("isLoadingCategories:", isLoadingCategories);           
-    // console.log("isSubmittingProfile:", isSubmittingProfile);         
+    // console.log("isSubmittingProfile (for main button):", isSubmittingProfile); // Este isSubmittingProfile es el del envío final
     // console.log("formData.searchQuery?.trim() exists:", !!formData.searchQuery?.trim()); 
     // console.log("formData.businessCategoryId exists:", !!formData.businessCategoryId); 
     // console.log("formData.description?.trim() exists:", !!formData.description?.trim());   
@@ -511,12 +535,11 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         <div className="pt-2">
-          {/* CAMBIO: El botón ahora llama a prepareForLocationSetup */}
-          <button type="button" onClick={prepareForLocationSetup} 
+          <button type="button" onClick={prepareForLocationSetup}
             disabled={!isLoaded || isLoadingCategories || isSubmittingProfile || !formData.searchQuery?.trim() || !formData.businessCategoryId || !formData.description?.trim() }
             className="button-main bg-blue hover:bg-dark-blue dark:bg-blue-600 dark:hover:bg-blue-700 text-white w-full py-3 text-base disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {isSubmittingProfile ? ( // Usamos isSubmittingProfile para el estado de este botón también
+            {isSubmittingProfile && submissionStatus === null ? (
                  <> <Icon.CircleNotch className="animate-spin mr-2 inline-block h-5 w-5" /> Processing...</>
             ) : (
                  <>Review & Initiate Setup <Icon.RocketLaunch size={20} weight="bold" className="inline-block ml-2" /></>
@@ -593,7 +616,7 @@ export default function OnlinePresenceAuditPage() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" /> {/* Mejorado el fondo del overlay */}
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" aria-hidden="true" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -640,9 +663,9 @@ export default function OnlinePresenceAuditPage() {
                   <div className="mt-6 flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-3 space-y-3 sm:space-y-0 space-y-reverse">
                     <button
                       type="button"
-                      className="button-main bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 w-full sm:w-auto py-2.5" // Ajuste de padding
+                      className="button-main bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 w-full sm:w-auto py-2.5"
                       onClick={closeModal}
-                      disabled={isSubmittingProfile} // Deshabilitar cancelar mientras se envía
+                      disabled={isSubmittingProfile}
                     >
                       Cancel
                     </button>
