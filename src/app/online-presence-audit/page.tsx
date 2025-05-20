@@ -33,22 +33,21 @@ interface BusinessFormData {
   phone?: string;
   website?: string;
   googlePlaceId?: string;
-  businessCategoryId?: number | string; // Puede ser string del input, luego se parsea
+  businessCategoryId?: number | string;
   description?: string;
   latitude?: number;
   longitude?: number;
 }
 
 interface BrightLocalCategory {
-  id: number; // Este es el ID que espera el servicio externo
+  id: number;
   name: string;
 }
 
-// Para el estado de la respuesta del API de creación de perfil
 interface SubmissionStatus {
     success: boolean;
     message: string;
-    locationId?: string | number; // El ID devuelto por el servicio externo
+    locationId?: string | number;
 }
 
 const LIBRARIES_PLACES: ("places")[] = ["places"];
@@ -56,7 +55,7 @@ const LIBRARIES_PLACES: ("places")[] = ["places"];
 export default function OnlinePresenceAuditPage() {
   const [formData, setFormData] = useState<Partial<BusinessFormData>>({
     searchQuery: '',
-    countryCode: 'USA', // Default a 3 letras para la carga inicial de categorías
+    countryCode: 'USA',
   });
   const [selectedNAP, setSelectedNAP] = useState<BusinessNAP | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -65,7 +64,7 @@ export default function OnlinePresenceAuditPage() {
   
   const [businessCategories, setBusinessCategories] = useState<BrightLocalCategory[]>([]);
   const [isLoadingCategories, setIsLoadingCategories] = useState(false);
-  const [categoryQuery, setCategoryQuery] = useState(''); // Estado para el texto de búsqueda de categoría
+  const [categoryQuery, setCategoryQuery] = useState('');
 
   const [isSubmittingProfile, setIsSubmittingProfile] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus | null>(null);
@@ -253,7 +252,92 @@ export default function OnlinePresenceAuditPage() {
     }
   };
 
-  const handleCreateLocationProfile = async () => { /* ... (misma lógica que antes) ... */ };
+  const handleCreateLocationProfile = async () => {
+    // --- LOGS DE DEPURACIÓN ---
+    console.log("%cFUNC: handleCreateLocationProfile CALLED", "color: green; font-weight: bold;");
+    console.log("FORM DATA for submission:", JSON.stringify(formData, null, 2));
+    console.log("Button 'disabled' state variables check (should be false to enable):");
+    console.log("  !isLoaded (Google API):", !isLoaded, "(isLoaded:", isLoaded,")");
+    console.log("  isLoadingCategories:", isLoadingCategories);
+    console.log("  isSubmittingProfile:", isSubmittingProfile);
+    console.log("  !formData.searchQuery?.trim():", !formData.searchQuery?.trim(), "(searchQuery:", `"${formData.searchQuery}"`,")");
+    console.log("  !formData.businessCategoryId:", !formData.businessCategoryId, "(businessCategoryId:", formData.businessCategoryId,")");
+    console.log("  !formData.description?.trim():", !formData.description?.trim(), "(description:", `"${formData.description}"`,")");
+    // --- FIN DE LOGS DE DEPURACIÓN ---
+
+    const {
+        selectedBusinessName, searchQuery, businessCategoryId, description,
+        countryCode, locationReference, streetAddressLine1, streetAddressLine2,
+        city, region, regionCode, postalCode, phone, website, latitude, longitude
+    } = formData;
+
+    if (!selectedBusinessName && !(searchQuery && searchQuery.trim() !== '')) {
+        console.error("VALIDATION FAIL: Business name missing or empty.");
+        setError("Please enter or select a business name."); return;
+    }
+    if (!businessCategoryId) {
+        console.error("VALIDATION FAIL: Business category ID missing.");
+        setError("Please select a business category."); return;
+    }
+    if (!description || description.trim() === "") {
+        console.error("VALIDATION FAIL: Description missing or empty.");
+        setError("Please enter a business description."); return;
+    }
+
+    const blCountryCode = countryCode;
+    if (!blCountryCode || blCountryCode.length !== 3) {
+      console.error(`VALIDATION FAIL: Invalid country code. Current: '${blCountryCode || 'Not set'}'`);
+      setError(`A valid 3-letter country code (e.g., USA) is required. Current: '${blCountryCode || 'Not set'}'`);
+      return;
+    }
+    
+    console.log("All initial validations passed. Setting isSubmittingProfile to true.");
+    setIsSubmittingProfile(true); setError(null); setSubmissionStatus(null);
+
+    const businessNameToUse = selectedBusinessName || (searchQuery ? searchQuery.trim() : '');
+    const locationReferenceToUse = locationReference || generateLocationReference(businessNameToUse, city);
+
+    const dataPayload: any = {
+      business_name: businessNameToUse, location_reference: locationReferenceToUse,
+      country: blCountryCode.toUpperCase(),
+      address: {
+        address1: streetAddressLine1 || "", city: city || "",
+        postcode: postalCode || "", region: region || "",
+      },
+      telephone: phone || "",
+      business_category_id: parseInt(String(businessCategoryId)),
+      description: description.trim(),
+    };
+    if (streetAddressLine2) dataPayload.address.address2 = streetAddressLine2;
+    if (regionCode) dataPayload.address.region_code = regionCode;
+    if (website) dataPayload.urls = { website_url: website };
+    if (latitude && longitude) dataPayload.geo_location = { latitude, longitude };
+
+    try {
+      console.log("Attempting fetch to /api/create-location-profile with payload:", JSON.stringify(dataPayload, null, 2));
+      const response = await fetch('/api/create-location-profile', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataPayload),
+      });
+      console.log("API response status:", response.status);
+      const result = await response.json();
+      console.log("API response data:", result);
+
+      if (!response.ok) {
+        console.error("API call failed with status:", response.status, "Result:", result);
+        throw new Error(result.error || `Failed to create location profile (HTTP ${response.status})`);
+      }
+      setSubmissionStatus({ success: true, message: result.message || 'Location Profile initiated successfully!', locationId: result.location_id });
+      console.log("Profile creation successful:", result);
+    } catch (err: any) {
+      console.error("Error in handleCreateLocationProfile's try-catch:", err);
+      setError(err.message || 'An unexpected error occurred.');
+      setSubmissionStatus({ success: false, message: err.message || 'An unexpected error occurred.' });
+    } finally {
+      console.log("Setting isSubmittingProfile to false");
+      setIsSubmittingProfile(false);
+    }
+  };
 
   const filteredCategories =
     categoryQuery === ''
@@ -266,6 +350,17 @@ export default function OnlinePresenceAuditPage() {
         );
 
   const renderStepOne = () => {
+    // --- LOGS PARA DEPURAR EL ESTADO DEL BOTÓN (DENTRO DE RENDERSTEPONE) ---
+    // console.log("--- Button Disabled Check (renderStepOne) ---");
+    // console.log("isLoaded (Google API):", isLoaded);
+    // console.log("isLoadingCategories:", isLoadingCategories);
+    // console.log("isSubmittingProfile:", isSubmittingProfile);
+    // console.log("formData.searchQuery?.trim():", formData.searchQuery?.trim(), " (Exists: ", !!formData.searchQuery?.trim(), ")");
+    // console.log("formData.businessCategoryId:", formData.businessCategoryId, " (Exists: ", !!formData.businessCategoryId, ")");
+    // console.log("formData.description?.trim():", formData.description?.trim(), " (Exists: ", !!formData.description?.trim(), ")");
+    // console.log("-----------------------------");
+    // --- FIN DE LOGS ---
+
     if (loadError) {
         return ( <p className="text-center text-sm text-critical dark:text-critical-light p-4 bg-red-50 dark:bg-red-800/20 rounded-md"> <Icon.WarningCircle size={24} className="inline mr-2" /> Could not load Google Places. Please check your API key or try refreshing. </p> );
     }
@@ -273,11 +368,8 @@ export default function OnlinePresenceAuditPage() {
        return ( <div className="w-full bg-surface dark:bg-gray-700 px-4 py-3 rounded-lg border border-line dark:border-gray-600 flex items-center"> <Icon.CircleNotch className="animate-spin text-secondary dark:text-gray-400 mr-3 h-5 w-5" /> <span className="text-secondary dark:text-gray-400 text-sm">Loading search capabilities...</span> </div> );
     }
 
-    // Clase para los estilos visuales comunes de los inputs/textarea (sin font-size aquí)
     const formElementVisualSharedClass = "w-full bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors";
-    // Clase específica para asegurar font-size >= 16px (tu caption11)
     const inputAntiAutoZoomClass = "caption11"; 
-
 
     return (
       <div className="space-y-6">
