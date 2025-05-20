@@ -7,7 +7,7 @@ import MenuOne from "@/components/Header/Menu/Menu"; // O MenuTwo si es el corre
 import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
-import { Combobox, Transition } from '@headlessui/react';
+import { Combobox, Dialog, Transition } from '@headlessui/react'; // Dialog añadido
 
 // --- Interfaces ---
 interface BusinessNAP {
@@ -68,6 +68,12 @@ export default function OnlinePresenceAuditPage() {
 
   const [isSubmittingProfile, setIsSubmittingProfile] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus | null>(null);
+
+  // --- Estados para el Modal de Confirmación ---
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [dataPayloadForConfirmation, setDataPayloadForConfirmation] = useState<any | null>(null);
+  const [curlForConfirmation, setCurlForConfirmation] = useState<string | null>(null);
+
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
@@ -252,52 +258,31 @@ export default function OnlinePresenceAuditPage() {
     }
   };
 
-  const handleCreateLocationProfile = async () => {
-    // --- LOGS DE DEPURACIÓN ---
-    console.log("%cFUNC: handleCreateLocationProfile CALLED", "color: green; font-weight: bold;");
-    console.log("FORM DATA for submission:", JSON.stringify(formData, null, 2));
-    console.log("Button 'disabled' state variables check (should be false to enable):");
-    console.log("  !isLoaded (Google API):", !isLoaded, "(isLoaded:", isLoaded,")");
-    console.log("  isLoadingCategories:", isLoadingCategories);
-    console.log("  isSubmittingProfile:", isSubmittingProfile);
-    console.log("  !formData.searchQuery?.trim():", !formData.searchQuery?.trim(), "(searchQuery:", `"${formData.searchQuery}"`,")");
-    console.log("  !formData.businessCategoryId:", !formData.businessCategoryId, "(businessCategoryId:", formData.businessCategoryId,")");
-    console.log("  !formData.description?.trim():", !formData.description?.trim(), "(description:", `"${formData.description}"`,")");
-    // --- FIN DE LOGS DE DEPURACIÓN ---
-
+  const prepareForLocationSetup = () => {
+    console.log("%cFUNC: prepareForLocationSetup CALLED", "color: orange; font-weight: bold;");
+    console.log("FORM DATA for preparation:", JSON.stringify(formData, null, 2));
+    
     const {
         selectedBusinessName, searchQuery, businessCategoryId, description,
         countryCode, locationReference, streetAddressLine1, streetAddressLine2,
         city, region, regionCode, postalCode, phone, website, latitude, longitude
     } = formData;
 
-    if (!selectedBusinessName && !(searchQuery && searchQuery.trim() !== '')) {
-        console.error("VALIDATION FAIL: Business name missing or empty.");
-        setError("Please enter or select a business name."); return;
-    }
-    if (!businessCategoryId) {
-        console.error("VALIDATION FAIL: Business category ID missing.");
-        setError("Please select a business category."); return;
-    }
-    if (!description || description.trim() === "") {
-        console.error("VALIDATION FAIL: Description missing or empty.");
-        setError("Please enter a business description."); return;
-    }
-
+    if (!selectedBusinessName && !(searchQuery && searchQuery.trim() !== '')) { setError("Please enter or select a business name."); return; }
+    if (!businessCategoryId) { setError("Please select a business category."); return; }
+    if (!description || description.trim() === "") { setError("Please enter a business description."); return; }
     const blCountryCode = countryCode;
     if (!blCountryCode || blCountryCode.length !== 3) {
-      console.error(`VALIDATION FAIL: Invalid country code. Current: '${blCountryCode || 'Not set'}'`);
       setError(`A valid 3-letter country code (e.g., USA) is required. Current: '${blCountryCode || 'Not set'}'`);
       return;
     }
     
-    console.log("All initial validations passed. Setting isSubmittingProfile to true.");
-    setIsSubmittingProfile(true); setError(null); setSubmissionStatus(null);
+    setError(null);
 
     const businessNameToUse = selectedBusinessName || (searchQuery ? searchQuery.trim() : '');
     const locationReferenceToUse = locationReference || generateLocationReference(businessNameToUse, city);
 
-    const dataPayload: any = {
+    const payload: any = {
       business_name: businessNameToUse, location_reference: locationReferenceToUse,
       country: blCountryCode.toUpperCase(),
       address: {
@@ -308,34 +293,72 @@ export default function OnlinePresenceAuditPage() {
       business_category_id: parseInt(String(businessCategoryId)),
       description: description.trim(),
     };
-    if (streetAddressLine2) dataPayload.address.address2 = streetAddressLine2;
-    if (regionCode) dataPayload.address.region_code = regionCode;
-    if (website) dataPayload.urls = { website_url: website };
-    if (latitude && longitude) dataPayload.geo_location = { latitude, longitude };
+    if (streetAddressLine2) payload.address.address2 = streetAddressLine2;
+    if (regionCode) payload.address.region_code = regionCode;
+    if (website) payload.urls = { website_url: website };
+    if (latitude && longitude) payload.geo_location = { latitude, longitude };
+
+    setDataPayloadForConfirmation(payload);
+
+    const curlCommand = `curl --request POST \\
+  --url https://api.brightlocal.com/manage/v1/locations \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --header 'x-api-key: YOUR_ACTUAL_API_KEY_PLACEHOLDER' \\
+  --data '${JSON.stringify(payload, null, 2)}'`;
+    setCurlForConfirmation(curlCommand);
+
+    setIsConfirmModalOpen(true);
+  };
+
+  const confirmAndSubmitProfile = async () => {
+    if (!dataPayloadForConfirmation) {
+        setError("Data payload is missing for submission.");
+        setIsConfirmModalOpen(false);
+        return;
+    }
+
+    setIsConfirmModalOpen(false);
+    setIsSubmittingProfile(true);
+    setError(null);
+    setSubmissionStatus(null);
+    console.log("%cCONFIRMED: Submitting profile with payload:", "color: blue; font-weight: bold;", JSON.stringify(dataPayloadForConfirmation, null, 2));
 
     try {
-      console.log("Attempting fetch to /api/create-location-profile with payload:", JSON.stringify(dataPayload, null, 2));
       const response = await fetch('/api/create-location-profile', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dataPayload),
+        body: JSON.stringify(dataPayloadForConfirmation),
       });
-      console.log("API response status:", response.status);
       const result = await response.json();
-      console.log("API response data:", result);
-
-      if (!response.ok) {
-        console.error("API call failed with status:", response.status, "Result:", result);
-        throw new Error(result.error || `Failed to create location profile (HTTP ${response.status})`);
-      }
+      if (!response.ok) { throw new Error(result.error || `Failed to create location profile (HTTP ${response.status})`); }
       setSubmissionStatus({ success: true, message: result.message || 'Location Profile initiated successfully!', locationId: result.location_id });
       console.log("Profile creation successful:", result);
     } catch (err: any) {
-      console.error("Error in handleCreateLocationProfile's try-catch:", err);
+      console.error("Error creating location profile (confirmAndSubmit):", err);
       setError(err.message || 'An unexpected error occurred.');
       setSubmissionStatus({ success: false, message: err.message || 'An unexpected error occurred.' });
     } finally {
-      console.log("Setting isSubmittingProfile to false");
       setIsSubmittingProfile(false);
+      setDataPayloadForConfirmation(null); 
+    }
+  };
+
+  const closeModal = () => {
+    setIsConfirmModalOpen(false);
+    setDataPayloadForConfirmation(null);
+    setCurlForConfirmation(null);
+  };
+
+  const copyCurlToClipboard = () => {
+    if (curlForConfirmation) {
+      navigator.clipboard.writeText(curlForConfirmation)
+        .then(() => { alert("cURL command copied to clipboard!"); })
+        .catch(err => { 
+            console.error("Failed to copy cURL command: ", err);
+            alert("Error: Could not copy cURL command. See console for details.");
+        });
+    } else {
+      alert("No cURL command generated yet to copy.");
     }
   };
 
@@ -350,16 +373,14 @@ export default function OnlinePresenceAuditPage() {
         );
 
   const renderStepOne = () => {
-    // --- LOGS PARA DEPURAR EL ESTADO DEL BOTÓN (DENTRO DE RENDERSTEPONE) ---
     // console.log("--- Button Disabled Check (renderStepOne) ---");
-    // console.log("isLoaded (Google API):", isLoaded);
-    // console.log("isLoadingCategories:", isLoadingCategories);
-    // console.log("isSubmittingProfile:", isSubmittingProfile);
-    // console.log("formData.searchQuery?.trim():", formData.searchQuery?.trim(), " (Exists: ", !!formData.searchQuery?.trim(), ")");
-    // console.log("formData.businessCategoryId:", formData.businessCategoryId, " (Exists: ", !!formData.businessCategoryId, ")");
-    // console.log("formData.description?.trim():", formData.description?.trim(), " (Exists: ", !!formData.description?.trim(), ")");
+    // console.log("isLoaded (Google API):", isLoaded);                     
+    // console.log("isLoadingCategories:", isLoadingCategories);           
+    // console.log("isSubmittingProfile:", isSubmittingProfile);         
+    // console.log("formData.searchQuery?.trim() exists:", !!formData.searchQuery?.trim()); 
+    // console.log("formData.businessCategoryId exists:", !!formData.businessCategoryId); 
+    // console.log("formData.description?.trim() exists:", !!formData.description?.trim());   
     // console.log("-----------------------------");
-    // --- FIN DE LOGS ---
 
     if (loadError) {
         return ( <p className="text-center text-sm text-critical dark:text-critical-light p-4 bg-red-50 dark:bg-red-800/20 rounded-md"> <Icon.WarningCircle size={24} className="inline mr-2" /> Could not load Google Places. Please check your API key or try refreshing. </p> );
@@ -490,14 +511,15 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         <div className="pt-2">
-          <button type="button" onClick={handleCreateLocationProfile}
+          {/* CAMBIO: El botón ahora llama a prepareForLocationSetup */}
+          <button type="button" onClick={prepareForLocationSetup} 
             disabled={!isLoaded || isLoadingCategories || isSubmittingProfile || !formData.searchQuery?.trim() || !formData.businessCategoryId || !formData.description?.trim() }
             className="button-main bg-blue hover:bg-dark-blue dark:bg-blue-600 dark:hover:bg-blue-700 text-white w-full py-3 text-base disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {isSubmittingProfile ? (
-                 <> <Icon.CircleNotch className="animate-spin mr-2 inline-block h-5 w-5" /> Creating Profile...</>
+            {isSubmittingProfile ? ( // Usamos isSubmittingProfile para el estado de este botón también
+                 <> <Icon.CircleNotch className="animate-spin mr-2 inline-block h-5 w-5" /> Processing...</>
             ) : (
-                 <>Initiate Location Setup <Icon.RocketLaunch size={20} weight="bold" className="inline-block ml-2" /></>
+                 <>Review & Initiate Setup <Icon.RocketLaunch size={20} weight="bold" className="inline-block ml-2" /></>
             )}
           </button>
         </div>
@@ -558,6 +580,91 @@ export default function OnlinePresenceAuditPage() {
         </main>
         <footer id="footer"><Footer /></footer>
       </div>
+
+      {/* --- MODAL DE CONFIRMACIÓN --- */}
+      <Transition appear show={isConfirmModalOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" /> {/* Mejorado el fondo del overlay */}
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-semibold leading-6 text-gray-900 dark:text-white flex items-center"
+                  >
+                    <Icon.ShieldCheck size={24} weight="fill" className="mr-2 text-blue dark:text-blue-400" />
+                    Confirm Data for Location Setup
+                  </Dialog.Title>
+                  <div className="mt-4">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                      {/* eslint-disable-next-line react/no-unescaped-entities */}
+                      Please review the data that will be sent. You can copy the cURL command for testing or your records.
+                    </p>
+                    {curlForConfirmation && (
+                        <div className="space-y-3">
+                            <h4 className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">cURL Command (for external service):</h4>
+                            <pre className="p-3 bg-gray-100 dark:bg-gray-900 text-xs text-gray-700 dark:text-gray-200 rounded-md overflow-x-auto whitespace-pre-wrap break-all max-h-60 border border-gray-200 dark:border-gray-700">
+                                {curlForConfirmation}
+                            </pre>
+                            <button
+                                type="button"
+                                onClick={copyCurlToClipboard}
+                                className="text-xs bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 py-1.5 px-3 rounded-md flex items-center active:bg-gray-400 dark:active:bg-gray-500 transition-colors"
+                            >
+                                <Icon.Copy size={14} className="mr-1.5" /> Copy cURL
+                            </button>
+                        </div>
+                    )}
+                  </div>
+
+                  <div className="mt-6 flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-3 space-y-3 sm:space-y-0 space-y-reverse">
+                    <button
+                      type="button"
+                      className="button-main bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 w-full sm:w-auto py-2.5" // Ajuste de padding
+                      onClick={closeModal}
+                      disabled={isSubmittingProfile} // Deshabilitar cancelar mientras se envía
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      className={`button-main text-white w-full sm:w-auto py-2.5 ${isSubmittingProfile ? 'bg-gray-400 dark:bg-gray-500 cursor-not-allowed' : 'bg-blue hover:bg-dark-blue dark:bg-blue-600 dark:hover:bg-blue-700'}`}
+                      onClick={confirmAndSubmitProfile}
+                      disabled={isSubmittingProfile}
+                    >
+                      {isSubmittingProfile ? (
+                        <> <Icon.CircleNotch className="animate-spin mr-2 inline-block h-5 w-5" /> Processing... </>
+                      ) : (
+                        <>Confirm & Initiate Setup <Icon.RocketLaunch size={18} weight="bold" className="ml-2 inline-block" /></>
+                      )}
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
     </>
   );
 }
