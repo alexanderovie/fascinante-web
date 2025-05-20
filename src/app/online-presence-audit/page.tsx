@@ -315,7 +315,7 @@ export default function OnlinePresenceAuditPage() {
     return (
       <div className="space-y-6">
         <div>
-          <label htmlFor="businessSearch" className="block caption11 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
+          <label htmlFor="businessSearch" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
             Enter Business Name *
           </label>
             <Autocomplete
@@ -333,7 +333,7 @@ export default function OnlinePresenceAuditPage() {
                 className={inputBaseClass} // Usar clase base
               />
             </Autocomplete>
-          <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+          <p className="mt-1.5 text-xs caption11 text-gray-500 dark:text-gray-400">
             Start typing and select your business from the suggestions.
           </p>
         </div>
