@@ -8,7 +8,7 @@ import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
 
-// --- Interfaces ---
+// --- Interfaces (sin cambios) ---
 interface BusinessNAP {
   name?: string;
   address?: string;
@@ -90,10 +90,9 @@ export default function OnlinePresenceAuditPage() {
   }, []);
 
   useEffect(() => {
-    const countryToFetch = formData.countryCode; // Es string | undefined debido a Partial<>
+    const countryToFetch = formData.countryCode;
     const currentCategoryId = formData.businessCategoryId;
 
-    // Nos aseguramos que countryToFetch es un string y tiene 3 letras antes de usarlo
     if (typeof countryToFetch === 'string' && countryToFetch.length === 3) {
       setIsLoadingCategories(true);
       setBusinessCategories([]);
@@ -110,7 +109,6 @@ export default function OnlinePresenceAuditPage() {
           if (Array.isArray(data)) {
             setBusinessCategories(data);
             const currentCategoryIdNum = typeof currentCategoryId === 'string' ? parseInt(currentCategoryId) : currentCategoryId;
-            // Solo limpiar si currentCategoryIdNum tiene un valor y no se encuentra en las nuevas categorías
             if (currentCategoryIdNum !== undefined && !data.find(cat => cat.id === currentCategoryIdNum)) {
                 setFormData(prev => ({ ...prev, businessCategoryId: undefined }));
             }
@@ -125,10 +123,9 @@ export default function OnlinePresenceAuditPage() {
         })
         .finally(() => setIsLoadingCategories(false));
     } else {
-      // Si countryCode no es un string válido de 3 letras, limpiamos las categorías
       setBusinessCategories([]);
     }
-  }, [formData.countryCode, formData.businessCategoryId]); // Ambas son dependencias ahora
+  }, [formData.countryCode, formData.businessCategoryId]);
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -138,12 +135,11 @@ export default function OnlinePresenceAuditPage() {
         if (name === 'businessCategoryId') {
             newState[name] = value ? parseInt(value) : undefined;
         } else {
-            // Only assign undefined if value is empty, otherwise assign value as string (or appropriate type)
-            (newState as any)[name] = value === '' ? undefined : value;
+            (newState as any)[name] = value; // Simplificado, asume string para otros inputs
         }
-        if (name === 'countryCode') { // Si el usuario cambia el país manualmente (en un hipotético select de país)
+        if (name === 'countryCode') {
             newState.googleCountryCode = undefined;
-            newState.businessCategoryId = undefined; // Limpiar categoría al cambiar país explícitamente
+            newState.businessCategoryId = undefined;
         }
         return newState;
     });
@@ -242,6 +238,7 @@ export default function OnlinePresenceAuditPage() {
   };
 
   const handleCreateLocationProfile = async () => {
+    // ... (lógica sin cambios)
     const {
         selectedBusinessName, searchQuery, businessCategoryId, description,
         countryCode, locationReference, streetAddressLine1, streetAddressLine2,
@@ -303,14 +300,17 @@ export default function OnlinePresenceAuditPage() {
                 Could not load Google Places. Please check your API key or try refreshing.
              </p>;
     }
-    if (!isLoaded) { // Mostrar loader si isLoaded es falso Y no hay loadError
+    if (!isLoaded) {
        return (
          <div className="w-full bg-surface dark:bg-gray-700 px-4 py-3 rounded-lg border border-line dark:border-gray-600 flex items-center">
             <Icon.CircleNotch className="animate-spin text-secondary dark:text-gray-400 mr-3 h-5 w-5" />
-            <span className="text-secondary dark:text-gray-400 caption11">Loading search capabilities...</span>
+            <span className="text-secondary dark:text-gray-400 text-sm">Loading search capabilities...</span> {/* Cambiado caption11 a text-sm */}
           </div>
        );
     }
+
+    // Clase base para inputs para asegurar consistencia y font-size
+    const inputBaseClass = "w-full text-base bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors";
 
     return (
       <div className="space-y-6">
@@ -330,7 +330,7 @@ export default function OnlinePresenceAuditPage() {
                 id="businessSearch" type="text" value={formData.searchQuery || ''}
                 onChange={handleSearchInputChange}
                 placeholder="e.g., John's Pizzeria, Springfield" required
-                className="w-full text-base bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 caption11 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
+                className={inputBaseClass} // Usar clase base
               />
             </Autocomplete>
           <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
@@ -366,7 +366,7 @@ export default function OnlinePresenceAuditPage() {
                     value={formData.businessCategoryId || ''} onChange={handleInputChange}
                     required
                     disabled={isLoadingCategories || !formData.countryCode || formData.countryCode.length !== 3 || businessCategories.length === 0}
-                    className="w-full appearance-none text-base bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 caption11 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className={`${inputBaseClass} appearance-none disabled:opacity-50 disabled:cursor-not-allowed`} // Usar clase base
                 >
                     <option value="" disabled>
                         {isLoadingCategories ? "Loading categories..." :
@@ -399,7 +399,7 @@ export default function OnlinePresenceAuditPage() {
                 value={formData.description || ''} onChange={handleInputChange}
                 required
                 placeholder="Briefly describe your business (max 500 characters)"
-                className="w-full text-base bg-surface dark:bg-gray-700 text-secondary dark:text-gray-300 caption11 px-4 py-3 rounded-lg border border-line dark:border-gray-600 focus:ring-2 focus:ring-blue focus:border-transparent transition-colors"
+                className={`${inputBaseClass} h-auto`} // Usar clase base, h-auto para que respete rows
                 maxLength={500}
             ></textarea>
         </div>
