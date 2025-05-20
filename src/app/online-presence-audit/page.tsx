@@ -8,11 +8,46 @@ import Footer from "@/components/Footer/Footer";
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
 
-// --- Interfaces (sin cambios) ---
-interface BusinessNAP { /* ... */ }
-interface BusinessFormData { /* ... */ }
-interface BrightLocalCategory { /* ... */ }
-interface SubmissionStatus { /* ... */ }
+// --- Interfaces ---
+interface BusinessNAP {
+  name?: string;
+  address?: string;
+  phone?: string;
+  website?: string;
+  googleCountryCode?: string;
+}
+
+interface BusinessFormData {
+  searchQuery: string;
+  selectedBusinessName?: string;
+  locationReference?: string;
+  countryCode?: string; // ISO3 (ej. USA)
+  googleCountryCode?: string; // ISO2 (ej. US)
+  postalCode?: string;
+  streetAddressLine1?: string;
+  streetAddressLine2?: string;
+  city?: string;
+  region?: string; // Nombre completo del estado/región
+  regionCode?: string; // Código del estado/región
+  phone?: string;
+  website?: string;
+  googlePlaceId?: string;
+  businessCategoryId?: number | string;
+  description?: string;
+  latitude?: number;
+  longitude?: number;
+}
+
+interface BrightLocalCategory {
+  id: number;
+  name: string;
+}
+
+interface SubmissionStatus {
+    success: boolean;
+    message: string;
+    locationId?: string | number;
+}
 
 const LIBRARIES_PLACES: ("places")[] = ["places"];
 
@@ -22,7 +57,6 @@ export default function OnlinePresenceAuditPage() {
     countryCode: 'USA',
   });
   const [selectedNAP, setSelectedNAP] = useState<BusinessNAP | null>(null);
-  // Eliminamos isLoadingGoogle, ya que su valor se derivará de isLoaded y loadError
   const [error, setError] = useState<string | null>(null);
 
   const [autocompleteInstance, setAutocompleteInstance] = useState<google.maps.places.Autocomplete | null>(null);
@@ -32,15 +66,11 @@ export default function OnlinePresenceAuditPage() {
   const [isSubmittingProfile, setIsSubmittingProfile] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus | null>(null);
 
-  // --- CORRECCIÓN AQUÍ ---
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
     libraries: LIBRARIES_PLACES,
-    // Las opciones onLoad y onError se quitan de aquí
   });
-  // --- FIN DE CORRECCIÓN ---
 
-  // Efecto para manejar errores de carga de Google API
   useEffect(() => {
     if (loadError) {
       console.error("Google Maps API failed to load:", loadError);
@@ -48,9 +78,7 @@ export default function OnlinePresenceAuditPage() {
     }
   }, [loadError]);
 
-
   const mapCountryCodeToISO3 = useCallback((iso2?: string): string | undefined => {
-    // ... (sin cambios)
     if (!iso2) return undefined;
     const map: Record<string, string> = {
       US: 'USA', CA: 'CAN', GB: 'GBR', AU: 'AUS', DE: 'DEU', HK: 'HKG',
@@ -62,10 +90,11 @@ export default function OnlinePresenceAuditPage() {
   }, []);
 
   useEffect(() => {
-    const countryToFetch = formData.countryCode;
+    const countryToFetch = formData.countryCode; // Es string | undefined debido a Partial<>
     const currentCategoryId = formData.businessCategoryId;
 
-    if (countryToFetch && countryToFetch.length === 3) {
+    // Nos aseguramos que countryToFetch es un string y tiene 3 letras antes de usarlo
+    if (typeof countryToFetch === 'string' && countryToFetch.length === 3) {
       setIsLoadingCategories(true);
       setBusinessCategories([]);
       fetch(`/api/get-business-categories?country_code=${countryToFetch}`)
@@ -81,7 +110,8 @@ export default function OnlinePresenceAuditPage() {
           if (Array.isArray(data)) {
             setBusinessCategories(data);
             const currentCategoryIdNum = typeof currentCategoryId === 'string' ? parseInt(currentCategoryId) : currentCategoryId;
-            if (currentCategoryIdNum !== undefined && !data.find(cat => cat.id === currentCategoryIdNum)) { // Asegurar que currentCategoryIdNum no sea undefined
+            // Solo limpiar si currentCategoryIdNum tiene un valor y no se encuentra en las nuevas categorías
+            if (currentCategoryIdNum !== undefined && !data.find(cat => cat.id === currentCategoryIdNum)) {
                 setFormData(prev => ({ ...prev, businessCategoryId: undefined }));
             }
           } else {
@@ -95,25 +125,25 @@ export default function OnlinePresenceAuditPage() {
         })
         .finally(() => setIsLoadingCategories(false));
     } else {
+      // Si countryCode no es un string válido de 3 letras, limpiamos las categorías
       setBusinessCategories([]);
     }
-  }, [formData.countryCode, formData.businessCategoryId]); // Dependencias correctas
+  }, [formData.countryCode, formData.businessCategoryId]); // Ambas son dependencias ahora
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    // ... (sin cambios)
     const { name, value } = e.target;
     setFormData(prev => {
         const newState: Partial<BusinessFormData> = { ...prev };
         if (name === 'businessCategoryId') {
             newState[name] = value ? parseInt(value) : undefined;
         } else {
-            newState[name as keyof BusinessFormData] = value;
+            // Only assign undefined if value is empty, otherwise assign value as string (or appropriate type)
+            (newState as any)[name] = value === '' ? undefined : value;
         }
-
-        if (name === 'countryCode') {
+        if (name === 'countryCode') { // Si el usuario cambia el país manualmente (en un hipotético select de país)
             newState.googleCountryCode = undefined;
-            newState.businessCategoryId = undefined;
+            newState.businessCategoryId = undefined; // Limpiar categoría al cambiar país explícitamente
         }
         return newState;
     });
@@ -122,23 +152,22 @@ export default function OnlinePresenceAuditPage() {
   };
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // ... (sin cambios)
     const query = e.target.value;
     setFormData(prev => ({
-        ...prev, 
+        ...prev,
         searchQuery: query,
-        selectedBusinessName: query === prev.selectedBusinessName && query !== "" ? prev.selectedBusinessName : undefined,
-        googlePlaceId: query === prev.selectedBusinessName && query !== "" ? prev.googlePlaceId : undefined,
-        streetAddressLine1: query === prev.selectedBusinessName && query !== "" ? prev.streetAddressLine1 : undefined,
-        city: query === prev.selectedBusinessName && query !== "" ? prev.city : undefined,
-        region: query === prev.selectedBusinessName && query !== "" ? prev.region : undefined,
-        regionCode: query === prev.selectedBusinessName && query !== "" ? prev.regionCode : undefined,
-        postalCode: query === prev.selectedBusinessName && query !== "" ? prev.postalCode : undefined,
-        googleCountryCode: query === prev.selectedBusinessName && query !== "" ? prev.googleCountryCode : undefined,
-        phone: query === prev.selectedBusinessName && query !== "" ? prev.phone : undefined,
-        website: query === prev.selectedBusinessName && query !== "" ? prev.website : undefined,
-        latitude: query === prev.selectedBusinessName && query !== "" ? prev.latitude : undefined,
-        longitude: query === prev.selectedBusinessName && query !== "" ? prev.longitude : undefined,
+        selectedBusinessName: (query === prev.selectedBusinessName && query !== "") ? prev.selectedBusinessName : undefined,
+        googlePlaceId: (query === prev.selectedBusinessName && query !== "") ? prev.googlePlaceId : undefined,
+        streetAddressLine1: (query === prev.selectedBusinessName && query !== "") ? prev.streetAddressLine1 : undefined,
+        city: (query === prev.selectedBusinessName && query !== "") ? prev.city : undefined,
+        region: (query === prev.selectedBusinessName && query !== "") ? prev.region : undefined,
+        regionCode: (query === prev.selectedBusinessName && query !== "") ? prev.regionCode : undefined,
+        postalCode: (query === prev.selectedBusinessName && query !== "") ? prev.postalCode : undefined,
+        googleCountryCode: (query === prev.selectedBusinessName && query !== "") ? prev.googleCountryCode : undefined,
+        phone: (query === prev.selectedBusinessName && query !== "") ? prev.phone : undefined,
+        website: (query === prev.selectedBusinessName && query !== "") ? prev.website : undefined,
+        latitude: (query === prev.selectedBusinessName && query !== "") ? prev.latitude : undefined,
+        longitude: (query === prev.selectedBusinessName && query !== "") ? prev.longitude : undefined,
     }));
     if (query === "" || (formData.selectedBusinessName && query !== formData.selectedBusinessName) ) {
         setSelectedNAP(null);
@@ -147,7 +176,7 @@ export default function OnlinePresenceAuditPage() {
     setSubmissionStatus(null);
   };
 
-  const generateLocationReference = (name?: string, city?: string): string => { /* ... (sin cambios) ... */ 
+  const generateLocationReference = (name?: string, city?: string): string => {
     if (!name) return `loc-ref-${Date.now().toString().slice(-7)}`;
     const slug = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     const citySlug = city ? city.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').substring(0,10) : '';
@@ -155,11 +184,11 @@ export default function OnlinePresenceAuditPage() {
     return ref.substring(0, 44) + `-${Date.now().toString().slice(-5)}`;
   };
 
-  const onLoadAutocomplete = useCallback((autocomplete: google.maps.places.Autocomplete) => { /* ... (sin cambios) ... */
+  const onLoadAutocomplete = useCallback((autocomplete: google.maps.places.Autocomplete) => {
     setAutocompleteInstance(autocomplete);
-   }, []);
+  }, []);
 
-  const onPlaceChanged = () => { /* ... (sin cambios en la lógica interna, solo asegura que las props de setFormData sean correctas) ... */
+  const onPlaceChanged = () => {
     if (autocompleteInstance !== null) {
       const place = autocompleteInstance.getPlace();
       if (place && place.name && place.place_id && place.address_components) {
@@ -212,7 +241,7 @@ export default function OnlinePresenceAuditPage() {
     }
   };
 
-  const handleCreateLocationProfile = async () => { /* ... (sin cambios en la lógica interna, solo asegura que las props de formData sean correctas) ... */
+  const handleCreateLocationProfile = async () => {
     const {
         selectedBusinessName, searchQuery, businessCategoryId, description,
         countryCode, locationReference, streetAddressLine1, streetAddressLine2,
@@ -267,10 +296,8 @@ export default function OnlinePresenceAuditPage() {
     }
   };
 
-  // --- Renderizado del Paso 1 (Único paso por ahora) ---
   const renderStepOne = () => {
-    // --- CORRECCIÓN AQUÍ para el loader y el mensaje de error ---
-    if (loadError) { // Mostrar error si loadError es verdadero
+    if (loadError) {
       return <p className="text-center text-sm text-critical dark:text-critical-light p-4 bg-red-50 dark:bg-red-800/20 rounded-md">
                 <Icon.WarningCircle size={24} className="inline mr-2" />
                 Could not load Google Places. Please check your API key or try refreshing.
@@ -284,7 +311,6 @@ export default function OnlinePresenceAuditPage() {
           </div>
        );
     }
-    // --- FIN DE CORRECCIÓN ---
 
     return (
       <div className="space-y-6">
@@ -313,7 +339,6 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         {selectedNAP && (
-          // ... (sección de SelectedNAP sin cambios)
           <div className="mt-4 p-4 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 rounded-lg space-y-2">
             <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-300 flex items-center">
               <Icon.Info size={18} className="mr-2 flex-shrink-0" /> Google Information Found:
@@ -332,7 +357,6 @@ export default function OnlinePresenceAuditPage() {
         )}
 
          <div>
-            {/* ... (Input para Categoría sin cambios en su estructura interna) ... */}
             <label htmlFor="businessCategoryId" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
                 Business Category *
             </label>
@@ -367,7 +391,6 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         <div>
-            {/* ... (Input para Descripción sin cambios) ... */}
             <label htmlFor="description" className="block caption1 font-semibold text-gray-700 dark:text-gray-200 mb-1.5">
                 Business Description *
             </label>
@@ -382,7 +405,6 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         <div className="pt-2">
-          {/* ... (Botón para Crear Perfil sin cambios) ... */}
           <button type="button" onClick={handleCreateLocationProfile}
             disabled={!isLoaded || isLoadingCategories || isSubmittingProfile || !formData.searchQuery?.trim() || !formData.businessCategoryId || !formData.description?.trim() }
             className="button-main bg-blue hover:bg-dark-blue dark:bg-blue-600 dark:hover:bg-blue-700 text-white w-full py-3 text-base disabled:opacity-60 disabled:cursor-not-allowed"
@@ -396,7 +418,6 @@ export default function OnlinePresenceAuditPage() {
         </div>
 
         {submissionStatus && (
-            // ... (Feedback de submissionStatus sin cambios) ...
             <div className={`mt-6 p-3 rounded-md text-sm ${
                 submissionStatus.success
                 ? 'bg-green-50 dark:bg-green-800/30 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-600'
@@ -415,7 +436,6 @@ export default function OnlinePresenceAuditPage() {
 
   return (
     <>
-      {/* ... (JSX principal sin cambios) ... */}
       <div className="overflow-x-hidden">
         <header id="header"><TopNavTwo /><MenuOne /></header>
         <main className="content py-10 md:py-16 bg-gray-50 dark:bg-gray-900">
